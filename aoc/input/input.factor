@@ -1,6 +1,6 @@
-USING: accessors aoc.input.syntax assocs io.encodings.utf8
-io.files kernel math.parser namespaces sequences splitting
-vocabs ;
+USING: accessors aoc.input.syntax aoc.math.parser assocs
+io.encodings.utf8 io.files kernel math.parser namespaces
+sequences splitting vocabs ;
 IN: aoc.input
 
 : csn-line ( str -- seq ) "," split [ dec> ] map ;
@@ -8,8 +8,6 @@ IN: aoc.input
 : tsn-line ( str -- seq ) "\t" split [ dec> ] map ;
 
 : tabular-line ( str -- seq ) split-words harvest [ dec> ] map ;
-
-: digit-line ( str -- seq ) [ digit> ] { } map-as ;
 
 : #-vector ( str -- seq ) [ CHAR: # = 1 0 ? ] { } map-as ;
 
@@ -27,8 +25,8 @@ INPUT: input-tsn-lines ( -- seq ) [ tsn-line ] map ;
 INPUT: input-word-lines ( -- seq ) [ split-words ] map ;
 INPUT: input-tabular-line ( -- seq ) first tabular-line ;
 INPUT: input-tabular-lines ( -- seq ) [ tabular-line ] map ;
-INPUT: input-digit-line ( -- seq ) first digit-line ;
-INPUT: input-digit-lines ( -- seq ) [ digit-line ] map ;
+INPUT: input-digit-line ( -- seq ) first dec>digits ;
+INPUT: input-digit-lines ( -- seq ) [ dec>digits ] map ;
 INPUT: input-matrix ( -- seq ) [ #-vector ] map ;
 
 MACRO*: input-parse ( -- quot )
