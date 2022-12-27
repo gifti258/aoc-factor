@@ -1,6 +1,5 @@
-using: assocs assocs.extras kernel math math.matrices
-math.parser multiline peg.ebnf sequences sets ;
-use: prettyprint
+using: aoc.assign assocs assocs.extras kernel math math.matrices
+math.parser multiline peg.ebnf sequences sets vectors ;
 in: 2018.16
 
 ! Chronal Classification
@@ -60,18 +59,10 @@ constant: mnemonics {
 
 : part-2 ( samples test-program -- n )
     [
-        [ v{ } clone h{ } clone ] dip [
+        [ 16 f <array> ] dip [
             [ mnemonics [ behaves-like? ] with filter ]
-            [ second first ] bi pick push-at
-        ] each [ intersect-all ] map-values [
-            dup assoc-empty?
-        ] [
-            [ nip length 1 = ] assoc-partition [
-                [
-                    [ first swap pick set-nth ] assoc-each
-                ] keep values concat
-            ] dip [ swap diff ] with map-values
-        ] until drop { 0 0 0 0 }
+            [ second first ] bi pick [ ?push ] change-nth
+        ] each [ intersect-all ] map assign { 0 0 0 0 }
     ] dip [
         unclip reach nth call( in args -- out )
     ] each nip first ;

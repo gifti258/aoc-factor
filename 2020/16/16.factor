@@ -1,5 +1,6 @@
-using: aoc.input assocs assocs.extras kernel math.order
-math.parser multiline peg.ebnf sequences sets strings ;
+using: aoc.assign aoc.input assocs assocs.extras kernel
+math.order math.parser multiline peg.ebnf sequences sets strings
+;
 in: 2020.16
 
 ! Ticket Translation
@@ -40,15 +41,8 @@ ebnf: field [=[
         ] map intersect-all
     ] map ;
 
-: assign-candidates ( candidates-seq -- candidates )
-    [ v{ } clone ] dip [ dup [ empty? ] all?  ] [
-        dup [ length 1 = ] find
-        [ first swap reach set-nth ] keep '[ _ diff ] map
-    ] until drop ;
-
 : part-2 ( fields ticket tickets -- n )
     -rot [
-        [ filter-tickets flip ] keep find-candidates
-        assign-candidates zip-index
-        [ "departure" head? ] filter-keys values
+        [ filter-tickets flip ] keep find-candidates assign
+        zip-index [ "departure" head? ] filter-keys values
     ] [ nths product ] bi* ;
