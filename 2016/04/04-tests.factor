@@ -1,4 +1,4 @@
-USING: 2016.04 aoc.input tools.test ;
+using: 2016.04 aoc.input tools.test ;
 
 { t } [ "aaaaa-bbb-z-y-x-123[abxyz]" parse real? ] unit-test
 { t } [ "a-b-c-d-e-f-g-h-987[abcde]" parse real? ] unit-test

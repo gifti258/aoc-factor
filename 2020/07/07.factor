@@ -1,12 +1,12 @@
-USING: assocs kernel math math.parser multiline
+using: assocs kernel math math.parser multiline
 peg.ebnf sequences sets strings ;
-IN: 2020.07
+in: 2020.07
 
 ! Handy Haversacks
 ! part 1: number of bags that can contain shiny gold bags
 ! part 2: number of bags contained in a shiny gold bag
 
-EBNF: parse [=[
+ebnf: parse [=[
     color = [a-z]+ " " [a-z]+ => [[ concat >string ]]
     n = [0-9]+ => [[ dec> ]]
     empty = " no other bags." => [[ f ]]

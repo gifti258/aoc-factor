@@ -1,5 +1,5 @@
-USING: kernel math math.functions ;
-IN: 2016.19
+using: kernel math math.functions ;
+in: 2016.19
 
 ! An Elephant Named Joseph
 ! Find 1-based Josephus number

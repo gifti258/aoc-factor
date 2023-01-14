@@ -1,11 +1,11 @@
-USING: assocs kernel math math.parser math.statistics multiline
-peg.ebnf ranges sequences sequences.extras ;
-IN: 2021.05
+using: assocs kernel math.parser math.statistics multiline
+peg.ebnf ranges sequences sequences.extras sets ;
+in: 2021.05
 
 ! Hydrothermal Venture
 ! Count number of points where at least 2 lines overlap
 
-EBNF: parse [=[
+ebnf: parse [=[
 	c = [0-9]+ => [[ dec> ]]
 	p = c ","~ c
 	rule = p " -> "~ p
@@ -15,7 +15,7 @@ EBNF: parse [=[
     [
         unzip [ first2 [a..b] ] bi@ 2dup [ length 1 = ] either?
         [ cartesian-product concat ] [ zip ] if
-    ] map-concat histogram values [ 2 >= ] count ;
+    ] map-concat duplicates cardinality ;
 
 : part-1 ( seq -- n )
     [ first2 [ = ] 2any? ] filter count-intersections ;

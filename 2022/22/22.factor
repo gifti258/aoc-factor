@@ -1,5 +1,6 @@
-using: assocs combinators grouping kernel math math.matrices
-math.parser math.vectors multiline peg.ebnf sequences strings ;
+using: aoc.matrices assocs combinators grouping kernel math
+math.matrices math.parser math.vectors multiline peg.ebnf
+sequences strings ;
 in: 2022.22
 
 ! Monkey Map
@@ -17,11 +18,6 @@ ebnf: (parse) [=[
     [ dup [ length ] map supremum '[
         _ over length - 32 <string> append
     ] map ] [ first (parse) ] bi* ;
-
-constant: turns {
-    { "L" { { 0 +1 } { -1 0 } } }
-    { "R" { { 0 -1 } { +1 0 } } }
-}
 
 constant: dirs { { 0 1 } { 1 0 } { 0 -1 } { -1 0 } }
 

@@ -1,13 +1,13 @@
-USING: aoc.input aoc.matrices arrays assocs kernel math
+using: aoc.matrices arrays assocs kernel math
 sequences sequences.extras splitting ;
-IN: 2019.06
+in: 2019.06
 
 ! Universal Orbit Map
 ! part 1: number of direct and indirect orbits
 ! part 2: minimum number of orbit transfers between objects YOU
 ! and SAN are orbiting
 
-<< : input ( -- seq ) input-lines [ ")" split ] map ; >>
+: parse ( str -- seq ) ")" split ;
 
 : orbits ( seq str -- sum n )
     over

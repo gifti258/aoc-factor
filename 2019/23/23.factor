@@ -1,5 +1,5 @@
 using: 2019.intcode accessors deques dlists grouping
-kernel literals sequences ;
+kernel literals sequences slots.syntax ;
 in: 2019.23
 
 ! Category Six

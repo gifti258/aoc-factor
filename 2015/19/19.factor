@@ -1,20 +1,18 @@
-USING: aoc.input grouping kernel math multiline peg.ebnf
-sequences sets strings ;
-IN: 2015.19
+using: grouping kernel math multiline peg.ebnf sequences sets
+strings ;
+in: 2015.19
 
 ! Medicine for Rudolph
 ! part 1: number of distinct molecules after one replacement
 ! part 2: fewest number of steps to create target molecule
 
-<<
-EBNF: parse [=[
+ebnf: (parse) [=[
 	str = [A-Za-z]+ => [[ >string ]]
 	rule = str " => "~ str
 ]=]
 
-: input ( -- assoc str )
-    input-2paragraphs [ [ parse ] map ] [ first ] bi* ;
->>
+: parse ( replacements molecule -- assoc str )
+    [ [ (parse) ] map ] [ first ] bi* ;
 
 :: replace ( old new molecule -- seq )
     molecule old length clump

@@ -1,19 +1,19 @@
-USING: accessors aoc.input arrays combinators formatting kernel
-math math.parser multiline peg.ebnf sequences sequences.extras ;
-IN: 2021.16
+using: accessors arrays classes.tuple combinators formatting
+kernel math math.parser multiline peg.ebnf sequences
+sequences.extras slots.syntax ;
+in: 2021.16
 
 ! Packet decoder
 ! part 1: packet version sum
 ! part 2: evaluate expression
 
-TUPLE: packet
+tuple: packet
     { version fixnum }
     { type fixnum }
     { content maybe{ boolean fixnum } }
     { length fixnum } ;
 
-<<
-EBNF: parse [=[
+ebnf: (parse) [=[
     3bits = ... => [[ bin> ]]
     not-last = ("1"~ ....)* => [[ concat ]]
     last = "0"~ ....
@@ -21,28 +21,27 @@ EBNF: parse [=[
         => [[ concat [ bin> ] keep length 4 / 5 * 6 + 2array ]]
     total-length = "0" => [[ f ]] ............... => [[ bin> ]]
     number-of-packets = "1" => [[ t ]] ........... => [[ bin> ]]
-    length = total-length | number-of-packets
+    length = total-length|number-of-packets
     literal-packet = (3bits &("100") 3bits) literal
     operator-packet = (3bits !("100") 3bits) length
-    packet = (literal-packet | operator-packet)
-        => [[ concat first4 packet boa ]]
+    packet = (literal-packet|operator-packet)
+        => [[ concat packet slots>tuple ]]
     transmission = packet+ ("0"*)~
 ]=]
 
-: input ( -- seq )
-    input-line [ digit> "%04b" sprintf ] map-concat parse ;
->>
+: parse ( str -- seq )
+    [ digit> "%04b" sprintf ] map-concat (parse) ;
 
 : part-1 ( seq -- n ) [ version>> ] map-sum ;
 
-DEFER: evaluate
+defer: evaluate
 : slurp-packet ( length ns seq -- length' ns' seq' )
     unclip dup type>> 4 =
-    [ [ content>> ] [ length>> ] bi ] [ prefix evaluate ] if
+    [ get[ content length ] ] [ prefix evaluate ] if
     [ pick push ] [ '[ _ + ] 2dip ] bi* ;
 
 : slurp-packets ( seq packet -- seq' length ns )
-    [ 0 V{ } clone ] 2dip [ length>> ] [ content>> ] bi [
+    [ 0 v{ } clone ] 2dip get[ length content ] [
         [ slurp-packet ] times
         [ 18 + ] 2dip
     ] [

@@ -1,6 +1,6 @@
-USING: arrays combinators.extras generalizations kernel
-math.matrices math.vectors sequences ;
-IN: 2017.19
+using: arrays combinators.extras generalizations kernel
+math.matrices math.vectors sequences sets ;
+in: 2017.19
 
 ! A Series of Tubes
 ! part 1: letters on the path
@@ -11,8 +11,8 @@ IN: 2017.19
 
 : accept ( m p c v n -- m c n t ) nip nipd t ;
 
-MEMO: path ( seq -- str )
-    f swap dup first CHAR: | swap index 0 swap 2array
+memo: path ( seq -- str )
+    f swap dup first char: | swap index 0 swap 2array
     [ { -1 0 } v+ ] keep [
         pick dupd matrix-nth [ suffix ] curry 3dip
         2dup swap v- {
@@ -23,6 +23,6 @@ MEMO: path ( seq -- str )
         } cond*
     ] loop 3drop ;
 
-: part-1 ( seq -- str ) path [ "+-|" member? ] "" reject-as ;
+: part-1 ( seq -- str ) path [ "+-|" in? ] "" reject-as ;
 
 : part-2 ( seq -- n ) path length ;

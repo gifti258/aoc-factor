@@ -1,6 +1,6 @@
-USING: assocs assocs.extras grouping.extras kernel
-math.statistics math.vectors sequences sorting ;
-IN: 2020.10
+using: assocs grouping.extras kernel math.statistics
+math.vectors sequences sorting ;
+in: 2020.10
 
 ! Adapter Array
 ! part 1: joltage adapter chain: product of number of 3 and 1
@@ -14,6 +14,6 @@ IN: 2020.10
     differences histogram values product ;
 
 : part-2 ( seq -- n )
-    differences [ 1 = ] group-by [ ] filter-keys values
+    differences [ 1 = ] group-by sift-keys values
     [ length ] map 1 v-n
     { { 0 1 } { 1 2 } { 2 4 } { 3 7 } } substitute product ;

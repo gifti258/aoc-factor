@@ -1,7 +1,7 @@
-USING: accessors aoc.input.syntax aoc.math.parser assocs
+using: accessors aoc.input.syntax aoc.math.parser assocs
 io.encodings.utf8 io.files kernel math.parser namespaces
 sequences splitting vocabs ;
-IN: aoc.input
+in: aoc.input
 
 : csn-line ( str -- seq ) "," split [ dec> ] map ;
 
@@ -9,27 +9,27 @@ IN: aoc.input
 
 : tabular-line ( str -- seq ) split-words harvest [ dec> ] map ;
 
-: #-vector ( str -- seq ) [ CHAR: # = 1 0 ? ] { } map-as ;
+: #-vector ( str -- seq ) [ char: # = 1 0 ? ] { } map-as ;
 
-INPUT: input-lines ( -- seq ) ;
-INPUT: input-line ( -- str ) first ;
-INPUT: input-n ( -- n ) first dec> ;
-INPUT: input-ns ( -- seq ) [ dec> ] map ;
-INPUT: input-paragraphs ( -- seq ) { "" } split ;
-INPUT: input-2paragraphs ( -- before after ) { "" } split1 ;
-INPUT: input-csv-line ( -- seq ) first "," split ;
-INPUT: input-csn-line ( -- seq ) first csn-line ;
-INPUT: input-csn-lines ( -- seq ) [ csn-line ] map ;
-INPUT: input-tsn-line ( -- seq ) first tsn-line ;
-INPUT: input-tsn-lines ( -- seq ) [ tsn-line ] map ;
-INPUT: input-word-lines ( -- seq ) [ split-words ] map ;
-INPUT: input-tabular-line ( -- seq ) first tabular-line ;
-INPUT: input-tabular-lines ( -- seq ) [ tabular-line ] map ;
-INPUT: input-digit-line ( -- seq ) first dec>digits ;
-INPUT: input-digit-lines ( -- seq ) [ dec>digits ] map ;
-INPUT: input-matrix ( -- seq ) [ #-vector ] map ;
+input: input-lines ( -- seq ) ;
+input: input-line ( -- str ) first ;
+input: input-n ( -- n ) first dec> ;
+input: input-ns ( -- seq ) [ dec> ] map ;
+input: input-paragraphs ( -- seq ) { "" } split ;
+input: input-2paragraphs ( -- before after ) { "" } split1 ;
+input: input-csv-line ( -- seq ) first "," split ;
+input: input-csn-line ( -- seq ) first csn-line ;
+input: input-csn-lines ( -- seq ) [ csn-line ] map ;
+input: input-tsn-line ( -- seq ) first tsn-line ;
+input: input-tsn-lines ( -- seq ) [ tsn-line ] map ;
+input: input-word-lines ( -- seq ) [ split-words ] map ;
+input: input-tabular-line ( -- seq ) first tabular-line ;
+input: input-tabular-lines ( -- seq ) [ tabular-line ] map ;
+input: input-digit-line ( -- seq ) first dec>digits ;
+input: input-digit-lines ( -- seq ) [ dec>digits ] map ;
+input: input-matrix ( -- seq ) [ #-vector ] map ;
 
-MACRO*: input-parse ( -- quot )
+macro*: input-parse ( -- quot )
     current-path '[
         _ utf8 file-lines
         _ dictionary get at words>> "parse" of

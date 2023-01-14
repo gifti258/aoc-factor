@@ -1,6 +1,6 @@
-USING: arrays kernel math math.matrices math.matrices.extras
+using: arrays kernel math math.matrices math.matrices.extras
 ranges sequences sequences.extras ;
-IN: 2022.08
+in: 2022.08
 
 ! Treetop Tree House
 ! part 1: count trees visible from outside
@@ -24,5 +24,5 @@ IN: 2022.08
 
 : part-2 ( m -- n )
     [ '[
-        dup [ _ >= ] find drop [ nip 1 + ] [ length ] if*
+        dup [ _ >= ] find drop [ 1 + ] [ length ] ?if
     ] map-product ] (part) supremum ;

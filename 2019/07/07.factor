@@ -1,6 +1,6 @@
-USING: 2019.intcode accessors deques dlists grouping
+using: 2019.intcode accessors deques dlists grouping
 kernel math.combinatorics ranges sequences ;
-IN: 2019.07
+in: 2019.07
 
 ! Amplification Circuit
 ! Put Intcode computers in series to calculate the maximum
@@ -11,7 +11,7 @@ IN: 2019.07
         intcode-state new
             swap first2 [ >>inputs ] [ >>outputs ] bi*
             swap clone >>memory
-    ] with map dup first inputs>> 0 swap push-front ;
+    ] with map 0 over first inputs>> push-front ;
 
 : amplify ( seq phases -- thrust )
     setup [ run-until-output ] map last outputs>> peek-front ;

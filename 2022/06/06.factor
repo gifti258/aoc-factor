@@ -1,5 +1,5 @@
-USING: grouping kernel math sequences sets ;
-IN: 2022.06
+using: grouping kernel math sequences sets ;
+in: 2022.06
 
 ! Tuning Trouble
 ! Find number of characters after which 4/14 different

@@ -1,5 +1,5 @@
-USING: kernel math math.combinatorics ranges sequences ;
-IN: 2015.17
+using: kernel math math.combinatorics ranges sequences ;
+in: 2015.17
 
 ! No Such Thing as Too Much
 ! Find number of container combinations fitting 150 liters

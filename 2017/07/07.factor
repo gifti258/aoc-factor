@@ -1,13 +1,13 @@
-USING: accessors assocs continuations grouping kernel math
+using: accessors assocs continuations grouping kernel math
 math.parser math.statistics multiline peg.ebnf sequences
 sequences.extras sets strings ;
-IN: 2017.07
+in: 2017.07
 
 ! Recursive Circus
 ! part 1: find root program
 ! part 2: find correct weight to balance tower
 
-EBNF: parse [=[
+ebnf: parse [=[
     name = [a-z]+ => [[ >string ]]
     n = [0-9]+ => [[ dec> ]]
     program = name " ("~ n ")"~ (" -> "~ (name (", "?)~)+)?

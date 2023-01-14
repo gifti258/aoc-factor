@@ -1,4 +1,4 @@
-using: aoc.input arrays kernel literals math math.combinatorics
+using: aoc.input kernel literals math math.combinatorics
 math.parser math.vectors ranges sequences ;
 in: 2018.11
 

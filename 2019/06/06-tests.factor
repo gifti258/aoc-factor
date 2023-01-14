@@ -1,4 +1,4 @@
-USING: 2019.06 tools.test ;
+using: 2019.06 aoc.input tools.test ;
 
-{ 234446 } [ input part-1 ] unit-test
-{ 385 } [ input part-2 ] unit-test
+{ 234446 } [ input-parse part-1 ] unit-test
+{ 385 } [ input-parse part-2 ] unit-test

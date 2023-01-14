@@ -1,3 +1,3 @@
-USING: 2015.25 tools.test ;
+using: 2015.25 aoc.input tools.test ;
 
-{ 9132360 } [ input part-1 ] unit-test
+{ 9132360 } [ input-line parse* part-1 ] unit-test

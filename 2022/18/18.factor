@@ -3,6 +3,9 @@ math.order math.parser math.statistics math.vectors sequences
 sequences.generalizations sets splitting ;
 in: 2022.18
 
+! Boiling Boulders
+! Lava droplet (exterior) surface area
+
 : parse ( line -- seq ) "," split [ dec> ] map ;
 
 : part-1 ( seq -- n )
@@ -28,12 +31,12 @@ constant: neighbors {
             pos visited adjoin
             pos seq in? [
                 pos cubes push
-                pos neighbors [
-                    v+ :> neighbor
+                neighbors [
+                    pos v+ :> neighbor
                     neighbor b1 b2 [ between? ] 3 nall? [
                         neighbor queue push-front
                     ] when
-                ] with each
+                ] each
             ] unless
         ] unless
     ] slurp-deque cubes part-1

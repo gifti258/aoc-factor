@@ -1,6 +1,6 @@
-USING: 2019.02 2019.intcode accessors kernel literals tools.test
+using: 2019.02 2019.intcode accessors kernel literals tools.test
 ;
-IN: 2019.02.tests
+in: 2019.02.tests
 
 : test ( str -- mem )
     prepare intcode-state new swap >>memory run memory>> ;

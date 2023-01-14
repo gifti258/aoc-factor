@@ -1,13 +1,13 @@
-USING: assocs kernel math math.parser math.statistics
+using: assocs kernel math math.parser math.statistics
 multiline peg.ebnf sequences sets sorting strings ;
-IN: 2016.04
+in: 2016.04
 
 ! Security Through Obscurity
 ! part 1: validate room names, sum sector IDs
 ! part 2: find sector ID of the room where North Pole objects
 ! are stored
 
-EBNF: parse [=[
+ebnf: parse [=[
     name = [a-z-]+ => [[ but-last >string ]]
     sector = [0-9]+ => [[ dec> ]]
     checksum = "["~ [a-z]+ "]"~ => [[ >string ]]
@@ -25,7 +25,7 @@ EBNF: parse [=[
 : decrypt ( room -- str )
     first2 [
         swap
-        dup CHAR: - = [ 2drop 32 ] [ 97 - + 26 mod 97 + ] if
+        dup char: - = [ 2drop 32 ] [ 97 - + 26 mod 97 + ] if
     ] curry map ;
 
 : part-2 ( seq -- id )

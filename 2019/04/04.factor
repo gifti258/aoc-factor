@@ -1,11 +1,11 @@
-USING: aoc.input assocs grouping kernel math math.parser
-math.statistics ranges sequences splitting ;
-IN: 2019.04
+using: assocs grouping kernel math math.parser math.statistics
+ranges sequences splitting sets ;
+in: 2019.04
 
 ! Secure Container
 ! Count number of possible passwords
 
-<< : input ( -- seq ) input-line "-" split [ dec> ] map ; >>
+: parse ( str -- seq ) "-" split [ dec> ] map ;
 
 : possible? ( n -- ? )
     [ [ <= ] monotonic? ]
@@ -13,7 +13,7 @@ IN: 2019.04
 
 : possible?* ( n -- ? )
     [ possible? ]
-    [ histogram values 2 swap member? ] bi and ;
+    [ histogram values 2 swap in? ] bi and ;
 
 :: count-passwords ( seq quot -- n )
     seq first2 [a..b] [ >dec ] quot compose count ; inline

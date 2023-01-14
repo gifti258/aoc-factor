@@ -1,13 +1,13 @@
-USING: kernel math.parser multiline peg.ebnf ranges sequences
+using: kernel math.parser multiline peg.ebnf ranges sequences
 sets sets.extras ;
-IN: 2022.04
+in: 2022.04
 
 ! Camp Cleanup
 ! part 1: count assignment pairs in which one range fully
 ! contains the other
-! part 2: count assignment pairs in chich the ranges overlap
+! part 2: count assignment pairs in which the ranges overlap
 
-EBNF: parse [=[
+ebnf: parse [=[
     n = [0-9]+ => [[ dec> ]]
     range= n "-"~ n => [[ first2 [a..b] ]]
     pair= range ","~ range

@@ -1,5 +1,5 @@
-USING: 2022.01 tools.test ;
-IN: 2022.01.tests
+using: 2022.01 aoc.input tools.test ;
+in: 2022.01.tests
 
-{ 68467 } [ input part-1 ] unit-test
-{ 203420 } [ input part-2 ] unit-test
+{ 68467 } [ input-ns parse part-1 ] unit-test
+{ 203420 } [ input-ns parse part-2 ] unit-test

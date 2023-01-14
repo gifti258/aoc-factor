@@ -1,14 +1,14 @@
-USING: accessors combinators.extras kernel math math.matrices
+using: accessors combinators.extras kernel math math.matrices
 math.order math.vectors path-finding sequences ;
-IN: 2021.15
+in: 2021.15
 
 ! Chiton
 ! Find path with the lowest risk
 
-TUPLE: path < astar m ;
-M: path cost ( from to astar -- n ) m>> matrix-nth nip ;
-M: path heuristic ( from to astar -- n ) cost ;
-M: path neighbors ( from astar -- seq )
+tuple: path < astar m ;
+m: path cost ( from to astar -- n ) m>> matrix-nth nip ;
+m: path heuristic ( from to astar -- n ) cost ;
+m: path neighbors ( from astar -- seq )
     [ { { 1 0 } { -1 0 } { 0 1 } { 0 -1 } } [ v+ ] with map ]
     dip
     m>> dimension '[ _ [ 1 - 0 swap between? ] 2all? ] filter ;

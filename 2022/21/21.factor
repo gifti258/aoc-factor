@@ -12,7 +12,7 @@ ebnf: parse [=[
     n = [0-9]+ => [[ dec> ]]
     op = [-+*/] => [[ 1string ]]
     expr = str:a " "~ op:op " "~ str:b => [[ { a b op } ]]
-    line = str ": "~ (n | expr)
+    line = str ": "~ (n|expr)
 ]=]
 
 constant: str->op {

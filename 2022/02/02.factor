@@ -1,21 +1,19 @@
-USING: assocs kernel math math.matrices sequences ;
-IN: 2022.02
+using: kernel math math.matrices multiline peg.ebnf sequences ;
+in: 2022.02
 
 ! Rock Paper Scissors
 ! Sum scores (own move + outcome)
 ! part 1: opponent move/own move → outcome
 ! part 2: opponent move/outcome → own move
 
-CONSTANT: ch>index {
-    { "A" 0 } { "B" 1 } { "C" 2 }
-    { "X" 0 } { "Y" 1 } { "Z" 2 }
-}
+ebnf: parse [=[
+    opponent = . => [[ char: A - ]]
+    self = . => [[ char: X - ]]
+    round = opponent " "~ self
+]=]
 
-MACRO: (part) ( quot m -- quot )
-    '[
-        [ ch>index at ] matrix-map
-        [ [ second @ ] [ _ matrix-nth ] bi + ] map-sum
-    ] ;
+macro: (part) ( quot m -- quot )
+    '[ [ [ second @ ] [ _ matrix-nth ] bi + ] map-sum ] ;
 
 : part-1 ( seq -- n )
     [ 1 + ] { { 3 6 0 } { 0 3 6 } { 6 0 3 } } (part) ;

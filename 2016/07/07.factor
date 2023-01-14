@@ -1,16 +1,16 @@
-USING: aoc.input grouping kernel math multiline peg.ebnf ranges
-sequences sequences.extras sets strings ;
-IN: 2016.07
+using: grouping kernel math multiline peg.ebnf ranges sequences
+sequences.extras sets strings ;
+in: 2016.07
 
 ! Internet Protocol Version 7
 ! Count how many ip addresses support TLS/SSL
 
-EBNF: parse [=[
+ebnf: parse [=[
     str = [a-z]+ => [[ >string ]]
     ip = (str ("["~ str "]"~)?)+
 ]=]
 
-<< : input ( -- seq ) input-parse [ flip ] map ; >>
+: parse* ( seq -- seq' ) [ flip ] map ;
 
 : abba? ( str -- ? )
     dup length 2 - 2 swap [a..b] [

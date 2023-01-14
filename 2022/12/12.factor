@@ -1,6 +1,6 @@
-using: accessors arrays assocs combinators kernel math
-math.matrices math.order math.vectors path-finding sequences
-sequences.extras ;
+using: accessors aoc.matrices arrays assocs combinators kernel
+math math.matrices math.order math.vectors path-finding
+sequences sequences.extras ;
 in: 2022.12
 
 ! Hill Climbing Algorithm
@@ -11,8 +11,7 @@ tuple: signal < astar map ;
 m: signal neighbors
     map>> [
         [
-            { { 0 1 } { 0 -1 } { 1 0 } { -1 0 } }
-            [ v+ ] with map
+            cardinal-coordinate-neighbors
         ] dip [ '[
             _ dimension [ 1 - 0 swap between? ] 2all?
         ] filter ] keep

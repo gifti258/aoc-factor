@@ -1,17 +1,18 @@
-USING: arrays assocs assocs.extras grouping kernel math
-math.combinatorics math.matrices multiline peg.ebnf sequences ;
-IN: 2017.21
+using: arrays assocs assocs.extras combinators.extras grouping
+kernel math math.combinatorics math.matrices multiline peg.ebnf
+sequences ;
+in: 2017.21
 
 ! Fractal Art
 ! Count pixels which are on after 5/18 enhancements
 
-EBNF: parse [=[
+ebnf: parse [=[
     line = [.#]+ => [[ >array ]]
     square = (line ("/"?)~)+ => [[ >array ]]
     rule = square " => "~ square
 ]=]
 
-CONSTANT: pattern {
+constant: pattern {
     { 46 35 46 }
     { 46 46 35 }
     { 35 35 35 }
@@ -23,12 +24,12 @@ CONSTANT: pattern {
 
 : enhance ( rules pattern -- pattern' )
     dup length even? 2 3 ? [ '[ _ group ] map ] [ group ] bi
-    [ flip ] map [ of ] with matrix-map stitch stitch ;
+    [ flip ] map [ of ] with matrix-map [ stitch ] twice ;
 
-MACRO: (part) ( n -- quot )
+macro: (part) ( n -- quot )
     '[ [ [ flip-rotate ] dip ] collect-assoc-by-multi
     [ first ] map-values pattern [ enhance ] with _ swap times
-    concat [ CHAR: # = ] count ] ;
+    concat [ char: # = ] count ] ;
 
 : part-1 ( rules -- n ) 5 (part) ;
 

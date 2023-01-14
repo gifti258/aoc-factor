@@ -1,5 +1,5 @@
 using: aoc.input arrays assocs combinators kernel literals math
-math.parser multiline peg.ebnf sequences sequences.extras
+math.parser multiline peg.ebnf sequences sequences.extras sets
 splitting ;
 in: 2017.16
 
@@ -11,7 +11,7 @@ ebnf: parse [=[
     spin = "s" n
     exchange = "x" n "/"~ n
     partner = "p" . "/"~ .
-    move = spin | exchange | partner
+    move = spin|exchange|partner
 ]=]
 
 constant: start "abcdefghijklmnop"
@@ -30,6 +30,6 @@ memo: permute ( str -- str )
 : part-1 ( -- str ) start permute ;
 
 : part-2 ( -- str )
-    start { } [ 2dup member? ] [
+    start { } [ 2dup in? ] [
         over suffix [ permute ] dip
     ] until nip [ length 1,000,000,000 swap mod ] keep nth ;

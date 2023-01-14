@@ -1,5 +1,5 @@
-using: aoc.input kernel math math.parser multiline peg.ebnf
-sequences ;
+using: aoc.input kernel math math.parser literals multiline
+peg.ebnf sequences ;
 in: 2017.13
 
 ! Packet Scanners

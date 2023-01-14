@@ -1,5 +1,5 @@
-USE: 2019.intcode
-IN: 2019.09
+use: 2019.intcode
+in: 2019.09
 
 ! Sensor Boost
 ! Complete Intcode computer: implement relative mode

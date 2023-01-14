@@ -1,15 +1,15 @@
-USING: grouping kernel math sequences sequences.extras sets ;
-IN: 2015.05
+using: grouping kernel math sequences sequences.extras sets ;
+in: 2015.05
 
 ! Doesn't He Have Intern-Elves For This?
 ! Count nice strings
 
 : part-1 ( seq -- n )
     [
-        [ [ "aeiou" member? ] count 3 >= ] [
+        [ [ "aeiou" in? ] count 3 >= ] [
             2 clump
             [ [ first2 = ] any? ]
-            [ { "ab" "cd" "pq" "xy" } intersect empty? ] bi and
+            [ [ { "ab" "cd" "pq" "xy" } in? ] none? ] bi and
         ] bi and
     ] count ;
 

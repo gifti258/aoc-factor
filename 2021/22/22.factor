@@ -1,7 +1,6 @@
-using: aoc.matrices arrays combinators generalizations grouping
-kernel math math.matrices math.order math.parser math.vectors
-multiline peg.ebnf sequences sequences.extras
-sequences.generalizations sequences.product sets sorting ;
+using: arrays combinators generalizations kernel math math.order
+math.parser math.vectors multiline peg.ebnf sequences
+sequences.extras sequences.generalizations ;
 in: 2021.22
 
 ! Reactor Reboot

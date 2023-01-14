@@ -1,5 +1,5 @@
-USING: kernel math sequences sets ;
-IN: 2018.01
+using: kernel math sequences sets ;
+in: 2018.01
 
 ! Chronal Calibration
 ! part 1: frequency sum
@@ -8,7 +8,7 @@ IN: 2018.01
 : part-1 ( seq -- n ) sum ;
 
 : part-2 ( seq -- n )
-    HS{ } clone 0 0 [
+    hs{ } clone 0 0 [
         [ pick dupd nth ] dip + pick dupd ?adjoin
     ] [
         [ 1 + pick length mod ] dip

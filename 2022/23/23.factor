@@ -8,7 +8,7 @@ in: 2022.23
 ! containing all elfs
 ! part 2: number of rounds until elves stop moving
 
-: parse ( m -- seq ) [ 1 = ] matrix>pairs >hash-set ;
+: parse ( m -- set ) [ 1 = ] matrix>pairs >hash-set ;
 
 constant: neighbors {
     { 0 +1 } { +1 +1 }
@@ -26,7 +26,7 @@ constant: moves {
 
 :: round ( set moves -- set' ? )
     H{ } clone :> assoc set members [ :> pos
-        neighbors [ pos v+ ] map set intersects? [
+        pos coordinate-neighbors set intersects? [
             moves [
                 [ pos v+ ] map
                 [ set intersects? not ] [ first ] bi and

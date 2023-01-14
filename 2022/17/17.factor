@@ -2,6 +2,9 @@ using: arrays assocs assocs.extras biassocs kernel math
 math.vectors sequences sequences.extras sets ;
 in: 2022.17
 
+! Pyroclastic Flow
+! Tower height after 2022/1,000,000,000,000 rocks
+
 constant: shapes {
     { { 0 0 } { 1 0 } { 2 0 } { 3 0 } }
     { { 0 1 } { 1 0 } { 1 1 } { 1 2 } { 2 1 } }
@@ -36,7 +39,7 @@ macro: ?move ( map cond -- quot: ( st fa -- st fa' ? ) )
 : relative-heights ( set -- seq )
     members 7 <iota> [
         '[ _ = ] filter-keys values ?supremum
-    ] with map dup ?supremum '[
+    ] with map dup ?infimum '[
         _ 2dup [ not ] either? [ and ] [ - ] if
     ] map ;
 

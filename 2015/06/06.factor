@@ -1,13 +1,13 @@
-USING: arrays bit-sets combinators kernel math math.order
+using: arrays bit-sets combinators kernel math math.order
 math.parser math.vectors multiline peg.ebnf ranges sequences
 sequences.product sets ;
-IN: 2015.06
+in: 2015.06
 
 ! Probably a Fire Hazard
 ! part 1: count lit lights
 ! part 2: determine total brightness
 
-EBNF: parse [=[
+ebnf: parse [=[
     n = [0-9]+ => [[ dec> ]]
     point = n ","~ n
     instruction = ("toggle"|"turn on"|"turn off") " "~ point

@@ -1,5 +1,5 @@
-using: aoc.assign assocs assocs.extras kernel math math.matrices
-math.parser multiline peg.ebnf sequences sets vectors ;
+using: aoc.assign arrays kernel math math.matrices math.parser
+multiline peg.ebnf sequences sets vectors ;
 in: 2018.16
 
 ! Chronal Classification

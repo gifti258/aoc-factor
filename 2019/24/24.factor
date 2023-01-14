@@ -9,7 +9,7 @@ in: 2019.24
     [ cardinal-neighbor-sum ] keep
     [ { { 0 1 1 0 0 } { 0 1 0 0 0 } } nth nth ] matrix-2map ;
 
-: part-1 ( seq -- n )
+: part-1 ( m -- n )
     f swap [
         [ suffix ] keep step dup pick index not
     ] loop nip concat 0 [ 2^ * + ] reduce-index ;

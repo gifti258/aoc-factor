@@ -1,10 +1,10 @@
-USING: kernel math math.parser multiline peg.ebnf sequences ;
-IN: 2016.09
+using: kernel math math.parser multiline peg.ebnf sequences ;
+in: 2016.09
 
 ! Explosives in Cyberspace
 ! Decompress strings
 
-EBNF: parse [=[
+ebnf: parse [=[
     n = [0-9]+ => [[ dec> ]]
     marker = "("~ n "x"~ n ")"~
     seq = [A-Z]* marker? .*

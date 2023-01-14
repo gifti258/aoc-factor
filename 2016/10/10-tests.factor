@@ -1,8 +1,8 @@
-USING: 2016.10 aoc.input assocs kernel literals multiline
+using: 2016.10 aoc.input assocs kernel literals multiline
 sequences splitting tools.test ;
-IN: 2016.10.tests
+in: 2016.10.tests
 
-CONSTANT: example $[ [[ value 5 goes to bot 2
+constant: example $[ [[ value 5 goes to bot 2
 bot 2 gives low to bot 1 and high to bot 0
 value 3 goes to bot 1
 bot 1 gives low to output 1 and high to bot 0

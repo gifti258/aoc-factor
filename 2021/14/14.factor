@@ -1,20 +1,18 @@
-USING: aoc.input arrays assocs assocs.extras grouping kernel
+using: arrays assocs assocs.extras grouping kernel
 math math.statistics multiline peg.ebnf sequences strings ;
-IN: 2021.14
+in: 2021.14
 
 ! Extended Polymerization
 ! Substitute string 10/40 times, difference between most and
 ! least common character
 
-<<
-EBNF: parse [=[
+ebnf: (parse) [=[
     pair = . . => [[ >string ]]
     rule = pair " -> "~ .
 ]=]
 
-: input ( -- str rules )
-    input-2paragraphs [ first ] [ [ parse ] map ] bi* ;
->>
+: parse ( paragraph1 paragraph2 -- str rules )
+    [ first ] [ [ (parse) ] map ] bi* ;
 
 : pair-insertion ( str rules n -- n )
     [ 2 clump histogram ] 2dip [

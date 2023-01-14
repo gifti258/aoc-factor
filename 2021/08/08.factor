@@ -1,30 +1,28 @@
-USING: aoc.input assocs assocs.extras kernel math.parser
-math.statistics sequences sequences.generalizations sets sorting
-splitting strings ;
-IN: 2021.08
+using: assocs assocs.extras kernel math.parser math.statistics
+sequences sequences.generalizations sets sorting splitting
+strings ;
+in: 2021.08
 
 ! Seven Segment Search
 ! part 1: number of 1, 4, 7 and 8 digits
 ! part 2: output value sum
 
-<<
-: input ( -- seq ) input-word-lines [ { "|" } split ] map ;
->>
+: parse ( seq -- seq' ) [ { "|" } split ] map ;
 
 : part-1 ( seq -- n )
-    values [ [ length { 2 3 4 7 } member? ] count ] map-sum ;
+    values [ [ length { 2 3 4 7 } in? ] count ] map-sum ;
 
-CONSTANT: digits {
-    { "abcefg" CHAR: 0 }
-    { "cf" CHAR: 1 }
-    { "acdeg" CHAR: 2 }
-    { "acdfg" CHAR: 3 }
-    { "bcdf" CHAR: 4 }
-    { "abdfg" CHAR: 5 }
-    { "abdefg" CHAR: 6 }
-    { "acf" CHAR: 7 }
-    { "abcdefg" CHAR: 8 }
-    { "abcdfg" CHAR: 9 }
+constant: digits {
+    { "abcefg" char: 0 }
+    { "cf" char: 1 }
+    { "acdeg" char: 2 }
+    { "acdfg" char: 3 }
+    { "bcdf" char: 4 }
+    { "abdfg" char: 5 }
+    { "abdefg" char: 6 }
+    { "acf" char: 7 }
+    { "abcdefg" char: 8 }
+    { "abcdfg" char: 9 }
 }
 
 ! 1 has 2 segments, 7 has 3 and 4 has 4, all other digits have

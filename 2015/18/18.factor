@@ -1,6 +1,6 @@
-USING: aoc.matrices arrays kernel math math.combinatorics
+using: aoc.matrices arrays kernel math math.combinatorics
 math.matrices sets ;
-IN: 2015.18
+in: 2015.18
 
 ! Like a GIF For Your Yard
 ! Animate Christmas lights (Conway's Game of Life)
@@ -12,9 +12,9 @@ IN: 2015.18
         2array { { 1 2 } { 1 3 } { 0 3 } } in? 1 0 ?
     ] matrix-2map ] times ] keep call matrix-sum ; inline
 
-: part-1 ( seq -- n ) [ ] animate ;
+: part-1 ( m -- n ) [ ] animate ;
 
-: part-2 ( seq -- n )
+: part-2 ( m -- n )
     [
         1 { 0 99 } 2 all-selections pick matrix-set-nths
     ] animate ;

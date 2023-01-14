@@ -1,25 +1,22 @@
-USING: aoc.input arrays assocs assocs.extras grouping kernel
+using: arrays assocs assocs.extras continuations grouping kernel
 math math.combinatorics math.order math.parser math.statistics
 math.vectors multiline peg.ebnf sequences sequences.extras sets
-splitting ;
-IN: 2021.19
+;
+in: 2021.19
 
 ! Beacon Scanner
 ! part 1: number of beacons
 ! part 2: largest distance between any two scanners
 
-<<
-EBNF: parse [=[
+ebnf: (parse) [=[
     number = [0-9-]+ => [[ dec> ]]
-    rule = number ","~ number ","~ number
+    rule = number ","~ number ","~ number => [[ >array ]]
 ]=]
 
-: input ( -- seq )
-    input-lines { "" } split [ rest [ parse >array ] map ] map ;
->>
+: parse ( seq -- seq ) [ rest [ (parse) ] map ] map ;
 
 : rotations ( seq -- seq' )
-    dup [ first3 swap 3array ] map [
+    dup [ [ swap ] with-datastack ] map [
         [ 3 circular-clump ] map flip [
             { 1 -1 } 3 all-selections
             [ [ v* ] curry map ] with map
@@ -32,7 +29,7 @@ EBNF: parse [=[
         histogram [ 12 >= ] filter-values keys ?first
     ] with map-find ;
 
-MEMO: beacons/scanners ( seq -- beacons scanners )
+memo: beacons/scanners ( seq -- beacons scanners )
     1 cut f [ over empty? ] [
         pick [
             pick [
@@ -49,4 +46,4 @@ MEMO: beacons/scanners ( seq -- beacons scanners )
 
 : part-2 ( seq -- n )
     beacons/scanners nip
-    2 0 [ first2 v- [ abs ] map-sum max ] reduce-combinations ;
+    2 0 [ first2 v- l1-norm max ] reduce-combinations ;

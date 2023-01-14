@@ -1,29 +1,22 @@
-USING: arrays assocs grouping kernel literals math math.matrices
-math.parser math.vectors sequences sets ;
-IN: 2018.13
+using: aoc.matrices arrays assocs grouping kernel literals math
+math.matrices math.parser math.vectors sequences sets sorting ;
+in: 2018.13
 
 ! Mine Cart Madness
 ! Position of the first crash/last remaining cart
 
-CONSTANT: ch>direction {
-    { CHAR: ^ { 0 -1 } }
-    { CHAR: v { 0 +1 } }
-    { CHAR: > { +1 0 } }
-    { CHAR: < { -1 0 } }
+constant: ch>turn {
+    { char: / { { 0 -1 } { -1 0 } } }
+    { char: \ { { 0 +1 } { +1 0 } } }
+    { char: - { { +1 0 } { 0 +1 } } }
+    { char: | { { +1 0 } { 0 +1 } } }
+    { char: > { { +1 0 } { 0 +1 } } }
+    { char: < { { +1 0 } { 0 +1 } } }
+    { char: v { { +1 0 } { 0 +1 } } }
+    { char: ^ { { +1 0 } { 0 +1 } } }
 }
 
-CONSTANT: ch>turn {
-    { CHAR: / { { 0 -1 } { -1 0 } } }
-    { CHAR: \ { { 0 +1 } { +1 0 } } }
-    { CHAR: - { { +1 0 } { 0 +1 } } }
-    { CHAR: | { { +1 0 } { 0 +1 } } }
-    { CHAR: > { { +1 0 } { 0 +1 } } }
-    { CHAR: < { { +1 0 } { 0 +1 } } }
-    { CHAR: v { { +1 0 } { 0 +1 } } }
-    { CHAR: ^ { { +1 0 } { 0 +1 } } }
-}
-
-CONSTANT: turn>turn $[ {
+constant: turn>turn $[ {
     { { 0 -1 } { +1 0 } }
     { { +1 0 } { 0 +1 } }
     { { 0 +1 } { -1 0 } }
@@ -53,6 +46,6 @@ CONSTANT: turn>turn $[ {
         dup length [
             over [ dup [ _ move-cart ] when ] change-nth
             dup [ ?first ] map duplicates sift
-            '[ [ ?first _ member? not ] keep and ] map
-        ] each-integer sift [ first ] sort-with
+            '[ [ ?first _ in? not ] keep and ] map
+        ] each-integer sift sort-keys
     ] until first format ;

@@ -1,5 +1,4 @@
-using: aoc.matrices kernel math math.matrices math.order
-sequences ;
+using: aoc.matrices kernel math math.matrices math.order ;
 in: 2020.11
 
 ! Seating System

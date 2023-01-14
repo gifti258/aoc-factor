@@ -1,5 +1,5 @@
-USING: ascii grouping kernel math sequences sets ;
-IN: 2022.03
+using: ascii grouping kernel math sequences sets ;
+in: 2022.03
 
 ! Rucksack Reorganization
 ! Sum priority of common compartment items/badges

@@ -1,18 +1,16 @@
-USING: aoc.input assocs kernel math math.statistics sequences
+using: assocs kernel math math.statistics sequences
 sequences.extras sets splitting unicode ;
-IN: 2021.12
+in: 2021.12
 
 ! Passage Pathing
 ! part 1: find path from start to end, only pass through small
 ! caves once
 ! part 2: one small cave can be passed twice
 
-<<
-: input ( -- assoc path )
-    H{ } input-lines [ "-" split ] map
+: parse ( seq -- assoc path )
+    h{ } swap [ "-" split ] map
     dup [ reverse ] map append [ pick push-at ] assoc-each
     { "start" } ;
->>
 
 : part-1 ( assoc path -- n )
     dup last pick at over [ lower? ] filter diff [

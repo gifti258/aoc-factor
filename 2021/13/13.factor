@@ -1,25 +1,22 @@
-USING: aoc.input aoc.matrices kernel math math.parser multiline
+using: aoc.input aoc.matrices kernel math math.parser multiline
 peg.ebnf sequences sets ;
-IN: 2021.13
+in: 2021.13
 
 ! Transparent Origami
 ! Fold transparent paper
 ! part 1: fold once, count points
 ! part 2: fold completely, read activation code
 
-<<
-EBNF: parse [=[
+ebnf: (parse) [=[
     n = [0-9]+ => [[ dec> ]]
     instruction = "fold along "~ . "="~ n
 ]=]
 
-: input ( -- points instructions )
-    input-2paragraphs
-    [ [ csn-line ] map ] [ [ parse ] map ] bi* ;
->>
+: parse ( paragraph1 paragraph2 -- points instructions )
+    [ [ csn-line ] map ] [ [ (parse) ] map ] bi* ;
 
 : fold ( points instruction -- points' )
-    first2 [ CHAR: x = 0 1 ? ] dip 2dup '[
+    first2 [ char: x = 0 1 ? ] dip 2dup '[
         _ over nth _ >
         [ _ over [ _ 2 * swap - ] change-nth ] when
     ] map ;

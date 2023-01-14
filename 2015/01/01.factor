@@ -1,12 +1,12 @@
-USING: assocs kernel math sequences ;
-IN: 2015.01
+using: assocs kernel math sequences ;
+in: 2015.01
 
 ! Not Quite Lisp
 ! Parentheses nesting depth
 ! part 1: total depth
 ! part 2: position of depth -1
 
-: ch>n ( ch -- n ) { { CHAR: ( 1 } { CHAR: ) -1 } } at ;
+: ch>n ( ch -- n ) { { char: ( 1 } { char: ) -1 } } at ;
 
 : part-1 ( str -- n ) [ ch>n ] [ + ] map-reduce ;
 

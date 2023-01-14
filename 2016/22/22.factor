@@ -1,6 +1,5 @@
-using: aoc.matrices arrays assocs assocs.extras kernel math
-math.combinatorics math.matrices math.parser math.vectors
-multiline path-finding peg.ebnf sequences ;
+using: kernel math math.combinatorics math.parser multiline
+peg.ebnf sequences ;
 in: 2016.22
 
 ! Grid Computing

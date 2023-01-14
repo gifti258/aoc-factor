@@ -1,23 +1,23 @@
-USING: assocs assocs.extras kernel math.order
-math.parser multiline peg.ebnf sequences sorting vectors ;
-IN: 2016.10
+using: assocs assocs.extras kernel math.order math.parser
+multiline peg.ebnf sequences sorting vectors ;
+in: 2016.10
 
 ! Balance Bots
 ! Find the bot that handles the value-17 and value-61 microchips
 
-EBNF: parse [=[
+ebnf: parse [=[
     n = [0-9]+ => [[ dec> ]]
     obj = ("bot"|"output") " "~ n
     cmp = obj " gives low to "~ obj " and high to "~ obj
     in = "value "~ n " goes to "~ obj
-    rule = cmp | in
+    rule = cmp|in
 ]=]
 
 :: run ( seq -- comparisons outputs )
-    H{ } clone :> comparisons
+    h{ } clone :> comparisons
     seq [ first vector? ] partition
-    [ H{ } clone swap [ unclip pick set-at ] each ]
-    [ H{ } clone swap [ first2 pick push-at ] each ] bi*
+    [ h{ } clone swap [ unclip pick set-at ] each ]
+    [ h{ } clone swap [ first2 pick push-at ] each ] bi*
     :> ( instructions bots )
     [ bots [ length 2 = ] filter-values dup assoc-empty? ] [ [
         natural-sort [ comparisons set-at ] [

@@ -1,8 +1,8 @@
-USING: 2018.06 aoc.input literals multiline sequences splitting
+using: 2018.06 aoc.input literals multiline sequences splitting
 tools.test ;
-IN: 2018.06.tests
+in: 2018.06.tests
 
-CONSTANT: test $[ [[ 1, 1
+constant: test $[ [[ 1, 1
 1, 6
 8, 3
 3, 4

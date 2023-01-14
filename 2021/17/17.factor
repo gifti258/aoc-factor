@@ -1,23 +1,23 @@
-USING: accessors aoc.input kernel math math.functions math.order
+using: accessors aoc.input kernel math math.functions math.order
 math.parser math.quadratic multiline peg.ebnf ranges sequences
 words.constant ;
-IN: 2021.17
+in: 2021.17
 
-EBNF: parse [=[
+<<
+ebnf: parse [=[
     n = [-0-9]+ => [[ dec> ]]
     range = n ".."~ n
     ranges = "target area: x="~ range ", y="~ range
         => [[ concat ]]
 ]=]
 
-<<
-SYMBOLS: xmin xmax ymin ymax ;
+symbols: xmin xmax ymin ymax ;
 { xmin xmax ymin ymax }
 input-line parse
 [ define-constant ] 2each
 >>
 
-TUPLE: state sx sy vx vy ;
+tuple: state sx sy vx vy ;
 
 : step ( state -- state )
     dup vx>> '[ _ + ] change-sx

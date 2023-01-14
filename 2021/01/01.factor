@@ -1,5 +1,5 @@
-USING: grouping math math.extras sequences ;
-IN: 2021.01
+using: grouping math math.extras sequences ;
+in: 2021.01
 
 ! Sonar Sweep
 ! Count number of measurements smaller than previous measurement

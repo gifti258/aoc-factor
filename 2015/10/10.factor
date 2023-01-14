@@ -1,5 +1,5 @@
-USING: assocs grouping.extras kernel math sequences ;
-IN: 2015.10
+using: assocs grouping.extras kernel math sequences ;
+in: 2015.10
 
 ! Elves Look, Elves Say
 ! Look-and-say sequence

@@ -1,11 +1,11 @@
-USING: assocs kernel math math.parser math.vectors
+using: assocs kernel math math.parser math.vectors
 multiline peg.ebnf sequences sets ;
-IN: 2019.03
+in: 2019.03
 
 ! Crossed Wires
 ! Find the nearest intersection of two wires to origin
 
-EBNF: parse [=[
+ebnf: parse [=[
     turn = ("D"|"L"|"R"|"U")
     length = ([0-9])+ => [[ dec> ]]
     direction = turn length (","?)~
@@ -23,8 +23,7 @@ EBNF: parse [=[
     ] map nip concat ;
 
 : part-1 ( seq -- n )
-    [ points ] map intersect-all
-    [ [ abs ] map-sum ] map infimum ;
+    [ points ] map intersect-all [ l1-norm ] map infimum ;
 
 : part-2 ( seq -- n )
     [ points ] map dup intersect-all

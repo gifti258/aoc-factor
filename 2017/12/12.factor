@@ -1,17 +1,17 @@
-USING: assocs disjoint-sets kernel math.parser multiline
+using: assocs disjoint-sets kernel math.parser multiline
 peg.ebnf sequences sets ;
-IN: 2017.12
+in: 2017.12
 
 ! Digital Plumber
 ! part 1: group size of program ID 0
 ! part 2: number of groups
 
-EBNF: parse [=[
+ebnf: parse [=[
     n = [0-9]+ => [[ dec> ]]
     line = n " <-> "~ (n (", "?)~)+
 ]=]
 
-MEMO: assoc>set ( assoc -- set )
+memo: assoc>set ( assoc -- set )
     dup keys <disjoint-set> [ add-atoms ]
     [ '[ swap _ equate-all-with ] assoc-each ] [ ] tri ;
 

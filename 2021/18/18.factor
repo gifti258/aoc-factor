@@ -12,7 +12,7 @@ c: <n> n
 
 ebnf: (parse) [=[
     number = [0-9]+ => [[ dec> ]]
-    pair = "["~ ( number | pair ) ","~ ( number | pair ) "]"~
+    pair = "["~ (number|pair) ","~ (number|pair) "]"~
 ]=]
 
 : tree>stack ( tree depth -- stack )

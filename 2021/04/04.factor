@@ -1,16 +1,14 @@
-USING: aoc.input kernel math math.matrices math.parser sequences
+using: aoc.input kernel math math.matrices math.parser sequences
 splitting ;
-IN: 2021.04
+in: 2021.04
 
 ! Giant Squid
 ! Find the scores of the first and last winning bingo boards
 
-<<
-: input ( -- boards numbers )
-    input-paragraphs unclip
+: parse ( seq -- boards numbers )
+    unclip
     [ [ split-words harvest [ dec> ] map ] matrix-map ]
     [ first csn-line ] bi* ;
->>
 
 : apply-number ( boards n -- boards' )
     '[ [ [ _ = not ] keep and ] matrix-map ] map ;
@@ -22,12 +20,12 @@ IN: 2021.04
 : part-1 ( boards numbers -- n )
     [
         apply-number
-        dup [ won? ] find nip [ [ nip ] when* ] keep
+        dup [ won? ] find nip [ swap or ] keep
     ] find nip score ;
 
 : part-2 ( boards numbers -- n )
     [
         apply-number
         dup [ length 1 = ] [ [ won? ] find nip ] bi and
-        [ [ nip ] [ [ won? ] reject ] if* ] keep
+        [ [ ] [ [ won? ] reject ] ?if ] keep
     ] find nip score ;

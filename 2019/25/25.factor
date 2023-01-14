@@ -1,6 +1,7 @@
-USING: 2019.intcode accessors deques dlists io kernel math
-math.combinatorics multiline regexp sequences ;
-IN: 2019.25
+using: 2019.intcode accessors deques dlists io kernel literals
+math math.combinatorics multiline regexp sequences slots.syntax
+;
+in: 2019.25
 
 ! Cryostasis
 ! Get password for the main airlock
@@ -14,7 +15,7 @@ IN: 2019.25
 ! pressure-sensitive floor and get the password for the main
 ! airlock.
 
-CONSTANT: find-item-combinations-input [[ east
+constant: find-item-combinations-input [[ east
 east
 take semiconductor
 north
@@ -47,13 +48,13 @@ south
 south
 east]]
 
-CONSTANT: items {
+constant: items {
     "semiconductor" "planetoid" "antenna" "food ration"
     "space law space brochure" "monolith" "jam"
     "weather machine"
 }
 
-CONSTANT: part-1-input [[ east
+constant: part-1-input [[ east
 east
 take semiconductor
 north
@@ -75,11 +76,9 @@ south
 east
 east]]
 
-<< : input ( -- seq ) input-prepare ; >>
-
 : <ascii> ( -- state )
     intcode-state new
-        input >>memory
+        $[ input-prepare ] clone >>memory
         <dlist> >>inputs
         <dlist> >>outputs ;
 
@@ -98,7 +97,7 @@ east]]
 : run-until-input ( state -- state )
     [
         single-step dup
-        [ [ ip>> ] [ memory>> ] bi nth 100 mod 3 = ]
+        [ get[ ip memory ] nth 100 mod 3 = ]
         [ opcode>> 99 = ] bi or not
     ] loop ;
 

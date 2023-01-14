@@ -1,13 +1,13 @@
-USING: arrays assocs assocs.extras kernel math
+using: arrays assocs assocs.extras kernel math
 math.order math.parser multiline peg.ebnf ranges sequences
 strings ;
-IN: 2015.14
+in: 2015.14
 
 ! Reindeer Olympics
 ! part 1: calculate the winning reindeer's travel distance
 ! part 2: calculate the winning reindeer's points
 
-EBNF: parse [=[
+ebnf: parse [=[
 	reindeer = [a-zA-Z]+ => [[ >string ]]
 	number = [0-9]+ => [[ dec> ]]
 	rule = reindeer " can fly "~ number " km/s for "~ number
@@ -26,6 +26,6 @@ EBNF: parse [=[
     '[ _ = ] filter-values keys ;
 
 : part-2 ( seq -- n )
-    H{ } clone swap 2503 [1..b] [
+    h{ } clone swap 2503 [1..b] [
         winners [ over inc-at ] each
     ] with each values supremum ;

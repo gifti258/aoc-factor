@@ -1,26 +1,24 @@
-USING: accessors aoc.input assocs combinators heaps kernel math
-math.parser multiline peg.ebnf sequences sequences.extras ;
-IN: 2015.22
+using: accessors assocs combinators heaps kernel math
+math.parser multiline peg.ebnf sequences sequences.extras
+slots.syntax ;
+in: 2015.22
 
 ! Wizard Simulator 20XX
 ! Turn-based RPG simulation
 ! part 1: least amount of mana to still win the fight
 ! part 2: … on hard difficulty
 
-TUPLE: state
-    pl-hp mana spent armor
+tuple: state
     b-hp damage
+    pl-hp mana spent armor
     shield poison recharge ;
 
-EBNF: parse [=[
+ebnf: parse [=[
     n = [0-9]+ => [[ dec> ]]
     line = ([A-Za-z: ]+)~ n
 ]=]
 
-<< : (input) ( -- seq ) input-parse ; >>
-
-: input ( -- state )
-    50 500 0 0 (input) first2 0 0 0 state boa ;
+: parse* ( seq -- state ) first2 50 500 0 0 0 0 0 state boa ;
 
 : apply-effects ( state -- state )
     dup shield>>
@@ -55,8 +53,7 @@ EBNF: parse [=[
     [ 1 - ] change-pl-hp lose? ;
 
 : attack-lose? ( state -- state ? )
-    dup [ damage>> ] [ armor>> ] bi - [ - ] curry change-pl-hp
-    lose? ;
+    dup get[ damage armor ] - '[ _ - ] change-pl-hp lose? ;
 
 : turn ( state -- seq )
     apply-effects win? [

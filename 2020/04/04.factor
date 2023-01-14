@@ -1,15 +1,12 @@
-USING: aoc.input assocs combinators kernel math.order
-math.parser regexp sequences sets sets.extras splitting ;
-IN: 2020.04
+using: assocs combinators kernel math.order math.parser regexp
+sequences sets sets.extras splitting ;
+in: 2020.04
 
 ! Passport Processing
 ! Count valid passports
 
-<<
-: input ( -- seq )
-    input-paragraphs
+: parse ( seq -- seq )
     [ join-words split-words [ ":" split ] map ] map ;
->>
 
 : has-required-fields? ( seq -- ? )
     keys { "byr" "iyr" "eyr" "hgt" "hcl" "ecl" "pid" } superset?

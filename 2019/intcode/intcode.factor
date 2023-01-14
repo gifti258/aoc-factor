@@ -1,15 +1,16 @@
-USING: accessors aoc.input.syntax combinators deques dlists
-kernel math math.parser math.text.utils sequences splitting ;
-IN: 2019.intcode
+using: accessors aoc.input.syntax combinators deques dlists
+kernel math math.parser math.text.utils sequences slots.syntax
+splitting ;
+in: 2019.intcode
 
-TUPLE: intcode-state
+tuple: intcode-state
     memory { ip initial: 0 }
     opcode modes { base initial: 0 }
     inputs outputs ;
 
-: prepare ( str -- seq ) "," split [ dec> ] V{ } map-as ;
+: prepare ( str -- seq ) "," split [ dec> ] v{ } map-as ;
 
-INPUT: input-prepare ( -- seq ) first prepare ;
+input: input-prepare ( -- seq ) first prepare ;
 
 : mode ( state offset -- mode ) 1 - swap modes>> ?nth 0 or ;
 
@@ -27,7 +28,7 @@ INPUT: input-prepare ( -- seq ) first prepare ;
 : args ( state n -- state ) [ + ] curry change-ip ;
 
 : single-step ( state -- state )
-    dup [ ip>> ] [ memory>> ] bi nth
+    dup get[ ip memory ] nth
     100 /mod [ 1 digit-groups >>modes ] dip [ >>opcode ] keep {
         { 1 [ 1 value 2 value [ + ] dip 3 put 4 args ] }
         { 2 [ 1 value 2 value [ * ] dip 3 put 4 args ] }
@@ -45,10 +46,8 @@ INPUT: input-prepare ( -- seq ) first prepare ;
     [ dup opcode>> 99 = ] [ single-step ] until ;
 
 : input/output ( seq input -- output )
-    intcode-state new
-        swap 1dlist >>inputs
-        <dlist> >>outputs
-        swap >>memory
+    1dlist <dlist> [ intcode-state new ] 3dip
+    set[ memory inputs outputs ]
     run outputs>> peek-front ;
 
 : run-until-output ( state -- state )

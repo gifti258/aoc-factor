@@ -1,17 +1,14 @@
-USING: aoc.input assocs kernel math math.vectors sequences
-splitting ;
-IN: 2017.11
+using: assocs kernel math math.vectors sequences splitting ;
+in: 2017.11
 
 ! Hex Ed
 ! Hexagonal grid distance, total and maximum
 
-<<
-: input ( -- seq )
-    input-line "," split [ {
+: parse ( str -- seq )
+    "," split [ {
         { "n" { 1 0 } } { "ne" { 0 1 } } { "se" { -1 1 } }
         { "s" { -1 0 } } { "sw" { 0 -1 } } { "nw" { 1 -1 } }
     } at ] map ;
->>
 
 : distance ( v -- n )
     dup [ neg? ] count 1 = [

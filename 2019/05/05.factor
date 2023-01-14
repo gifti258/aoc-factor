@@ -1,5 +1,5 @@
-USE: 2019.intcode
-IN: 2019.05
+use: 2019.intcode
+in: 2019.05
 
 ! Sunny with a Chance of Asteroids
 ! Extend the Intcode computer

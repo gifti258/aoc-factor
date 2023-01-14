@@ -1,6 +1,6 @@
-USING: 2019.intcode accessors aoc.matrices deques dlists kernel
+using: 2019.intcode accessors aoc.matrices deques dlists kernel
 math math.matrices multiline sequences splitting ;
-IN: 2019.17
+in: 2019.17
 
 ! Set and Forget
 ! part 1: sum the product of the coordinates of path
@@ -14,11 +14,11 @@ IN: 2019.17
 
 : alignment-parameter-sum ( seq -- n )
     [ cardinal-neighbor-sum ] keep m+
-    [ CHAR: # 5 * = ] matrix>pairs [ product ] map-sum ;
+    [ char: # 5 * = ] matrix>pairs [ product ] map-sum ;
 
 : part-1 ( seq -- n ) camera-view alignment-parameter-sum ;
 
-CONSTANT: input-string [[ A,B,A,C,B,C,A,B,A,C
+constant: input-string [[ A,B,A,C,B,C,A,B,A,C
 R,6,L,10,R,8,R,8
 R,12,L,8,L,10
 R,12,L,10,R,6,L,10

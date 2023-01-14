@@ -1,21 +1,20 @@
-USING: aoc.input arrays assocs combinators kernel math
-math.matrices math.parser multiline peg.ebnf sequences sets
-strings ;
-IN: 2015.16
+using: arrays assocs combinators kernel math math.matrices
+math.parser multiline peg.ebnf sequences sets strings ;
+in: 2015.16
 
 ! Aunt Sue
 ! Find the aunt that sent you the analysis machine
 
-EBNF: parse [=[
+ebnf: parse [=[
 	property = [a-z]+ => [[ >string ]]
 	n = [0-9]+ => [[ dec> ]]
 	item = property ": "~ n (", "?)~
 	rule = ("Sue " n ": ")~ item+
 ]=]
 
-<< : input ( -- seq ) input-parse [ >array ] matrix-map ; >>
+: parse* ( seq -- seq' ) [ >array ] matrix-map ;
 
-CONSTANT: needle {
+constant: needle {
     { "children" 3 } { "cats" 7 } { "samoyeds" 2 }
     { "pomeranians" 3 } { "akitas" 0 } { "vizslas" 0 }
     { "goldfish" 5 } { "trees" 3 } { "cars" 2 } { "perfumes" 1 }

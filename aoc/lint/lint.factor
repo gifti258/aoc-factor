@@ -1,9 +1,9 @@
-USING: continuations io kernel lint lint.vocabs
+using: continuations io kernel lexer lint lint.vocabs
 lint.vocabs.private math.parser ranges sequences
-sequences.product tools.test tools.time vocabs.files
+sequences.product tools.test tools.time vocabs vocabs.files
 vocabs.hierarchy vocabs.metadata vocabs.refresh.monitor ;
 
-IN: tools.test.private
+in: tools.test.private
 
 :: (unit-test) ( output input -- error/f failed? tested? )
     [
@@ -11,13 +11,19 @@ IN: tools.test.private
         output assert-sequence= f f
     ] [ t ] recover t ;
 
-IN: aoc.lint
+in: tools.test
+
+syntax: test:
+    scan-token loaded-child-vocab-names test-vocabs ;
+
+in: aoc.lint
 
 : prefixes ( -- seq ) 2015 2022 [a..b] [ >dec ] map ;
 
 : prefixes* ( -- seq )
     prefixes { { "aoc" } {
-        "groups" "input" "input.syntax" "lint" "md5" "matrices"
+        "assign" "groups" "input" "input.syntax" "lint"
+        "matrices" "md5"
     } } [ "." join ] product-map append ;
 
 : load-all* ( -- ) prefixes [ load ] each ;

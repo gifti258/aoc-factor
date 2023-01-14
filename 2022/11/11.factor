@@ -1,6 +1,6 @@
 using: accessors classes.tuple deques dlists kernel math
 math.functions math.parser math.matrices math.statistics
-multiline peg.ebnf sequences ;
+multiline peg.ebnf sequences slots.syntax ;
 in: 2022.11
 
 ! Monkey in the Middle
@@ -28,22 +28,18 @@ tuple: monkey items operation test true false n ;
     ] map ;
 
 macro: (part) ( n quot -- n )
-    '[
-        _ over [ test>> ] [ lcm ] map-reduce _ '[
-            dup [
-                dup items>> [
-                    over [
-                        operation>> call( x -- x ) _ mod @ dup
-                    ] keep
-                    [ test>> divisor? ]
-                    [ true>> ]
-                    [ false>> ] tri ? reach [
-                        [ [ push-front ] keep ] change-items
-                    ] change-nth [ 1 + ] change-n
-                ] slurp-deque
-            ] map nip
-        ] times [ n>> ] map { 0 1 } kth-largests product
-    ] ;
+    '[ _ over [ test>> ] [ lcm ] map-reduce _ '[
+        dup [
+            dup items>> [
+                over get[ operation test true false ] [
+                    [ call( x -- x ) _ mod @ dup ]
+                    [ divisor? ] bi*
+                ] 2dip ? reach [
+                    [ [ push-front ] keep ] change-items
+                ] change-nth [ 1 + ] change-n
+            ] slurp-deque
+        ] map nip
+    ] times [ n>> ] map { 0 1 } kth-largests product ] ;
 
 : part-1 ( seq -- n ) 20 [ 3 /i ] (part) ;
 

@@ -1,20 +1,20 @@
-USING: ascii assocs combinators kernel math
-math.parser multiline peg.ebnf sequences strings ;
-IN: 2015.07
+using: ascii assocs combinators kernel math math.parser
+multiline peg.ebnf sequences strings ;
+in: 2015.07
 
 ! Some Assembly Required
 ! Assemble wires, get output of wire a
 ! part 2: feed wire b to wire a, reset the other instructions,
 ! run again
 
-EBNF: parse [=[
+ebnf: parse [=[
     name = [a-z]+ => [[ >string ]]
     number = [0-9]+ => [[ dec> ]]
     signal = name|number
     1gate = ("NOT "~ => [[ "not" ]]) signal
     operator = " "~ ("AND"|"OR"|"LSHIFT"|"RSHIFT") " "~
         => [[ >lower ]]
-    2gate = signal:a operator:b signal:c => [[ { b a c }  ]]
+    2gate = signal:a operator:b signal:c => [[ { b a c } ]]
     wire = name:w => [[ { "wire" w } ]]
     gate = 1gate|2gate|wire|number
     instruction = gate " -> "~ name

@@ -1,33 +1,34 @@
-USING: assocs combinators generalizations kernel make
-math math.parser multiline peg.ebnf sequences strings ;
-IN: 2015.23
+using: assocs combinators kernel make math math.parser multiline
+peg.ebnf sequences strings ;
+in: 2015.23
 
 ! Opening the Turing Lock
 ! Assembly interpretation
 ! part 1: determine value in register b
 ! part 2: … with register a starting as 1
 
-EBNF: parse [=[
+ebnf: parse [=[
     instruction = [a-z]+ => [[ >string ]]
     register = "a"|"b"
     offset = ("+"|"-") [0-9]+ => [[ concat dec> ]]
     rule = instruction " "~ register? (", "?)~ offset?
 ]=]
 
-: inc-ip ( ip seq offset -- ip' seq ) drop [ 1 + ] dip ;
+: inc-ip ( ip seq regs offset -- ip' seq regs )
+    drop [ 1 + ] 2dip ;
 
-: jump ( ip seq offset -- ip' seq ) [ + ] curry dip ;
+: jump ( ip seq regs offset -- ip' seq regs ) '[ _ + ] 2dip ;
 
-: run ( instructions a-register -- n )
-    [ "a" ,, 0 "b" ,, ] { } make 0 rot
-    [ 2dup ?nth ] [ first3 spin {
-        { "hlf" [ 5 npick [ 2/ ] change-at inc-ip ] }
-        { "tpl" [ 5 npick [ 3 * ] change-at inc-ip ] }
-        { "inc" [ 5 npick inc-at inc-ip ] }
+: run ( seq a -- n )
+    [ 0 ] 2dip [ "a" ,, 0 "b" ,, ] { } make
+    [ 2over ?nth ] [ first3 spin {
+        { "hlf" [ pick [ 2/ ] change-at inc-ip ] }
+        { "tpl" [ pick [ 3 * ] change-at inc-ip ] }
+        { "inc" [ pick inc-at inc-ip ] }
         { "jmp" [ drop jump ] }
-        { "jie" [ 5 npick at even? [ jump ] [ inc-ip ] if ] }
-        { "jio" [ 5 npick at 1 = [ jump ] [ inc-ip ] if ] }
-    } case ] while* 2drop "b" of ;
+        { "jie" [ pick at even? [ jump ] [ inc-ip ] if ] }
+        { "jio" [ pick at 1 = [ jump ] [ inc-ip ] if ] }
+    } case ] while* 2nip "b" of ;
 
 : part-1 ( seq -- n ) 0 run ;
 

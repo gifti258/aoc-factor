@@ -1,27 +1,27 @@
-USING: arrays assocs assocs.extras combinators grouping.extras
-kernel math math.parser multiline peg.ebnf sequences strings ;
-IN: 2022.07
+using: assocs combinators grouping.extras kernel math
+math.parser multiline peg.ebnf sequences strings ;
+in: 2022.07
 
 ! No Space Left On Device
 ! part 1: sum of directory sizes
 ! part 2: smallest directory size to free to have unused space
 ! of at least 30,000,000
 
-SYMBOLS: +cd+ +ls+ +dir+ +file+ ;
+symbols: +cd+ +ls+ +dir+ +file+ ;
 
-EBNF: parse [=[
+ebnf: parse [=[
     n = [0-9]+ => [[ dec> ]]
     str = [a-z./]+ => [[ >string ]]
-    cd = "$ cd "~ str => [[ +cd+ 2array ]]
+    cd = "$ cd "~ str:dir => [[ { +cd+ dir } ]]
     ls = "$ ls"~ => [[ { +ls+ } ]]
-    dir = "dir "~ str => [[ +dir+ 2array ]]
-    file = n " "~ str~ => [[ +file+ 2array ]]
+    dir = "dir "~ str~ => [[ { +dir+ } ]]
+    file = n:size " "~ str~ => [[ { +file+ size } ]]
     line = cd|ls|dir|file
 ]=]
 
 : dir-sizes ( seq -- n )
-    [ V{ } clone V{ } clone ] dip [
-        unclip-last {
+    [ v{ } clone v{ } clone ] dip [
+        unclip {
             { +cd+ [
                 first dup ".." =
                 [ drop over pop* ] [ pick push ] if

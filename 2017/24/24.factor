@@ -1,6 +1,6 @@
-USING: aoc.matrices arrays kernel math.matrices math.order
-math.parser sequences sequences.extras sets splitting ;
-IN: 2017.24
+using: aoc.matrices arrays kernel math.parser sequences sets
+splitting ;
+in: 2017.24
 
 ! Electromagnetic Moat
 ! Find the strongest (longest) bridge
@@ -9,7 +9,7 @@ IN: 2017.24
 
 : (max-bridge-strength) ( seq path quot: ( path -- obj ) -- n )
     dup '[
-        unclip-last 3dup [ diff [ member? ] with filter ] dip
+        unclip-last 3dup [ diff [ in? ] with filter ] dip
         over empty? [ 2drop nip @ ] [
             _ '[
                 dup first2 [ nip _ = ] most [ suffix ] bi@
@@ -25,9 +25,9 @@ IN: 2017.24
     [ [ length ] [ matrix-sum ] bi 2array ]
     (max-bridge-strength) ;
 
-MACRO: (part) ( quot quot -- quot )
+macro: (part) ( quot quot -- quot )
     '[
-        dup [ 0 swap member? ] filter
+        dup [ 0 swap in? ] filter
         [ [ 1array ] [ supremum suffix ] bi ] map
         _ with map supremum @
     ] ;

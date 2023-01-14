@@ -1,11 +1,12 @@
-USING: accessors aoc.input aoc.md5 assocs kernel math.order
-math.vectors path-finding sequences sequences.extras ;
-IN: 2016.17
+using: accessors aoc.input aoc.md5 assocs kernel literals
+math.order math.vectors path-finding sequences sequences.extras
+sets ;
+in: 2016.17
 
 ! Two Steps Forward
 ! Find shortest and longest path through maze
 
-SYMBOLS: V U D L R ;
+symbols: V U D L R ;
 
 : path>string ( path -- str ) [ name>> ] map-concat ;
 
@@ -15,18 +16,16 @@ SYMBOLS: V U D L R ;
         { L { -1 0 } } { R { 1 0 } }
     } at ] map [ ] [ v+ ] map-reduce ;
 
-<< : (input) ( -- str ) input-line ; >>
-
 : paths ( path -- seq )
-    dup path>string (input) prepend checksum
-    { U D L R } [ [ "bcdef" member? ] dip and ] { } 2map-as sift
+    dup path>string $[ input-line ] prepend checksum
+    { U D L R } [ [ "bcdef" in? ] dip and ] { } 2map-as sift
     [ suffix ] with
     [ path>loc [ 0 3 between? ] all? ] map-filter ;
 
-TUPLE: doors < astar ;
-M: doors cost ( from to astar -- n ) 3drop 1 ;
-M: doors heuristic ( from to astar -- n ) 3drop 1 ;
-M: doors neighbors ( path astar -- paths )
+tuple: doors < astar ;
+m: doors cost ( from to astar -- n ) 3drop 1 ;
+m: doors heuristic ( from to astar -- n ) 3drop 1 ;
+m: doors neighbors ( path astar -- paths )
     drop paths [ dup path>loc { 3 3 } = [ drop V ] when ] map ;
 
 : part-1 ( -- str )

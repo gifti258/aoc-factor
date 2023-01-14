@@ -1,8 +1,8 @@
-USING: 2019.17 2019.intcode literals multiline sequences
+using: 2019.17 2019.intcode literals multiline sequences
 splitting tools.test ;
-IN: 2019.17.tests
+in: 2019.17.tests
 
-CONSTANT: test $[ [[
+constant: test $[ [[
 ..#..........
 ..#..........
 #######...###

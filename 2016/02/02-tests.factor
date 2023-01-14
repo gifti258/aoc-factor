@@ -1,7 +1,7 @@
-USING: 2016.02 aoc.input tools.test ;
-IN: 2016.02.tests
+using: 2016.02 aoc.input tools.test ;
+in: 2016.02.tests
 
-CONSTANT: instructions {
+constant: instructions {
     "ULL"
     "RRDDD"
     "LURDL"

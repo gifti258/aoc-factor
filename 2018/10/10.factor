@@ -1,22 +1,20 @@
-USING: aoc.matrices arrays assocs kernel math math.parser
+using: aoc.matrices assocs kernel math math.parser
 math.statistics math.vectors multiline peg.ebnf sequences ;
-IN: 2018.10
+in: 2018.10
 
 ! The Stars Align
 ! part 1: read message spelled out by the moving lights
 ! part 2: count steps until message appears
 
-EBNF: parse [=[
+ebnf: parse [=[
     n = [ 0-9-]+ => [[ [ 32 = ] trim dec> ]]
     pair = "<"~ n ", "~ n ">"~
     point = "position="~ pair " velocity="~ pair
 ]=]
 
-: next-constellation ( seq -- seq' )
-    [ first2 [ v+ ] keep 2array ] map ;
+: next-constellation ( seq -- seq' ) [ [ v+ ] keep ] assoc-map ;
 
-: dimensions ( seq -- dim )
-    [ first ] map flip [ minmax - abs ] map ;
+: dimensions ( seq -- dim ) keys flip [ minmax - abs ] map ;
 
 : find-message ( seq -- n seq' )
     0 swap [

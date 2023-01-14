@@ -1,5 +1,5 @@
-USING: kernel math ranges sequences ;
-IN: 2021.07
+using: kernel math ranges sequences ;
+in: 2021.07
 
 ! The Treachery of Whales
 ! Least amount of fuel to align crabs

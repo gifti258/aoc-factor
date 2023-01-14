@@ -1,6 +1,7 @@
-USING: aoc.matrices assocs generalizations hash-sets kernel math
-math.matrices math.vectors sequences sets ;
-IN: 2017.22
+using: aoc.matrices assocs generalizations grouping hash-sets
+kernel literals math math.matrices math.vectors multiline
+sequences sets ;
+in: 2017.22
 
 ! Sporifica Virus
 ! Count infection causing bursts out of 10,000/10,000,000
@@ -17,25 +18,22 @@ IN: 2017.22
         4 cleave-curry 4 spread*
     ] times 3drop ;
 
-SYMBOLS: +c+ +w+ +i+ +f+ ;
+symbols: +c+ +w+ +i+ +f+ ;
 
-CONSTANT: turns {
-    { +c+ { { 0 1 } { -1 0 } } }
-    { +w+ { { 1 0 } { 0 1 } } }
-    { +i+ { { 0 -1 } { 1 0 } } }
+constant: turns {
+    { +c+ { { 0 +1 } { -1 0 } } }
+    { +w+ { { +1 0 } { 0 +1 } } }
+    { +i+ { { 0 -1 } { +1 0 } } }
     { +f+ { { -1 0 } { 0 -1 } } }
 }
 
-CONSTANT: state-transitions {
-    { +c+ +w+ }
-    { +w+ +i+ }
-    { +i+ +f+ }
-    { +f+ +c+ }
-}
+constant: state-transitions $[
+    { +c+ +w+ +i+ +f+ } 2 circular-clump
+]
 
 : part-2 ( m -- n )
     [ 0 { -1 0 } ] dip [ dimension [ 1 - 2 / ] map ] keep
-    [ 1 = ] matrix>pairs [ +i+ ] H{ } map>assoc 10,000,000 [
+    [ 1 = ] matrix>pairs [ +i+ ] h{ } map>assoc 10,000,000 [
         2dup at +c+ or
         [ +w+ = [ 1 + ] when ]
         [ turns at vdotm dup ]

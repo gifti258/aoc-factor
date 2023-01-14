@@ -1,8 +1,7 @@
-using: aoc.input aoc.matrices arrays assocs assocs.extras
-hash-sets kernel math math.combinatorics math.order
-math.matrices math.vectors multiline path-finding peg.ebnf
-sequences sequences.extras sequences.product sets sorting
-strings ;
+using: aoc.matrices arrays assocs assocs.extras kernel math
+math.combinatorics math.order math.matrices math.vectors
+multiline path-finding peg.ebnf sequences sequences.extras
+sequences.product sets sorting strings ;
 in: 2016.11
 
 ! Radioisotope Thermoelectric Generators
@@ -22,8 +21,8 @@ ebnf: parse [=[
     line = "The "~ str~ " floor contains "~ (empty|items) "."~
 ]=]
 
-: input ( -- state' )
-    input-parse sift zip-index [ ] collect-assoc-by-multi
+: parse* ( seq -- state' )
+    sift zip-index [ ] collect-assoc-by-multi
     [ append 1 cut ] collect-assoc-by values
     [ [ +m+ of ] [ +g+ of ] bi 2array ] map natural-sort
     0 prefix ;

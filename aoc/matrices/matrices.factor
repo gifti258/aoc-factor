@@ -1,15 +1,8 @@
-USING: arrays combinators combinators.smart kernel math
-math.matrices sequences sequences.extras
+using: arrays combinators combinators.smart kernel math
+math.matrices math.vectors sequences sequences.extras
 sequences.generalizations splitting ;
-USE: multiline
-IN: aoc.matrices
-
-/*
-: upper-neighbors ( m -- m' )
-    [ dimension first dup -1 <simple-eye> ] keep mdot ;
-
-: lower-neighbors ( m -- m' )
-    [ dimension first dup 1 <simple-eye> ] keep mdot ;
+use: multiline
+in: aoc.matrices
 
 : left-neighbors ( m -- m' )
     dup dimension second dup 1 <simple-eye> mdot ;
@@ -17,11 +10,18 @@ IN: aoc.matrices
 : right-neighbors ( m -- m' )
     dup dimension second dup -1 <simple-eye> mdot ;
 
-ALIAS: matrix-shl right-neighbors
-ALIAS: matrix-shr left-neighbors
-ALIAS: matrix-shu lower-neighbors
-ALIAS: matrix-shd upper-neighbors
+: upper-neighbors ( m -- m' )
+    [ dimension first dup -1 <simple-eye> ] keep mdot ;
+
+/*
+: lower-neighbors ( m -- m' )
+    [ dimension first dup 1 <simple-eye> ] keep mdot ;
 */
+
+alias: matrix-shl right-neighbors
+alias: matrix-shr left-neighbors
+! alias: matrix-shu lower-neighbors
+alias: matrix-shd upper-neighbors
 
 : upper-toroidal-neighbors ( m -- m' ) -1 rotate ;
 : lower-toroidal-neighbors ( m -- m' ) 1 rotate ;
@@ -30,16 +30,16 @@ ALIAS: matrix-shd upper-neighbors
 : right-toroidal-neighbors ( m -- m' ) [ 1 rotate ] map ;
 */
 
-ALIAS: matrix-rou lower-toroidal-neighbors
-ALIAS: matrix-rod upper-toroidal-neighbors
+alias: matrix-rou lower-toroidal-neighbors
+alias: matrix-rod upper-toroidal-neighbors
 /*
-ALIAS: matrix-rol right-toroidal-neighbors
-ALIAS: matrix-ror left-toroidal-neighbors
+alias: matrix-rol right-toroidal-neighbors
+alias: matrix-ror left-toroidal-neighbors
 */
 
 : matrix-sum ( m -- n ) [ sum ] map-sum ;
 
-: matrix-map-sum ( m1 m2 quot -- n )
+: matrix-map-sum ( m quot -- n )
     '[ _ map-sum ] map-sum ; inline
 
 : matrix-2map ( m1 m2 quot -- m ) '[ _ 2map ] 2map ; inline
@@ -116,9 +116,26 @@ ALIAS: matrix-ror left-toroidal-neighbors
     [ diagonal-toroidal-neighbor-sum ] bi m+ ;
 */
 
-: cardinal-coordinate-neighbors ( pair -- pairs ) ;
+constant: ch>direction {
+    { char: ^ { 0 -1 } }
+    { char: v { 0 +1 } }
+    { char: > { +1 0 } }
+    { char: < { -1 0 } }
+}
 
-: coordinate-neighbors ( pair -- pairs ) ;
+constant: turns {
+    { "L" { { 0 +1 } { -1 0 } } }
+    { "R" { { 0 -1 } { +1 0 } } }
+}
+
+: cardinal-coordinate-neighbors ( pair -- pairs )
+    { { 0 1 } { 0 -1 } { 1 0 } { -1 0 } } [ v+ ] with map ;
+
+: coordinate-neighbors ( pair -- pairs )
+    {
+        { 1 0 } { -1 0 } { 0 1 } { 0 -1 }
+        { 1 1 } { 1 -1 } { -1 1 } { -1 -1 }
+    } [ v+ ] with map ;
 
 : matrix>pairs ( matrix quot -- pairs )
     '[ 2array _ dip and ] matrix-map-index concat sift ; inline
@@ -126,4 +143,4 @@ ALIAS: matrix-ror left-toroidal-neighbors
 : matrix-format ( pairs -- str )
     1 swap dup flip [ supremum 1 + ] map
     first2 <zero-matrix> [ matrix-set-nths ] keep flip
-    [ [ zero? CHAR: \s CHAR: * ? ] "" map-as ] map join-lines ;
+    [ [ zero? char: \s char: * ? ] "" map-as ] map join-lines ;

@@ -1,6 +1,6 @@
-USING: grouping math math.combinatorics sequences
+using: grouping math math.combinatorics sequences
 sequences.extras ;
-IN: 2016.03
+in: 2016.03
 
 ! Squares With Three Sides
 ! Find the number of possible triangles

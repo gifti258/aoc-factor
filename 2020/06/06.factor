@@ -1,5 +1,5 @@
-USING: sequences sets ;
-IN: 2020.06
+using: sequences sets ;
+in: 2020.06
 
 ! Custom Customs
 ! Count positive answers per group

@@ -1,6 +1,6 @@
-USING: grouping kernel math math.combinatorics math.statistics
+using: grouping kernel math math.combinatorics math.statistics
 sequences sequences.extras ;
-IN: 2020.09
+in: 2020.09
 
 ! Encoding Error
 ! part 1: find first number that isn't the sum of 2 of the 25

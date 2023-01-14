@@ -1,8 +1,8 @@
-USING: 2016.12 aoc.input literals multiline sequences splitting
+using: 2016.12 aoc.input literals multiline sequences splitting
 tools.test ;
-IN: 2016.12.tests
+in: 2016.12.tests
 
-CONSTANT: test-word-lines $[ [[ cpy 41 a
+constant: test-word-lines $[ [[ cpy 41 a
 inc a
 inc a
 dec a

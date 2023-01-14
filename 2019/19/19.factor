@@ -1,16 +1,14 @@
-USING: 2019.intcode aoc.matrices accessors arrays deques dlists
-kernel math.matrices math.vectors sequences ;
-IN: 2019.19
+using: 2019.intcode aoc.matrices accessors arrays deques dlists
+kernel literals math.matrices math.vectors sequences ;
+in: 2019.19
 
 ! Tractor Beam
 ! part 1: number of points affected by beam in 50x50 area
 ! part 2: find closest 100x100 square within the beam
 
-<< : input ( -- seq ) input-prepare ; >>
-
 : output ( loc -- state )
     intcode-state new
-        input >>memory
+        $[ input-prepare ] clone >>memory
         <dlist> >>outputs
         swap <dlist> [ push-all-front ] keep >>inputs
     run outputs>> peek-front ;

@@ -1,5 +1,5 @@
-using: combinators kernel math math.functions math.parser
-multiline peg.ebnf sequences ;
+using: combinators kernel math math.parser multiline peg.ebnf
+sequences ;
 in: 2019.22
 
 ! Slam Shuffle

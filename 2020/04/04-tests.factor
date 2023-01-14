@@ -1,4 +1,4 @@
-USING: 2020.04 tools.test ;
+using: 2020.04 aoc.input tools.test ;
 
-{ 235 } [ input part-1 ] unit-test
-{ 194 } [ input part-2 ] unit-test
+{ 235 } [ input-paragraphs parse part-1 ] unit-test
+{ 194 } [ input-paragraphs parse part-2 ] unit-test

@@ -1,5 +1,5 @@
-USING: 2019.intcode accessors kernel math sequences ;
-IN: 2019.02
+using: 2019.intcode accessors kernel math sequences ;
+in: 2019.02
 
 ! 1202 Program Alarm
 ! Introduction of Intcode

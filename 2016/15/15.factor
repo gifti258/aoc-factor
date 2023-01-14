@@ -1,11 +1,11 @@
-USING: kernel math math.algebra math.parser multiline
-peg.ebnf sequences ;
-IN: 2016.15
+using: kernel math math.algebra math.parser multiline peg.ebnf
+sequences ;
+in: 2016.15
 
 ! Timing is Everything
-! Get first time the button can be pressed
+! Calculate first time the button can be pressed
 
-EBNF: parse [=[
+ebnf: parse [=[
     n = [0-9]+ => [[ dec> ]]
     rule = "Disc #"~ n " has "~ n
         " positions; at time=0, it is at position "~ n "."~

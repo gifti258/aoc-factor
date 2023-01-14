@@ -1,11 +1,11 @@
-USING: assocs grouping kernel math.combinatorics
+using: assocs grouping kernel math.combinatorics
 math.parser multiline peg.ebnf sequences sets strings ;
-IN: 2015.09
+in: 2015.09
 
 ! All in a Single Night
 ! Find shortest and longest route between locations
 
-EBNF: parse [=[
+ebnf: parse [=[
     str = [A-Za-z]+ => [[ >string ]]
     n = [0-9]+ => [[ dec> ]]
     pair = str " to "~ str

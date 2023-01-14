@@ -1,12 +1,12 @@
-USING: accessors aoc.md5 assocs assocs.extras grouping
+using: accessors aoc.md5 assocs assocs.extras grouping
 hashtables kernel math math.parser sequences sequences.extras
-sets vectors ;
-IN: 2016.14
+sets slots.syntax vectors ;
+in: 2016.14
 
 ! One-Time Pad
 ! Find first quintuple 1000 hashes after triplet
 
-TUPLE: state
+tuple: state
     { index fixnum }
     { candidates hashtable }
     { keys vector } ;
@@ -34,7 +34,7 @@ TUPLE: state
             ] each
         ] [
             3 clump [ all-equal? ] find nip ?first [
-                over [ index>> ] [ candidates>> ] bi
+                over get[ index candidates ]
                 swapd push-at
             ] when*
         ] bi [ 1 + ] change-index
