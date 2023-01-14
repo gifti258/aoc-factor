@@ -51,4 +51,4 @@ input: input-prepare ( -- seq ) first prepare ;
     run outputs>> peek-front ;
 
 : run-until-output ( state -- state )
-    [ dup opcode>> { 4 99 } member? ] [ single-step ] until ;
+    [ dup opcode>> { 4 99 } member? ] [ single-step ] do until ;
