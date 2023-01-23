@@ -28,7 +28,7 @@ m: tunnels heuristic 3drop 1 ;
 macro: (relief) ( n -- quot: ( path paths assoc -- n ) )
     '[ [ 2 clump ] 2dip '[
         [ _ at ] [ second _ at pressure>> suffix ] bi
-    ] map-concat "AA" prefix head-clump [
+    ] map-concat "AA" prefix <prefixes> [
         [ number? ] filter sum
     ] map _ over length - over last <array> append sum ] ;
 

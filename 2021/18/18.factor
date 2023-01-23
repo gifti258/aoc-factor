@@ -66,4 +66,4 @@ ebnf: (parse) [=[
 : part-1 ( seq -- n ) [ ] [ add ] map-reduce magnitude ;
 
 : part-2 ( seq -- n )
-    2 <k-permutations> [ first2 add magnitude ] map supremum ;
+    2 <k-permutations> [ first2 add magnitude ] map-supremum ;

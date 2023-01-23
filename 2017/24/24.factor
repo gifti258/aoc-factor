@@ -1,5 +1,5 @@
-using: aoc.matrices arrays kernel math.parser sequences sets
-splitting ;
+using: aoc.matrices arrays kernel math.parser sequences
+sequences.extras sets splitting ;
 in: 2017.24
 
 ! Electromagnetic Moat
@@ -14,7 +14,7 @@ in: 2017.24
             _ '[
                 dup first2 [ nip _ = ] most [ suffix ] bi@
                 _ (max-bridge-strength)
-            ] 2with map supremum
+            ] 2with map-supremum
         ] if
     ] call ; inline recursive
 
@@ -29,7 +29,7 @@ macro: (part) ( quot quot -- quot )
     '[
         dup [ 0 swap in? ] filter
         [ [ 1array ] [ supremum suffix ] bi ] map
-        _ with map supremum @
+        _ with map-supremum @
     ] ;
 
 : part-1 ( seq -- n )

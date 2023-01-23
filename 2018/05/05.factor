@@ -1,4 +1,5 @@
-using: ascii grouping kernel math ranges sequences splitting ;
+using: ascii grouping kernel math ranges sequences
+sequences.extras splitting ;
 in: 2018.05
 
 ! Alchemical Reduction
@@ -15,4 +16,4 @@ in: 2018.05
 : part-2 ( str -- n )
     char: a char: z [a..b] [
         '[ ch>lower _ = ] reject part-1
-    ] with map infimum ;
+    ] with map-infimum ;

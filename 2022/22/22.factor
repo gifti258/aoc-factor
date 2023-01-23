@@ -1,6 +1,6 @@
 using: aoc.matrices assocs combinators grouping kernel math
 math.matrices math.parser math.vectors multiline peg.ebnf
-sequences strings ;
+sequences sequences.extras strings ;
 in: 2022.22
 
 ! Monkey Map
@@ -15,7 +15,7 @@ ebnf: (parse) [=[
 ]=]
 
 : parse ( paragraph1 paragraph2 -- map path )
-    [ dup [ length ] map supremum '[
+    [ dup [ length ] map-supremum '[
         _ over length - 32 <string> append
     ] map ] [ first (parse) ] bi* ;
 

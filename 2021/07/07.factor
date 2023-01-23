@@ -1,4 +1,4 @@
-using: kernel math ranges sequences ;
+using: kernel math ranges sequences sequences.extras ;
 in: 2021.07
 
 ! The Treachery of Whales
@@ -6,7 +6,7 @@ in: 2021.07
 
 : fuel ( seq quot -- n )
     [ dup supremum [0..b] ] dip
-    '[ swap [ - abs @ ] with map-sum ] with map infimum ; inline
+    '[ swap [ - abs @ ] with map-sum ] with map-infimum ; inline
 
 : part-1 ( seq -- n ) [ ] fuel ;
 

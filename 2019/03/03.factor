@@ -1,5 +1,5 @@
 using: assocs kernel math math.parser math.vectors
-multiline peg.ebnf sequences sets ;
+multiline peg.ebnf sequences sequences.extras sets ;
 in: 2019.03
 
 ! Crossed Wires
@@ -23,8 +23,8 @@ ebnf: parse [=[
     ] map nip concat ;
 
 : part-1 ( seq -- n )
-    [ points ] map intersect-all [ l1-norm ] map infimum ;
+    [ points ] map intersect-all [ l1-norm ] map-infimum ;
 
 : part-2 ( seq -- n )
     [ points ] map dup intersect-all
-    [ [ swap index 1 + ] curry map-sum ] with map infimum ;
+    [ [ swap index 1 + ] curry map-sum ] with map-infimum ;

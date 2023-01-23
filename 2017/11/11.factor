@@ -1,4 +1,5 @@
-using: assocs kernel math math.vectors sequences splitting ;
+using: assocs kernel math math.vectors sequences
+sequences.extras splitting ;
 in: 2017.11
 
 ! Hex Ed
@@ -18,4 +19,4 @@ in: 2017.11
 : part-1 ( seq -- n ) [ ] [ v+ ] map-reduce distance ;
 
 : part-2 ( seq -- n )
-    { 0 0 } [ v+ ] accumulate* [ distance ] map supremum ;
+    { 0 0 } [ v+ ] accumulate* [ distance ] map-supremum ;

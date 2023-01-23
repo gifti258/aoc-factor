@@ -1,5 +1,6 @@
 using: 2019.intcode accessors aoc.matrices arrays assocs deques
-dlists kernel math path-finding ranges sequences sets ;
+dlists kernel math path-finding ranges sequences
+sequences.extras sets ;
 in: 2019.15
 
 ! Oxygen System
@@ -42,4 +43,4 @@ memo: length/astar ( seq -- length astar )
 
 : part-2 ( seq -- n )
     length/astar nip v{ } clone over 0 suffix over adjoin
-    [ 0 explore ] [ [ third ] map supremum ] bi ;
+    [ 0 explore ] [ [ third ] map-supremum ] bi ;

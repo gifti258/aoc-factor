@@ -1,4 +1,5 @@
-using: kernel math math.combinatorics ranges sequences sets ;
+using: kernel math math.combinatorics ranges sequences
+sequences.extras sets ;
 in: 2015.24
 
 ! It Hangs in the Balance
@@ -14,7 +15,7 @@ in: 2015.24
     [ '[
         dupd diff dup length [1..b]
         [ dupd _ 1 - fewest-packages ] any? nip
-    ] filter ] bi [ product ] map infimum nip ;
+    ] filter ] bi [ product ] map-infimum nip ;
 
 : part-1 ( seq -- n ) 3 min-entanglement ;
 

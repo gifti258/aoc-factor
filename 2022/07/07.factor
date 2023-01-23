@@ -29,7 +29,7 @@ ebnf: parse [=[
             { +ls+ [ drop ] }
             { +dir+ [ drop ] }
             { +file+ [
-                first 2over [ head-clump ] dip
+                first 2over [ <prefixes> ] dip
                 [ [ "/" join ] dip at+ ] curry with each
             ] }
         } case

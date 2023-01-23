@@ -1,5 +1,5 @@
-using: arrays assocs assocs.extras kernel math
-math.order math.parser multiline peg.ebnf ranges sequences
+using: arrays assocs assocs.extras kernel math math.order
+math.parser multiline peg.ebnf ranges sequences sequences.extras
 strings ;
 in: 2015.14
 
@@ -19,7 +19,7 @@ ebnf: parse [=[
     velocity * ;
 
 : part-1 ( seq -- n )
-    [ rest first3 2503 distance ] map supremum ;
+    [ rest first3 2503 distance ] map-supremum ;
 
 : winners ( reindeers seconds -- reindeers )
     '[ first4 _ distance 2array ] map dup values supremum
