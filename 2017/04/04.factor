@@ -8,5 +8,5 @@ IN: 2017.04
     [ [ length ] [ cardinality ] bi = ] count ;
 
 : part-2 ( seq -- n )
-    [ 2 [ first2 [ natural-sort ] same? ] find-combination not ]
+    [ 2 [ first2 [ sort ] same? ] find-combination not ]
     count ;

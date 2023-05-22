@@ -9,4 +9,4 @@ IN: 2022.01
 
 : part-1 ( seq -- n ) supremum ;
 
-: part-2 ( seq -- n ) natural-sort 3 tail* sum ;
+: part-2 ( seq -- n ) sort 3 tail* sum ;

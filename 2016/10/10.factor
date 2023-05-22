@@ -20,7 +20,7 @@ EBNF: parse [=[
     [ H{ } clone swap [ first2 pick push-at ] each ] bi*
     :> ( instructions bots )
     [ bots [ length 2 = ] filter-values dup assoc-empty? ] [ [
-        natural-sort [ comparisons set-at ] [
+        sort [ comparisons set-at ] [
             swap [ bots delete-at ] [ instructions at ] bi
             [ bots push-at ] 2each
         ] 2bi

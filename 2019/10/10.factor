@@ -26,6 +26,6 @@ MEMO: (part) ( seq -- seqs ns )
 : part-2 ( seq -- n )
     dup (part) arg-max '[ _ swap nth ] bi@
     [ [ v+ ] keep pos>polar 2array ] with map
-    [ second ] sort-with [ second first ] collect-by
+    [ second ] sort-by [ second first ] collect-by
     sort-keys values [ keys ] map round-robin
     199 swap nth first2 100 * + ;

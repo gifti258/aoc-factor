@@ -24,7 +24,7 @@ EBNF: parse [=[
 : parse* ( seq -- state' )
     sift zip-index [ ] collect-assoc-by-multi
     [ append 1 cut ] collect-assoc-by values
-    [ [ +m+ of ] [ +g+ of ] bi 2array ] map natural-sort
+    [ [ +m+ of ] [ +g+ of ] bi 2array ] map sort
     0 prefix ;
 
 : valid? ( state' -- ? )

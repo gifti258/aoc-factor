@@ -14,7 +14,7 @@ EBNF: parse [=[
 ]=]
 
 : allergenic-ingredients ( assoc -- seq )
-    [ values union-all natural-sort ] keep '[
+    [ values union-all sort ] keep '[
         _ [ in? ] with filter-values keys intersect-all
     ] map ;
 

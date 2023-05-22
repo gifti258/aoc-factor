@@ -15,7 +15,7 @@ EBNF: parse [=[
     [ sum 2 * ] [ infimum ] bi + ;
 
 : ribbon ( seq -- n )
-    [ natural-sort first2 + 2 * ] [ product ] bi + ;
+    [ sort first2 + 2 * ] [ product ] bi + ;
 
 : part-1 ( seq -- n ) [ paper ] map-sum ;
 

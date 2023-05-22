@@ -36,7 +36,7 @@ CONSTANT: digits {
     [
         first2 [
             [ concat histogram ] [
-                [ length ] sort-with first3 ! 1 7 4
+                [ length ] sort-by first3 ! 1 7 4
                 [ swap diff first ] dip ! a 4
             ] bi [ '[
                 8 7 [ '[ _ = ] filter-values keys ] bi-curry@ bi
@@ -48,7 +48,7 @@ CONSTANT: digits {
                 4 6 9 [ swap value-at ] tri-curry@ tri ! e b f
             ] bi ] keepd 7 narray "cdgebfa" zip
         ] [
-            [ swap substitute natural-sort >string ] with map
+            [ swap substitute sort >string ] with map
             digits substitute dec>
         ] bi*
     ] map-sum ;

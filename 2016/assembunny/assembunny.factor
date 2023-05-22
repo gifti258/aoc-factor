@@ -11,7 +11,7 @@ TUPLE: assembunny-state
         >>registers swap >>program V{ } clone >>output ;
 
 : deref ( state str -- state value )
-    dup dec> [ ] [ over registers>> at ] ?if ;
+    dup dec> or* [ over registers>> at ] unless ;
 
 CONSTANT: toggles {
     { "inc" "dec" } { "dec" "inc" } { "tgl" "inc" }

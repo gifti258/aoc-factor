@@ -20,7 +20,7 @@ EBNF: parse [=[
 ]=]
 
 : tally ( seq -- assoc )
-    [ H{ } clone f f ] dip natural-sort [ parse ] map [
+    [ H{ } clone f f ] dip sort [ parse ] map [
         first2 swap {
             { +guard+ [ spin drop ] }
             { +asleep+ [ nip ] }

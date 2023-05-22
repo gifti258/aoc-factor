@@ -1,4 +1,4 @@
-USING: assocs hashtables json.reader kernel math sequences
+USING: assocs hashtables json kernel math sequences
 sequences.deep ;
 IN: 2015.12
 

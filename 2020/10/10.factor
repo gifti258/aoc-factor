@@ -8,7 +8,7 @@ IN: 2020.10
 ! part 2: count ways to connect charger to outlet
 
 : differences ( seq -- seq' )
-    natural-sort dup 0 prefix v- 3 suffix ;
+    sort dup 0 prefix v- 3 suffix ;
 
 : part-1 ( seq -- n )
     differences histogram values product ;

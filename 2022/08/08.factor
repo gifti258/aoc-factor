@@ -24,5 +24,5 @@ IN: 2022.08
 
 : part-2 ( m -- n )
     [ '[
-        dup [ _ >= ] find drop [ 1 + ] [ length ] ?if
+        dup [ _ >= ] find drop or* [ 1 + ] [ length ] if
     ] map-product ] (part) supremum ;

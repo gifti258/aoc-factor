@@ -17,7 +17,7 @@ EBNF: (parse) [=[
 
 DEFER: compare
 : (compare) ( seq1 seq2 -- <f> )
-    [ f ] 2dip 2dup [ length ] bi@ max [
+    [ f ] 2dip 2dup 2length max [
         [ [ swap ?nth ] curry bi@ compare or ] 2keepd
     ] each-integer 2drop ;
 
@@ -38,5 +38,5 @@ DEFER: compare
 
 : part-2 ( seq -- n )
     concat { { { 2 } } { { 6 } } }
-    [ append [ compare +eq+ or ] sort ]
+    [ append [ compare +eq+ or ] sort-with ]
     [ swap '[ _ index ] map 1 v+n product ] bi ;

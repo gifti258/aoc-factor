@@ -27,5 +27,5 @@ IN: 2021.04
     [
         apply-number
         dup [ length 1 = ] [ [ won? ] find nip ] bi and
-        [ [ ] [ [ won? ] reject ] ?if ] keep
+        [ or* [ [ won? ] reject ] unless ] keep
     ] find nip score ;
