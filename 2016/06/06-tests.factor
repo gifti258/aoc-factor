@@ -1,5 +1,4 @@
-USING: 2016.06 aoc.input multiline sequences splitting
-tools.test ;
+USING: 2016.06 aoc.input multiline splitting tools.test ;
 IN: 2016.06.tests
 
 CONSTANT: msg [[ eedadn

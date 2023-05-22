@@ -1,6 +1,6 @@
-USING: accessors aoc.matrices arrays assocs combinators kernel
-math math.matrices math.order math.vectors path-finding
-sequences sequences.extras ;
+USING: accessors aoc.matrices arrays assocs kernel math
+math.matrices math.order path-finding sequences sequences.extras
+;
 IN: 2022.12
 
 ! Hill Climbing Algorithm
