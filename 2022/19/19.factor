@@ -1,7 +1,7 @@
-using: accessors assocs assocs.extras combinators kernel math
+USING: accessors assocs assocs.extras combinators kernel math
 math.functions math.matrices math.order math.parser math.vectors
 multiline peg.ebnf sequences sequences.extras ;
-in: 2022.19
+IN: 2022.19
 
 ! Not Enough Minerals
 ! part 1: sum of product of highest possible number of opened
@@ -9,7 +9,7 @@ in: 2022.19
 ! part 2: product of the first three highest possible numbers of
 ! opened geodes after 32 minutes
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     line = "Blueprint "~ n ": Each ore robot costs "~ n
         " ore. Each clay robot costs "~ n
@@ -18,23 +18,23 @@ ebnf: parse [=[
         " obsidian."~
 ]=]
 
-tuple: state blueprint minutes robots resources ;
+TUPLE: state blueprint minutes robots resources ;
 
 : <state> ( blueprint minutes -- state )
     { 1 0 0 0 } { 0 0 0 0 } state boa ;
 
-constant: robots {
+CONSTANT: robots {
     { { 0 1 0 0 0 0 0 } { 1 0 0 0 } }
     { { 0 0 1 0 0 0 0 } { 0 1 0 0 } }
     { { 0 0 0 1 1 0 0 } { 0 0 1 0 } }
 }
 
-constant: always-build {
+CONSTANT: always-build {
     { { 0 0 0 0 0 0 0 } { 0 0 0 0 } }
     { { 0 0 0 0 0 1 1 } { 0 0 0 1 } }
 }
 
-constant: resources {
+CONSTANT: resources {
     { 0 0 0 0 }
     { 1 0 0 0 }
     { 1 0 0 0 }
@@ -44,7 +44,7 @@ constant: resources {
     { 0 0 1 0 }
 }
 
-memo: max-cost ( state -- v )
+MEMO: max-cost ( state -- v )
     blueprint>> resources [ n*v ] 2map
     flip [ supremum ] map ; inline
 
@@ -101,7 +101,7 @@ memo: max-cost ( state -- v )
         ]
     } cleave >>resources ; inline
 
-memo:: max-geodes ( state -- n )
+MEMO:: max-geodes ( state -- n )
     state minutes>> 0 > [
         robots [ state can-be-used? ] filter
         always-build append [ :> recipe

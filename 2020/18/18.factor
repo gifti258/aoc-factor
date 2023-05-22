@@ -1,6 +1,6 @@
-using: combinators kernel math math.parser sequences
+USING: combinators kernel math math.parser sequences
 sequences.extras sets ;
-in: 2020.18
+IN: 2020.18
 
 ! Operation Order
 ! part 1: evaluate expressions left to right
@@ -9,20 +9,20 @@ in: 2020.18
 : (eval) ( stack str n -- stack' str )
     pick dup empty? [ push ] [
         dup pop {
-            { char: + [ [ pop + ] [ push ] bi ] }
-            { char: * [ [ pop * ] [ push ] bi ] }
-            { char: ( [ char: ( over push push ] }
+            { CHAR: + [ [ pop + ] [ push ] bi ] }
+            { CHAR: * [ [ pop * ] [ push ] bi ] }
+            { CHAR: ( [ CHAR: ( over push push ] }
         } case
     ] if ;
 
 : eval ( str -- n )
-    [ v{ } clone ] dip [
+    [ V{ } clone ] dip [
         unclip {
             { [ dup "(+*" in? ] [ pick push ] }
-            { [ dup char: ) = ] [
+            { [ dup CHAR: ) = ] [
                 drop over [ pop ] [ pop* ] bi (eval)
             ] }
-            { [ dup char: \s = ] [ drop ] }
+            { [ dup CHAR: \s = ] [ drop ] }
             [ digit> (eval) ]
         } cond
     ] until-empty first ;

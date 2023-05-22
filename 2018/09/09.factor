@@ -1,21 +1,21 @@
-using: accessors assocs deques dlists kernel math math.functions
+USING: accessors assocs deques dlists kernel math math.functions
 math.parser math.vectors multiline peg.ebnf sequences
 slots.syntax ;
-in: 2018.09
+IN: 2018.09
 
 ! Marble Mania
 ! Calculate the winning elf's score
 
-tuple: state #players last-marble points marbles cur-marble
+TUPLE: state #players last-marble points marbles cur-marble
     cur-player ;
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     input = n " players; last marble is worth "~ n " points"~
 ]=]
 
 : part-1 ( seq -- n )
-    first2 h{ } clone dl{ 0 } clone 1 1 state boa
+    first2 H{ } clone DL{ 0 } clone 1 1 state boa
     [ dup get[ cur-marble last-marble ] <= ] [
         dup cur-marble>> 23 divisor? [
             dup get[ cur-marble cur-player points ] at+

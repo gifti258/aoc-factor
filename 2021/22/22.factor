@@ -1,12 +1,12 @@
-using: arrays combinators generalizations kernel math math.order
+USING: arrays combinators generalizations kernel math math.order
 math.parser math.vectors multiline peg.ebnf sequences
 sequences.extras sequences.generalizations ;
-in: 2021.22
+IN: 2021.22
 
 ! Reactor Reboot
 ! Count cubes in on state
 
-ebnf: parse [=[
+EBNF: parse [=[
     number = [0-9-]+ => [[ dec> ]]
     range = [x-z]~ "="~ number ".."~ number (","?)~
     rule = ("on"|"off") " "~ range range range
@@ -40,7 +40,7 @@ ebnf: parse [=[
 : reboot ( seq -- n )
     1 cut [ [ rest ] map ] dip [
         unclip [ [
-            v{ } clone -rot [
+            V{ } clone -rot [
                 2dup cuboids-intersect? [
                     cuboid-diff append
                 ] [ drop suffix ] if

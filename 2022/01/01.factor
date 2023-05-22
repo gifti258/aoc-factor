@@ -1,5 +1,5 @@
-using: sequences sorting splitting ;
-in: 2022.01
+USING: sequences sorting splitting ;
+IN: 2022.01
 
 ! Calorie Counting
 ! part 1: most calories an elf is carrying

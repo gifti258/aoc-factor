@@ -1,4 +1,4 @@
-using: 2018.09 aoc.input tools.test ;
+USING: 2018.09 aoc.input tools.test ;
 
 { 32 } [ { 9 25 } part-1 ] unit-test
 { 8317 } [ { 10 1618 } part-1 ] unit-test

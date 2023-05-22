@@ -1,4 +1,4 @@
-using: 2019.01 aoc.input tools.test ;
+USING: 2019.01 aoc.input tools.test ;
 
 { 2 } [ 12 mass>fuel ] unit-test
 { 2 } [ 14 mass>fuel ] unit-test

@@ -1,22 +1,22 @@
-using: aoc.matrices arrays assocs grouping kernel literals math
+USING: aoc.matrices arrays assocs grouping kernel literals math
 math.matrices math.parser math.vectors sequences sets sorting ;
-in: 2018.13
+IN: 2018.13
 
 ! Mine Cart Madness
 ! Position of the first crash/last remaining cart
 
-constant: ch>turn {
-    { char: / { { 0 -1 } { -1 0 } } }
-    { char: \ { { 0 +1 } { +1 0 } } }
-    { char: - { { +1 0 } { 0 +1 } } }
-    { char: | { { +1 0 } { 0 +1 } } }
-    { char: > { { +1 0 } { 0 +1 } } }
-    { char: < { { +1 0 } { 0 +1 } } }
-    { char: v { { +1 0 } { 0 +1 } } }
-    { char: ^ { { +1 0 } { 0 +1 } } }
+CONSTANT: ch>turn {
+    { CHAR: / { { 0 -1 } { -1 0 } } }
+    { CHAR: \ { { 0 +1 } { +1 0 } } }
+    { CHAR: - { { +1 0 } { 0 +1 } } }
+    { CHAR: | { { +1 0 } { 0 +1 } } }
+    { CHAR: > { { +1 0 } { 0 +1 } } }
+    { CHAR: < { { +1 0 } { 0 +1 } } }
+    { CHAR: v { { +1 0 } { 0 +1 } } }
+    { CHAR: ^ { { +1 0 } { 0 +1 } } }
 }
 
-constant: turn>turn $[ {
+CONSTANT: turn>turn $[ {
     { { 0 -1 } { +1 0 } }
     { { +1 0 } { 0 +1 } }
     { { 0 +1 } { -1 0 } }

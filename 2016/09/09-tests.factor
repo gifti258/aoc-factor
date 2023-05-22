@@ -1,4 +1,4 @@
-using: 2016.09 aoc.input tools.test ;
+USING: 2016.09 aoc.input tools.test ;
 
 { 6 } [ "ADVENT" part-1 ] unit-test
 { 7 } [ "A(1x5)BC" part-1 ] unit-test

@@ -1,11 +1,11 @@
-using: kernel math math.combinatorics math.parser
+USING: kernel math math.combinatorics math.parser
 multiline peg.ebnf sequences sorting ;
-in: 2015.02
+IN: 2015.02
 
 ! I Was Told There Would Be No Math
 ! Calculate amount of wrapping paper and ribbon needed
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     rule = n "x"~ n "x"~ n
 ]=]

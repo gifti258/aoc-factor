@@ -1,12 +1,12 @@
-using: aoc.assign arrays kernel math math.matrices math.parser
+USING: aoc.assign arrays kernel math math.matrices math.parser
 multiline peg.ebnf sequences sets vectors ;
-in: 2018.16
+IN: 2018.16
 
 ! Chronal Classification
 ! part 1: count samples that behave like 3 or more opcodes
 ! part 2: value in register 0 after executing program
 
-ebnf: (parse) [=[
+EBNF: (parse) [=[
     n = [0-9]+ => [[ dec> ]]
     ns = (n (", "?)~)+
     in = "Before: ["~ ns "]"~
@@ -21,17 +21,17 @@ ebnf: (parse) [=[
 
 : (macro) ( quot -- quot ) '[ first3 @ pick set-nth ] ; inline
 
-macro: rr ( quot -- quot )
+MACRO: rr ( quot -- quot )
     '[ [ pick '[ _ nth ] bi@ @ ] dip ] (macro) ;
 
-macro: ri ( quot -- quot )
+MACRO: ri ( quot -- quot )
     '[ [ over nth ] 2dip _ dip ] (macro) ;
 
-macro: ir ( quot -- quot ) '[ [ pick nth @ ] dip ] (macro) ;
+MACRO: ir ( quot -- quot ) '[ [ pick nth @ ] dip ] (macro) ;
 
 : >n ( ? -- n ) 1 0 ? ;
 
-constant: mnemonics {
+CONSTANT: mnemonics {
     [ [ + ] rr ]
     [ [ + ] ri ]
     [ [ * ] rr ]

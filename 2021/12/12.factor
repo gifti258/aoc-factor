@@ -1,6 +1,6 @@
-using: assocs kernel math math.statistics sequences
+USING: assocs kernel math math.statistics sequences
 sequences.extras sets splitting unicode ;
-in: 2021.12
+IN: 2021.12
 
 ! Passage Pathing
 ! part 1: find path from start to end, only pass through small
@@ -8,7 +8,7 @@ in: 2021.12
 ! part 2: one small cave can be passed twice
 
 : parse ( seq -- assoc path )
-    h{ } swap [ "-" split ] map
+    H{ } swap [ "-" split ] map
     dup [ reverse ] map append [ pick push-at ] assoc-each
     { "start" } ;
 

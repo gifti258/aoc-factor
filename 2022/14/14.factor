@@ -1,20 +1,20 @@
-using: arrays assocs combinators generalizations grouping kernel
+USING: arrays assocs combinators generalizations grouping kernel
 math math.parser math.vectors multiline peg.ebnf ranges
 sequences sets ;
-in: 2022.14
+IN: 2022.14
 
 ! Regolith Reservoir
 ! part 1: count units of sand that come to rest
 ! part 2: count units of sand until sand source is blocked
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     pair = n ","~ n
     line = (pair (" -> "?)~)+
 ]=]
 
 : parse* ( seq -- pairs )
-    [ hs{ } clone ] dip [
+    [ HS{ } clone ] dip [
         2 <clumps> [
             first2 [ first2 ] bi@ swapd [ [a..b] ] 2bi@
             2dup max-length dup '[
@@ -23,7 +23,7 @@ ebnf: parse [=[
         ] each
     ] each ;
 
-macro: (sand) ( quot -- quot )
+MACRO: (sand) ( quot -- quot )
     dup dup '[ {
         { [ dup dup @ not ] [ nip t ] }
         { [ drop dup { 1 0 } v- dup @ not ] [ nip t ] }
@@ -45,7 +45,7 @@ macro: (sand) ( quot -- quot )
         ] (sand) ] [ f ] if
     ] loop [ nip swap adjoin ] [ { 500 0 } = not ] bi ;
 
-macro: (part) ( quot quot -- quot )
+MACRO: (part) ( quot quot -- quot )
     '[ dup clone dup members values supremum @ [
         2dup @
     ] loop drop swap diff cardinality ] ;

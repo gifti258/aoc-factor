@@ -1,12 +1,12 @@
-using: combinators.extras generalizations kernel math math.order
+USING: combinators.extras generalizations kernel math math.order
 math.parser math.vectors multiline peg.ebnf ranges sequences ;
-in: 2021.21
+IN: 2021.21
 
 ! Dirac Dice
 ! part 1: product of losing score and number of die rolls
 ! part 2: number of universes the most winning player wins in
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     line = "Player "~ n~ " starting position: "~ n
 ]=]
@@ -30,13 +30,13 @@ ebnf: parse [=[
         ] if
     ] loop drop score1 score2 min rolls * ;
 
-defer: dirac
-memo: turn ( score pos v die-sum -- v )
+DEFER: dirac
+MEMO: turn ( score pos v die-sum -- v )
     [ [ [ v* supremum ] [ pos ] bi* ] keepd n*v ] 2keepd
     [ reverse v* [ [ v+ ] keep ] [ v+ ] bi* ] keep
     pick over v* supremum 21 >= [ 2nip ] [ dirac ] if ;
 
-memo: dirac ( score pos v -- v )
+MEMO: dirac ( score pos v -- v )
     reverse 3 9 [a..b] [ turn ] 3 nwith map
     { 1 3 6 7 6 3 1 } [ v*n ] 2map [ ] [ v+ ] map-reduce ;
 

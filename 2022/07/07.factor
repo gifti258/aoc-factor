@@ -1,15 +1,15 @@
-using: assocs combinators grouping.extras kernel math
+USING: assocs combinators grouping.extras kernel math
 math.parser multiline peg.ebnf sequences strings ;
-in: 2022.07
+IN: 2022.07
 
 ! No Space Left On Device
 ! part 1: sum of directory sizes
 ! part 2: smallest directory size to free to have unused space
 ! of at least 30,000,000
 
-symbols: +cd+ +ls+ +dir+ +file+ ;
+SYMBOLS: +cd+ +ls+ +dir+ +file+ ;
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     str = [a-z./]+ => [[ >string ]]
     cd = "$ cd "~ str:dir => [[ { +cd+ dir } ]]
@@ -20,7 +20,7 @@ ebnf: parse [=[
 ]=]
 
 : dir-sizes ( seq -- n )
-    [ v{ } clone v{ } clone ] dip [
+    [ V{ } clone V{ } clone ] dip [
         unclip {
             { +cd+ [
                 first dup ".." =

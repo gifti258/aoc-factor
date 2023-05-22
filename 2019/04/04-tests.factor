@@ -1,4 +1,4 @@
-using: 2019.04 aoc.input tools.test ;
+USING: 2019.04 aoc.input tools.test ;
 
 { t } [ "111111" possible? ] unit-test
 { f } [ "223450" possible? ] unit-test

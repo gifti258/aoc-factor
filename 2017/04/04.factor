@@ -1,5 +1,5 @@
-using: kernel math.combinatorics sequences sets sorting ;
-in: 2017.04
+USING: kernel math.combinatorics sequences sets sorting ;
+IN: 2017.04
 
 ! High-Entropy Passphrases
 ! Count valid passwords

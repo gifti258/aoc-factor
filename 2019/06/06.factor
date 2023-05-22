@@ -1,6 +1,6 @@
-using: aoc.matrices arrays assocs kernel math
+USING: aoc.matrices arrays assocs kernel math
 sequences sequences.extras splitting ;
-in: 2019.06
+IN: 2019.06
 
 ! Universal Orbit Map
 ! part 1: number of direct and indirect orbits

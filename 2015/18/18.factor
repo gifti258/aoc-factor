@@ -1,6 +1,6 @@
-using: aoc.matrices arrays kernel math math.combinatorics
+USING: aoc.matrices arrays kernel math math.combinatorics
 math.matrices sets ;
-in: 2015.18
+IN: 2015.18
 
 ! Like a GIF For Your Yard
 ! Animate Christmas lights (Conway's Game of Life)

@@ -1,6 +1,6 @@
-using: assocs kernel math math.parser math.statistics sequences
+USING: assocs kernel math math.parser math.statistics sequences
 ;
-in: 2021.03
+IN: 2021.03
 
 ! Binary Diagnostic
 ! part 1: find the most and least used binary digit per column
@@ -14,7 +14,7 @@ in: 2021.03
 :: bit-criterion ( seq quot -- n )
     0 seq [ dup length 1 = ] quot '[
         over '[ _ swap nth ] collect-by dup
-        char: 0 char: 1 [ [ of length ] bi-curry@ bi @ ] most of
+        CHAR: 0 CHAR: 1 [ [ of length ] bi-curry@ bi @ ] most of
         [ 1 + ] dip
     ] until nip first bin> ; inline
 

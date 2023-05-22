@@ -1,14 +1,14 @@
-using: arrays assocs kernel math math.matrices math.parser
+USING: arrays assocs kernel math math.matrices math.parser
 math.statistics math.vectors multiline peg.ebnf ranges sets
 sequences ;
-in: 2018.06
+IN: 2018.06
 
 ! Chronal Coordinates
 ! part 1: size of largest finite area
 ! part 2: size of region with total distance to all points <=
 ! 10,000
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     rule = n ", "~ n
 ]=]

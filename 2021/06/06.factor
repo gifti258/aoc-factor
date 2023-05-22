@@ -1,11 +1,11 @@
-using: assocs kernel math.matrices math.matrices.extras
+USING: assocs kernel math.matrices math.matrices.extras
 math.statistics ranges sequences ;
-in: 2021.06
+IN: 2021.06
 
 ! Lanternfish
 ! Track population after 80/256 days
 
-constant: matrix {
+CONSTANT: matrix {
     { 0 0 0 0 0 0 1 0 1 }
     { 1 0 0 0 0 0 0 0 0 }
     { 0 1 0 0 0 0 0 0 0 }

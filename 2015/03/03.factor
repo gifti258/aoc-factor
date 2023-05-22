@@ -1,6 +1,6 @@
-using: aoc.matrices assocs kernel math.vectors sequences
+USING: aoc.matrices assocs kernel math.vectors sequences
 sequences.extras sets ;
-in: 2015.03
+IN: 2015.03
 
 ! Perfectly Spherical Houses in a Vacuum
 ! Count unique houses

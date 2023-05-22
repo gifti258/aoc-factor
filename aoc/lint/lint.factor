@@ -1,9 +1,9 @@
-using: continuations io kernel lexer lint lint.vocabs
+USING: continuations io kernel lexer lint lint.vocabs
 lint.vocabs.private math.parser ranges sequences
 sequences.product tools.test tools.time vocabs vocabs.files
 vocabs.hierarchy vocabs.metadata vocabs.refresh.monitor ;
 
-in: tools.test.private
+IN: tools.test.private
 
 :: (unit-test) ( output input -- error/f failed? tested? )
     [
@@ -11,12 +11,12 @@ in: tools.test.private
         output assert-sequence= f f
     ] [ t ] recover t ;
 
-in: tools.test
+IN: tools.test
 
-syntax: test:
+SYNTAX: TEST:
     scan-token loaded-child-vocab-names test-vocabs ;
 
-in: aoc.lint
+IN: aoc.lint
 
 : prefixes ( -- seq ) 2015 2022 [a..b] [ >dec ] map ;
 

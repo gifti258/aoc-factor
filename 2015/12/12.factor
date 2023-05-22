@@ -1,6 +1,6 @@
-using: assocs hashtables json.reader kernel math sequences
+USING: assocs hashtables json.reader kernel math sequences
 sequences.deep ;
-in: 2015.12
+IN: 2015.12
 
 ! JSAbacusFramework.io
 ! Sum all numbers in a json

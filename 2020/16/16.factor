@@ -1,14 +1,14 @@
-using: aoc.assign aoc.input assocs assocs.extras kernel
+USING: aoc.assign aoc.input assocs assocs.extras kernel
 math.order math.parser multiline peg.ebnf sequences sets strings
 ;
-in: 2020.16
+IN: 2020.16
 
 ! Ticket Translation
 ! part 1: Sum of ticket fields that aren't valid for any field
 ! part 2: Product of ticket fields whose names begin with
 ! “departure”
 
-ebnf: field [=[
+EBNF: field [=[
     n = [0-9]+ => [[ dec> ]]
     str = [^:]+ => [[ >string ]]
     range = n "-"~ n

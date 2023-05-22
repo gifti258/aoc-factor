@@ -1,11 +1,11 @@
-using: assocs assocs.extras kernel math math.vectors multiline
+USING: assocs assocs.extras kernel math math.vectors multiline
 peg.ebnf sequences ;
-in: 2020.24
+IN: 2020.24
 
 ! Lobby Layout
 ! Number of tiles left with the black side up
 
-ebnf: parse [=[
+EBNF: parse [=[
     tile = ("e"|"se"|"sw"|"w"|"nw"|"ne")+
 ]=]
 
@@ -16,7 +16,7 @@ ebnf: parse [=[
     } at ] [ v+ ] map-reduce ;
 
 : flip ( seq -- seq/assoc? )
-    h{ } clone swap
+    H{ } clone swap
     [ position over inc-at ] each
     [ odd? ] filter-values ;
 

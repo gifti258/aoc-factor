@@ -1,20 +1,20 @@
-using: arrays assocs assocs.extras hash-sets kernel math
+USING: arrays assocs assocs.extras hash-sets kernel math
 math.order math.parser math.vectors multiline peg.ebnf ranges
 sequences sequences.extras sets ;
-in: 2022.15
+IN: 2022.15
 
 ! Beacon Exclusion Zone
 ! part 1: number of positions on row 2,000,000 that cannot
 ! contain beacons
 ! part 2: get position of distress signal beacon
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [-0-9]+ => [[ dec> ]]
     pos = " at x="~ n ", y="~ n
     sensor = "Sensor"~ pos ": closest beacon is"~ pos
 ]=]
 
-constant: line 2,000,000
+CONSTANT: line 2,000,000
 
 : (part-1) ( scanner -- set/f )
     [ first first2 ] [ first2 v- l1-norm ] bi swap line
@@ -27,10 +27,10 @@ constant: line 2,000,000
     [ values [ line = ] filter-values keys diff cardinality ] bi
     ;
 
-constant: max-coordinate 4,000,000
+CONSTANT: max-coordinate 4,000,000
 
 : ring ( scanner -- set )
-    [ v{ } clone ] dip
+    [ V{ } clone ] dip
     [ first2 v- l1-norm 1 + [ dup neg [a..b] ] keep ]
     [ first ] bi '[
         dup abs _ - 2dup neg [

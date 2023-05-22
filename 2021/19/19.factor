@@ -1,14 +1,14 @@
-using: arrays assocs assocs.extras continuations grouping kernel
+USING: arrays assocs assocs.extras continuations grouping kernel
 math math.combinatorics math.order math.parser math.statistics
 math.vectors multiline peg.ebnf sequences sequences.extras sets
 ;
-in: 2021.19
+IN: 2021.19
 
 ! Beacon Scanner
 ! part 1: number of beacons
 ! part 2: largest distance between any two scanners
 
-ebnf: (parse) [=[
+EBNF: (parse) [=[
     number = [0-9-]+ => [[ dec> ]]
     rule = number ","~ number ","~ number => [[ >array ]]
 ]=]
@@ -29,7 +29,7 @@ ebnf: (parse) [=[
         histogram [ 12 >= ] filter-values keys ?first
     ] with map-find ;
 
-memo: beacons/scanners ( seq -- beacons scanners )
+MEMO: beacons/scanners ( seq -- beacons scanners )
     1 cut f [ over empty? ] [
         pick [
             pick [

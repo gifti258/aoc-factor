@@ -1,6 +1,6 @@
-using: assocs grouping kernel math math.parser math.statistics
+USING: assocs grouping kernel math math.parser math.statistics
 ranges sequences splitting sets ;
-in: 2019.04
+IN: 2019.04
 
 ! Secure Container
 ! Count number of possible passwords

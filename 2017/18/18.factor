@@ -1,14 +1,14 @@
-using: accessors assocs combinators deques dlists kernel math
+USING: accessors assocs combinators deques dlists kernel math
 math.parser sequences slots.syntax ;
-in: 2017.18
+IN: 2017.18
 
 ! Duet
 ! part 1: first recovered frequency
 ! part 2: number of values sent by program 1
 
-tuple: state program ip registers last-freq ;
+TUPLE: state program ip registers last-freq ;
 
-: <state> ( seq -- state ) 0 h{ } clone v{ } clone state boa ;
+: <state> ( seq -- state ) 0 H{ } clone V{ } clone state boa ;
 
 : deref ( str state -- value )
     over dec> [ 2nip ] [ registers>> at ] if* ;
@@ -19,13 +19,13 @@ tuple: state program ip registers last-freq ;
 : jump ( state y ? -- state' )
     [ '[ _ 1 - + ] change-ip ] [ drop ] if ;
 
-macro: change-register ( quot -- quot )
+MACRO: change-register ( quot -- quot )
     '[
         first2 pick deref pick registers>>
         [ 0 or swap @ ] with change-at
     ] ;
 
-macro: (step) ( snd-quot rcv-quot -- quot )
+MACRO: (step) ( snd-quot rcv-quot -- quot )
     '[ unclip {
         { "snd" _ }
         { "set" [ [ nip ] change-register ] }
@@ -46,12 +46,12 @@ macro: (step) ( snd-quot rcv-quot -- quot )
 
 : part-1 ( seq -- n ) <state> run-program ;
 
-tuple: state* program ip registers inputs outputs n ;
+TUPLE: state* program ip registers inputs outputs n ;
 
 :: <states> ( seq -- state0 state1 )
     <dlist> <dlist> :> ( 0>1 1>0 )
-    seq 0 h{ { "p" 0 } } clone 1>0 0>1 0 state* boa
-    seq 0 h{ { "p" 1 } } clone 0>1 1>0 0 state* boa ;
+    seq 0 H{ { "p" 0 } } clone 1>0 0>1 0 state* boa
+    seq 0 H{ { "p" 1 } } clone 0>1 1>0 0 state* boa ;
 
 : runnable? ( state -- instruction/f )
     [ inputs>> deque-empty? ] [ ip>> ] [ program>> ?nth ] tri

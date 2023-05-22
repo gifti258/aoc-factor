@@ -1,6 +1,6 @@
-using: assocs combinators kernel math.order math.parser regexp
+USING: assocs combinators kernel math.order math.parser regexp
 sequences sets sets.extras splitting ;
-in: 2020.04
+IN: 2020.04
 
 ! Passport Processing
 ! Count valid passports

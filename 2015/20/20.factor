@@ -1,5 +1,5 @@
-using: kernel math math.primes.factors sequences ;
-in: 2015.20
+USING: kernel math math.primes.factors sequences ;
+IN: 2015.20
 
 ! Infinite Elves and Infinite Houses
 ! Find the first house with at least a number of packages

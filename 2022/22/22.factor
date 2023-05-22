@@ -1,14 +1,14 @@
-using: aoc.matrices assocs combinators grouping kernel math
+USING: aoc.matrices assocs combinators grouping kernel math
 math.matrices math.parser math.vectors multiline peg.ebnf
 sequences sequences.extras strings ;
-in: 2022.22
+IN: 2022.22
 
 ! Monkey Map
 ! Calculate password by following map and finding final position
 ! and direction
 ! part 2: the map is a cube
 
-ebnf: (parse) [=[
+EBNF: (parse) [=[
     n = [0-9]+ => [[ dec> ]]
     turn = "R"|"L"
     line = (n turn?)+
@@ -19,7 +19,7 @@ ebnf: (parse) [=[
         _ over length - 32 <string> append
     ] map ] [ first (parse) ] bi* ;
 
-constant: dirs { { 0 1 } { 1 0 } { 0 -1 } { -1 0 } }
+CONSTANT: dirs { { 0 1 } { 1 0 } { 0 -1 } { -1 0 } }
 
 : first-tile ( v -- index ) [ 32 = not ] find drop ;
 
@@ -50,13 +50,13 @@ constant: dirs { { 0 1 } { 1 0 } { 0 -1 } { -1 0 } }
                 ] when
             ] if
             { row col } :> pos'
-            pos' m matrix-nth char: # = [ pos' pos! ] unless
+            pos' m matrix-nth CHAR: # = [ pos' pos! ] unless
         ] times dir turn turns at [ vdotm ] when* dir!
     ] each pos dir password ;
 
-symbols: h v t r l ;
+SYMBOLS: h v t r l ;
 
-constant: up {
+CONSTANT: up {
     { { 0 1 } { { 3 0 } r } }
     { { 0 2 } { { 3 0 } v } }
     { { 1 1 } { { 0 1 } v } }
@@ -64,7 +64,7 @@ constant: up {
     { { 2 1 } { { 1 1 } v } }
     { { 3 0 } { { 2 0 } v } }
 }
-constant: dn {
+CONSTANT: dn {
     { { 0 1 } { { 1 1 } v } }
     { { 0 2 } { { 1 1 } r } }
     { { 1 1 } { { 2 1 } v } }
@@ -72,7 +72,7 @@ constant: dn {
     { { 2 1 } { { 3 0 } r } }
     { { 3 0 } { { 0 2 } v } }
 }
-constant: lf {
+CONSTANT: lf {
     { { 0 1 } { { 2 0 } t } }
     { { 0 2 } { { 0 1 } h } }
     { { 1 1 } { { 2 0 } l } }
@@ -80,7 +80,7 @@ constant: lf {
     { { 2 1 } { { 2 0 } h } }
     { { 3 0 } { { 0 1 } l } }
 }
-constant: rt {
+CONSTANT: rt {
     { { 0 1 } { { 0 2 } h } }
     { { 0 2 } { { 2 1 } t } }
     { { 1 1 } { { 0 2 } l } }
@@ -88,7 +88,7 @@ constant: rt {
     { { 2 1 } { { 0 2 } t } }
     { { 3 0 } { { 2 1 } l } }
 }
-constant: id {
+CONSTANT: id {
     { { 0 1 } { { 0 1 } f } }
     { { 0 2 } { { 0 2 } f } }
     { { 1 1 } { { 1 1 } f } }
@@ -133,7 +133,7 @@ constant: id {
                 [ drop ]
             } case
             { row col } :> pos'
-            pos' face' m matrix-nth matrix-nth char: # = [
+            pos' face' m matrix-nth matrix-nth CHAR: # = [
                 face' face! pos' pos! dir' dir!
             ] unless
         ] times dir turn turns at [ vdotm ] when* dir!

@@ -1,14 +1,14 @@
-using: aoc.matrices arrays assocs biassocs kernel math
+USING: aoc.matrices arrays assocs biassocs kernel math
 math.matrices math.order sequences.extras ;
-in: 2018.18
+IN: 2018.18
 
 ! Settlers of The North Pole
 ! Product of number of wooded acres and lumberyards after
 ! 10/1,000,000,000 minutes
 
 : parse ( seq -- trees lumberyards )
-    [ [ char: | = 1 0 ? ] matrix-map ]
-    [ [ char: # = 1 0 ? ] matrix-map ] bi ;
+    [ [ CHAR: | = 1 0 ? ] matrix-map ]
+    [ [ CHAR: # = 1 0 ? ] matrix-map ] bi ;
 
 :: step ( trees lumberyards -- trees' lumberyards' )
     trees lumberyards [ bitor 1 - abs ] matrix-2map :> open

@@ -1,5 +1,5 @@
-using: kernel math math.combinatorics sequences ;
-in: 2017.02
+USING: kernel math math.combinatorics sequences ;
+IN: 2017.02
 
 ! Corruption Checksum
 ! Help repair corruption in the spreadsheet by calculating the

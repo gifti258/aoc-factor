@@ -1,12 +1,12 @@
-using: arrays assocs assocs.extras grouping kernel
+USING: arrays assocs assocs.extras grouping kernel
 math math.statistics multiline peg.ebnf sequences strings ;
-in: 2021.14
+IN: 2021.14
 
 ! Extended Polymerization
 ! Substitute string 10/40 times, difference between most and
 ! least common character
 
-ebnf: (parse) [=[
+EBNF: (parse) [=[
     pair = . . => [[ >string ]]
     rule = pair " -> "~ .
 ]=]

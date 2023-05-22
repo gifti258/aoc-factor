@@ -1,6 +1,6 @@
-using: kernel math math.vectors sequences sequences.extras
+USING: kernel math math.vectors sequences sequences.extras
 vectors ;
-in: 2018.08
+IN: 2018.08
 
 ! Memory Maneuver
 ! Parse license file:

@@ -1,5 +1,5 @@
-using: kernel math sequences ;
-in: 2019.01
+USING: kernel math sequences ;
+IN: 2019.01
 
 ! The Tyranny of the Rocket Equation
 ! Calculate the fuel needed for the rocket

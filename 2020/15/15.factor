@@ -1,5 +1,5 @@
-using: assocs hashtables kernel math sequences ;
-in: 2020.15
+USING: assocs hashtables kernel math sequences ;
+IN: 2020.15
 
 ! Rambunctious Recitation
 ! Memory game: 0 if last number was new, otherwise number of

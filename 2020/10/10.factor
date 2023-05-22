@@ -1,6 +1,6 @@
-using: assocs grouping.extras kernel math.statistics
+USING: assocs grouping.extras kernel math.statistics
 math.vectors sequences sorting ;
-in: 2020.10
+IN: 2020.10
 
 ! Adapter Array
 ! part 1: joltage adapter chain: product of number of 3 and 1

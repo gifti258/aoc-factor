@@ -1,19 +1,19 @@
-using: kernel math math.parser math.vectors multiline peg.ebnf
+USING: kernel math math.parser math.vectors multiline peg.ebnf
 sequences vectors ;
-in: 2022.05
+IN: 2022.05
 
 ! Supply stacks
 ! Crates on top of the stacks
 ! part 1: move stacks crate by crate
 ! part 2: move stacks whole
 
-ebnf: parse-layer [=[
+EBNF: parse-layer [=[
     empty = "   "~ (" "?)~ => [[ f ]]
     crate = "["~ . "]"~ (" "?)~
     layer = (crate|empty)+
 ]=]
 
-ebnf: parse-move [=[
+EBNF: parse-move [=[
     n = [0-9]+ => [[ dec> ]]
     move = "move "~ n " from "~ n " to "~ n
 ]=]

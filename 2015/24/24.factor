@@ -1,6 +1,6 @@
-using: kernel math math.combinatorics ranges sequences
+USING: kernel math math.combinatorics ranges sequences
 sequences.extras sets ;
-in: 2015.24
+IN: 2015.24
 
 ! It Hangs in the Balance
 ! Find smallest quantum entanglement of balanced packages

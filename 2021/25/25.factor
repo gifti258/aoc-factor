@@ -1,11 +1,11 @@
-using: aoc.matrices combinators kernel math sequences ;
-in: 2021.25
+USING: aoc.matrices combinators kernel math sequences ;
+IN: 2021.25
 
 ! Sea Cucumber
 ! Count steps until sea cucumbers stop moving
 
 : cucumber-dot? ( ch1 ch2 ch -- ? )
-    [ = ] curry [ char: . = ] bi* and ;
+    [ = ] curry [ CHAR: . = ] bi* and ;
 
 :: move ( m ch -- m' )
     m [ matrix-rod ] [ ] [ matrix-rou ] tri [
@@ -16,8 +16,8 @@ in: 2021.25
         } cond
     ] matrix-3map ;
 
-: south ( m -- m' ) char: v move ;
-: east ( m -- m' ) flip char: > move flip ;
+: south ( m -- m' ) CHAR: v move ;
+: east ( m -- m' ) flip CHAR: > move flip ;
 : step ( m -- m' ) east south ;
 
 : part-1 ( m -- n )

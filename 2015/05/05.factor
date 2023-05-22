@@ -1,5 +1,5 @@
-using: grouping kernel math sequences sequences.extras sets ;
-in: 2015.05
+USING: grouping kernel math sequences sequences.extras sets ;
+IN: 2015.05
 
 ! Doesn't He Have Intern-Elves For This?
 ! Count nice strings

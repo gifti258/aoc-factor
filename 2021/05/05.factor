@@ -1,11 +1,11 @@
-using: assocs kernel math.parser math.statistics multiline
+USING: assocs kernel math.parser math.statistics multiline
 peg.ebnf ranges sequences sequences.extras sets ;
-in: 2021.05
+IN: 2021.05
 
 ! Hydrothermal Venture
 ! Count number of points where at least 2 lines overlap
 
-ebnf: parse [=[
+EBNF: parse [=[
 	c = [0-9]+ => [[ dec> ]]
 	p = c ","~ c
 	rule = p " -> "~ p

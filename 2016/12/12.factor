@@ -1,5 +1,5 @@
-using: 2016.assembunny accessors assocs kernel ;
-in: 2016.12
+USING: 2016.assembunny accessors assocs kernel ;
+IN: 2016.12
 
 ! Leonardo's Monorail
 ! Value left in register a

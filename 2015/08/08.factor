@@ -1,5 +1,5 @@
-using: eval kernel math prettyprint sequences ;
-in: 2015.08
+USING: eval kernel math prettyprint sequences ;
+IN: 2015.08
 
 ! Matchsticks
 ! part 1: calculate escape character count

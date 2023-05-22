@@ -1,5 +1,5 @@
-using: kernel math ranges sequences sequences.extras sets ;
-in: 2017.06
+USING: kernel math ranges sequences sequences.extras sets ;
+IN: 2017.06
 
 ! Memory Reallocation
 ! Redistribute memory banks until configurations repeat
@@ -13,7 +13,7 @@ in: 2017.06
     ] with each ;
 
 : reallocate ( seq -- seqs seq' )
-    v{ } clone swap [
+    V{ } clone swap [
         2dup swap in?
     ] [
         [ over push ] keep redistribute

@@ -1,7 +1,7 @@
-using: combinators effects.parser io.encodings.utf8 io.files
+USING: combinators effects.parser io.encodings.utf8 io.files
 io.pathnames kernel macros.private namespaces tools.test.private
 vocabs.loader vocabs.parser vocabs.refresh.monitor words ;
-in: aoc.input.syntax
+IN: aoc.input.syntax
 
 : define-macro* ( word definition effect -- )
     {
@@ -11,14 +11,14 @@ in: aoc.input.syntax
         [ 2drop changed-effect ]
     } 3cleave ;
 
-syntax: macro*: (:) define-macro* ;
+SYNTAX: MACRO*: (:) define-macro* ;
 
 : current-path ( -- input-path vocab-name )
     current-test-file get [ parent-directory ] [
         current-vocab vocab-dir vocab-path
     ] if* [ "input" append-path ] keep path>vocab-name ;
 
-syntax: input:
+SYNTAX: INPUT:
     (:) drop '[
         current-path drop [ utf8 file-lines @ ] curry
     ] ( -- quot ) define-macro* ;

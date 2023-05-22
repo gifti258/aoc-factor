@@ -1,5 +1,5 @@
-using: kernel math sequences ;
-in: 2017.17
+USING: kernel math sequences ;
+IN: 2017.17
 
 ! Spinlock
 

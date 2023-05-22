@@ -1,5 +1,5 @@
-using: combinators kernel math math.parser sequences ;
-in: 2021.02
+USING: combinators kernel math math.parser sequences ;
+IN: 2021.02
 
 ! Dive!
 ! Multiply coordinates of end position

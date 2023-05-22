@@ -1,19 +1,19 @@
-using: accessors arrays classes.tuple combinators formatting
+USING: accessors arrays classes.tuple combinators formatting
 kernel math math.parser multiline peg.ebnf sequences
 sequences.extras slots.syntax ;
-in: 2021.16
+IN: 2021.16
 
 ! Packet decoder
 ! part 1: packet version sum
 ! part 2: evaluate expression
 
-tuple: packet
+TUPLE: packet
     { version fixnum }
     { type fixnum }
     { content maybe{ boolean fixnum } }
     { length fixnum } ;
 
-ebnf: (parse) [=[
+EBNF: (parse) [=[
     3bits = ... => [[ bin> ]]
     not-last = ("1"~ ....)* => [[ concat ]]
     last = "0"~ ....
@@ -34,14 +34,14 @@ ebnf: (parse) [=[
 
 : part-1 ( seq -- n ) [ version>> ] map-sum ;
 
-defer: evaluate
+DEFER: evaluate
 : slurp-packet ( length ns seq -- length' ns' seq' )
     unclip dup type>> 4 =
     [ get[ content length ] ] [ prefix evaluate ] if
     [ pick push ] [ '[ _ + ] 2dip ] bi* ;
 
 : slurp-packets ( seq packet -- seq' length ns )
-    [ 0 v{ } clone ] 2dip get[ length content ] [
+    [ 0 V{ } clone ] 2dip get[ length content ] [
         [ slurp-packet ] times
         [ 18 + ] 2dip
     ] [

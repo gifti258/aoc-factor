@@ -1,7 +1,7 @@
-using: aoc.groups aoc.matrices arrays assocs kernel
+USING: aoc.groups aoc.matrices arrays assocs kernel
 math math.constants math.functions math.matrices.extras
 math.vectors sequences sequences.extras sorting ;
-in: 2019.10
+IN: 2019.10
 
 ! Monitoring Station
 ! part 1: find asteroid with mosts asteroids in direct line of
@@ -14,7 +14,7 @@ in: 2019.10
     [ [ [ sgn ] same? ] 2all? ]
     [ 2array determinant 0 = ] 2bi and ;
 
-memo: (part) ( seq -- seqs ns )
+MEMO: (part) ( seq -- seqs ns )
     dup '[ [ _ remove ] keep '[ _ v- ] map ] map
     dup [ [ same-line? ] count-groups ] map ;
 

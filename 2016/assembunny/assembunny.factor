@@ -1,19 +1,19 @@
-using: accessors assocs combinators kernel math math.parser
+USING: accessors assocs combinators kernel math math.parser
 sequences ;
-in: 2016.assembunny
+IN: 2016.assembunny
 
-tuple: assembunny-state
+TUPLE: assembunny-state
     program { ip initial: 0 } registers output ;
 
 : <assembunny-state> ( seq -- state )
     assembunny-state new
-        h{ { "a" 0 } { "b" 0 } { "c" 0 } { "d" 0 } } clone
-        >>registers swap >>program v{ } clone >>output ;
+        H{ { "a" 0 } { "b" 0 } { "c" 0 } { "d" 0 } } clone
+        >>registers swap >>program V{ } clone >>output ;
 
 : deref ( state str -- state value )
     dup dec> [ ] [ over registers>> at ] ?if ;
 
-constant: toggles {
+CONSTANT: toggles {
     { "inc" "dec" } { "dec" "inc" } { "tgl" "inc" }
     { "jnz" "cpy" } { "cpy" "jnz" }
 }

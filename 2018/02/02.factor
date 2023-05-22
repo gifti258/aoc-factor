@@ -1,6 +1,6 @@
-using: assocs assocs.extras kernel math math.combinatorics
+USING: assocs assocs.extras kernel math math.combinatorics
 math.statistics sequences sequences.extras ;
-in: 2018.02
+IN: 2018.02
 
 ! Inventory Management System
 ! part 1: get inventory list checksum

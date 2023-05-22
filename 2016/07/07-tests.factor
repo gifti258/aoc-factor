@@ -1,4 +1,4 @@
-using: 2016.07 aoc.input sequences tools.test ;
+USING: 2016.07 aoc.input sequences tools.test ;
 
 { t } [ "abba[mnop]qrst" parse flip tls? ] unit-test
 { f } [ "abcd[bddb]xyyx" parse flip tls? ] unit-test

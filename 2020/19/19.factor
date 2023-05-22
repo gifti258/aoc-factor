@@ -1,11 +1,11 @@
-using: aoc.input continuations kernel literals peg.ebnf
+USING: aoc.input continuations kernel literals peg.ebnf
 sequences sequences.extras splitting ;
-in: 2020.19
+IN: 2020.19
 
 ! Monster messages
 
 <<
-ebnf: parse $[
+EBNF: parse $[
     input-lines { "" } split first
     [ ":" "=" replace ] map "rule = 0" suffix join-lines
 ]

@@ -1,13 +1,13 @@
-using: aoc.matrices assocs kernel math math.functions
+USING: aoc.matrices assocs kernel math math.functions
 math.matrices math.vectors sequences ;
-in: 2017.03
+IN: 2017.03
 
 ! Spiral Memory
 ! part 1: find distance to given square
 ! part 2: squares are filled with neighbor sum, find first
 ! square greater than input
 
-constant: neighbors {
+CONSTANT: neighbors {
     { -1 -1 } { -1 0 } { -1 +1 } { 0 -1 }
     { 0 +1 } { +1 -1 } { +1 0 } { +1 +1 }
 }
@@ -17,7 +17,7 @@ constant: neighbors {
     [ 1 + [ 2 * mod ] [ - abs ] [ + ] tri ] bi ;
 
 : part-2 ( n -- n )
-    [ { 1 0 } { 0 0 } h{ } clone 1 2 1 ] dip
+    [ { 1 0 } { 0 0 } H{ } clone 1 2 1 ] dip
     '[ pick _ > ] [
         [ 2over set-at [ dupd v+ ] dip ] 2dip
         1 - dup 0 = [

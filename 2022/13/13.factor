@@ -1,21 +1,21 @@
-using: combinators kernel math math.matrices math.order
+USING: combinators kernel math math.matrices math.order
 math.parser math.vectors multiline peg.ebnf sequences sorting
 vectors ;
-in: 2022.13
+IN: 2022.13
 
 ! Distress Signal
 ! part 1: sum of indices of pairs in right order
 ! part 2: insert divider packets, sort and find product of
 ! indices of divider packets
 
-ebnf: (parse) [=[
+EBNF: (parse) [=[
     n = [0-9]+ => [[ dec> ]]
     list = "["~ ((list|n) (","?)~)* "]"~
 ]=]
 
 : parse ( seq -- seq' ) [ (parse) ] matrix-map ;
 
-defer: compare
+DEFER: compare
 : (compare) ( seq1 seq2 -- <f> )
     [ f ] 2dip 2dup [ length ] bi@ max [
         [ [ swap ?nth ] curry bi@ compare or ] 2keepd

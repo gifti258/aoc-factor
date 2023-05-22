@@ -1,6 +1,6 @@
-using: assocs kernel math math.vectors sequences
+USING: assocs kernel math math.vectors sequences
 sequences.extras splitting ;
-in: 2017.11
+IN: 2017.11
 
 ! Hex Ed
 ! Hexagonal grid distance, total and maximum

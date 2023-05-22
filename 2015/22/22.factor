@@ -1,19 +1,19 @@
-using: accessors assocs combinators heaps kernel math
+USING: accessors assocs combinators heaps kernel math
 math.parser multiline peg.ebnf sequences sequences.extras
 slots.syntax ;
-in: 2015.22
+IN: 2015.22
 
 ! Wizard Simulator 20XX
 ! Turn-based RPG simulation
 ! part 1: least amount of mana to still win the fight
 ! part 2: … on hard difficulty
 
-tuple: state
+TUPLE: state
     b-hp damage
     pl-hp mana spent armor
     shield poison recharge ;
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     line = ([A-Za-z: ]+)~ n
 ]=]

@@ -1,5 +1,5 @@
-using: assocs kernel math.statistics sequences ;
-in: 2016.06
+USING: assocs kernel math.statistics sequences ;
+IN: 2016.06
 
 ! Signals and Noise
 ! Find the most/least used character in each column

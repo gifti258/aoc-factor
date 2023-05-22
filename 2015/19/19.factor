@@ -1,12 +1,12 @@
-using: grouping kernel math multiline peg.ebnf sequences sets
+USING: grouping kernel math multiline peg.ebnf sequences sets
 strings ;
-in: 2015.19
+IN: 2015.19
 
 ! Medicine for Rudolph
 ! part 1: number of distinct molecules after one replacement
 ! part 2: fewest number of steps to create target molecule
 
-ebnf: (parse) [=[
+EBNF: (parse) [=[
 	str = [A-Za-z]+ => [[ >string ]]
 	rule = str " => "~ str
 ]=]

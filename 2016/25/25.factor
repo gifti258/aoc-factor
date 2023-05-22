@@ -1,6 +1,6 @@
-using: 2016.assembunny accessors assocs kernel math
+USING: 2016.assembunny accessors assocs kernel math
 sequences.repeating ;
-in: 2016.25
+IN: 2016.25
 
 ! Clock Signal
 ! Find lowest input to generate clock signal
@@ -8,6 +8,6 @@ in: 2016.25
 : clock-signal? ( seq n -- ? )
     [ <assembunny-state> ] dip
     '[ _ "a" pick set-at ] change-registers
-    run-program* v{ 0 1 } 12 cycle = ;
+    run-program* V{ 0 1 } 12 cycle = ;
 
 : part-1 ( seq -- n ) 256 [ clock-signal? ] with find-integer ;

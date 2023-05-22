@@ -1,18 +1,18 @@
-using: accessors arrays kernel math math.combinatorics
+USING: accessors arrays kernel math math.combinatorics
 math.functions math.parser math.vectors multiline peg.ebnf
 sequences slots.syntax ;
-in: 2019.12
+IN: 2019.12
 
 ! The N-Body Problem
 ! part 1: Find total energy after 1000 steps
 ! part 2: Find cycle length
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9-]+ => [[ dec> ]]
     pos = "<x="~ n ", y="~ n ", z="~ n ">"~
 ]=]
 
-tuple: moon s v ;
+TUPLE: moon s v ;
 
 : parse* ( seq -- seq ) [ >array { 0 0 0 } moon boa ] map ;
 

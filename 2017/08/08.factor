@@ -1,12 +1,12 @@
-using: assocs combinators kernel math math.order math.parser
+USING: assocs combinators kernel math math.order math.parser
 multiline peg.ebnf sequences sequences.extras strings ;
-in: 2017.08
+IN: 2017.08
 
 ! I Heard You Like Registers
 ! part 1: highest register at the end
 ! part 2: highest register all time
 
-ebnf: parse [=[
+EBNF: parse [=[
     register = [a-z]+ => [[ >string ]]
     n = [-0-9]+ => [[ dec> ]]
     instruction = register " "~ ("inc"|"dec") " "~ n " if "~
@@ -14,7 +14,7 @@ ebnf: parse [=[
 ]=]
 
 : process ( instructions -- highest values )
-    [ 0 h{ } clone ] dip [
+    [ 0 H{ } clone ] dip [
         3 cut overd first3 swap [ of 0 or ] 2dip {
             { "<=" [ <= ] } { ">=" [ >= ] }
             { "==" [ = ] } { "!=" [ = not ] }

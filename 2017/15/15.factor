@@ -1,10 +1,10 @@
-using: kernel math math.parser multiline peg.ebnf sequences ;
-in: 2017.15
+USING: kernel math math.parser multiline peg.ebnf sequences ;
+IN: 2017.15
 
 ! Dueling Generators
 ! Count matching lower 16 bits
 
-ebnf: parse [=[
+EBNF: parse [=[
     line = "Generator "~ .~ " starts with "~ [0-9]+
         => [[ dec> ]]
 ]=]

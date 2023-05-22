@@ -1,13 +1,13 @@
-using: aoc.matrices assocs kernel math.matrices math.parser
+USING: aoc.matrices assocs kernel math.matrices math.parser
 math.vectors multiline peg.ebnf sequences sets ;
-in: 2016.01
+IN: 2016.01
 
 ! No Time for a Taxicab
 ! Distance to the Easter Bunny HQ
 ! part 1: distance to the final destination
 ! part 2: distance to the first destination visited twice
 
-ebnf: parse [=[
+EBNF: parse [=[
     turn = ("R"|"L")
     length = ([0-9])+ => [[ dec> ]]
     direction = turn length (", "?)~

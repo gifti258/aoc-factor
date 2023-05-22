@@ -1,6 +1,6 @@
-using: aoc.groups aoc.matrices kernel math math.vectors
+USING: aoc.groups aoc.matrices kernel math math.vectors
 sequences ;
-in: 2021.09
+IN: 2021.09
 
 ! Smoke basin
 ! part 1: risk level sum of map minima

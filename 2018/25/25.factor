@@ -1,5 +1,5 @@
-using: aoc.groups math math.vectors ;
-in: 2018.25
+USING: aoc.groups math math.vectors ;
+IN: 2018.25
 
 ! Four-Dimensional Adventure
 ! Find number of constellations (groups of points with distance

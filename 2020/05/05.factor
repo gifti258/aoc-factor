@@ -1,6 +1,6 @@
-using: combinators kernel math.parser math.statistics ranges
+USING: combinators kernel math.parser math.statistics ranges
 sequences sets ;
-in: 2020.05
+IN: 2020.05
 
 ! Binary Boarding
 ! part 1: find highest seat ID on a boarding pass
@@ -8,10 +8,10 @@ in: 2020.05
 
 : map-seat-ids ( seq -- seq' )
     [ [ {
-        { char: F [ char: 0 ] }
-        { char: B [ char: 1 ] }
-        { char: L [ char: 0 ] }
-        { char: R [ char: 1 ] }
+        { CHAR: F [ CHAR: 0 ] }
+        { CHAR: B [ CHAR: 1 ] }
+        { CHAR: L [ CHAR: 0 ] }
+        { CHAR: R [ CHAR: 1 ] }
     } case ] map bin> ] map ;
 
 : part-1 ( seq -- n ) map-seat-ids supremum ;

@@ -1,12 +1,12 @@
-using: accessors aoc.md5 assocs assocs.extras grouping
+USING: accessors aoc.md5 assocs assocs.extras grouping
 hashtables kernel math math.parser sequences sequences.extras
 sets slots.syntax vectors ;
-in: 2016.14
+IN: 2016.14
 
 ! One-Time Pad
 ! Find first quintuple 1000 hashes after triplet
 
-tuple: state
+TUPLE: state
     { index fixnum }
     { candidates hashtable }
     { keys vector } ;

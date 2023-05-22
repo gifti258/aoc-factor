@@ -1,6 +1,6 @@
-using: aoc.input kernel literals math math.vectors path-finding
+USING: aoc.input kernel literals math math.vectors path-finding
 sequences sequences.extras sets ;
-in: 2016.13
+IN: 2016.13
 
 ! A Maze of Twisty Little Cubicles
 ! part 1: fewest number of steps to reach 31,39
@@ -14,10 +14,10 @@ in: 2016.13
     { { 1 0 } { -1 0 } { 0 1 } { 0 -1 } } [ v+ ] with
     [ [ [ neg? ] none? ] [ first2 open? ] bi and ] map-filter ;
 
-tuple: cubicles < astar ;
-m: cubicles cost ( from to astar -- n ) 3drop 1 ;
-m: cubicles heuristic ( from to astar -- n ) 3drop 1 ;
-m: cubicles neighbors ( node astar -- seq ) drop neighbors* ;
+TUPLE: cubicles < astar ;
+M: cubicles cost ( from to astar -- n ) 3drop 1 ;
+M: cubicles heuristic ( from to astar -- n ) 3drop 1 ;
+M: cubicles neighbors ( node astar -- seq ) drop neighbors* ;
 
 : part-1 ( -- n )
     { 1 1 } { 31 39 } cubicles new find-path length 1 - ;

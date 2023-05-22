@@ -1,6 +1,6 @@
-using: 2017.02 aoc.input math.parser multiline sequences
+USING: 2017.02 aoc.input math.parser multiline sequences
 splitting tools.test ;
-in: 2017.02.tests
+IN: 2017.02.tests
 
 : prepare ( str -- seq )
     split-lines [ split-words [ dec> ] map ] map ;

@@ -1,6 +1,6 @@
-using: aoc.matrices assocs assocs.extras hash-sets kernel math
+USING: aoc.matrices assocs assocs.extras hash-sets kernel math
 math.statistics math.vectors sequences sequences.extras sets ;
-in: 2022.23
+IN: 2022.23
 
 ! Unstable Diffusion
 ! Space out elves so that they don't have any direct neighbors
@@ -10,14 +10,14 @@ in: 2022.23
 
 : parse ( m -- set ) [ 1 = ] matrix>pairs >hash-set ;
 
-constant: neighbors {
+CONSTANT: neighbors {
     { 0 +1 } { +1 +1 }
     { +1 0 } { +1 -1 }
     { -1 0 } { -1 +1 }
     { 0 -1 } { -1 -1 }
 }
 
-constant: moves {
+CONSTANT: moves {
     { { -1 0 } { -1 -1 } { -1 +1 } }
     { { +1 0 } { +1 -1 } { +1 +1 } }
     { { 0 -1 } { -1 -1 } { +1 -1 } }

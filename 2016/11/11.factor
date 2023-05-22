@@ -1,16 +1,16 @@
-using: aoc.matrices arrays assocs assocs.extras kernel math
+USING: aoc.matrices arrays assocs assocs.extras kernel math
 math.combinatorics math.order math.matrices math.vectors
 multiline path-finding peg.ebnf sequences sequences.extras
 sequences.product sets sorting strings ;
-in: 2016.11
+IN: 2016.11
 
 ! Radioisotope Thermoelectric Generators
 ! Bring the generators and microchips to the fourth floor in the
 ! fewest amount of steps possible
 
-symbols: +g+ +m+ ;
+SYMBOLS: +g+ +m+ ;
 
-ebnf: parse [=[
+EBNF: parse [=[
     str = [a-z]+ => [[ >string ]]
     generator = " generator" => [[ +g+ ]]
     microchip = "-compatible microchip" => [[ +m+ ]]
@@ -33,10 +33,10 @@ ebnf: parse [=[
         [ diff ] keep [ empty? ] either?
     ] 2with all-integers? ;
 
-tuple: elevator < astar ;
-m: elevator cost 3drop 1 ;
-m: elevator heuristic 3drop 1 ;
-m: elevator neighbors ( state' elevator -- seq )
+TUPLE: elevator < astar ;
+M: elevator cost 3drop 1 ;
+M: elevator heuristic 3drop 1 ;
+M: elevator neighbors ( state' elevator -- seq )
     drop unclip [
         { 1 -1 } n+v over mmin '[ _ 3 between? ] filter
     ] 2keep '[ _ = ] matrix>pairs
@@ -45,7 +45,7 @@ m: elevator neighbors ( state' elevator -- seq )
         [ pick matrix-set-nths ] keepd prefix
     ] with product-map [ valid? ] filter ;
 
-memo: part-1 ( state' -- n )
+MEMO: part-1 ( state' -- n )
     dup length 1 - { 3 3 } <array> 3 prefix elevator new
     find-path length 1 - ;
 

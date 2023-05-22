@@ -1,7 +1,7 @@
-using: aoc.input aoc.matrices arrays combinators.extras kernel
+USING: aoc.input aoc.matrices arrays combinators.extras kernel
 math math.matrices math.parser sequences
 sequences.generalizations ;
-in: 2021.20
+IN: 2021.20
 
 ! Trench Map
 ! Number of lit pixels in enhanced image

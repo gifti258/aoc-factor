@@ -1,6 +1,6 @@
-using: 2016.assembunny accessors assocs kernel math
+USING: 2016.assembunny accessors assocs kernel math
 math.combinatorics ;
-in: 2016.23
+IN: 2016.23
 
 ! Safe Cracking
 ! Value left in register a

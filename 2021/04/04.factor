@@ -1,6 +1,6 @@
-using: aoc.input kernel math math.matrices math.parser sequences
+USING: aoc.input kernel math math.matrices math.parser sequences
 splitting ;
-in: 2021.04
+IN: 2021.04
 
 ! Giant Squid
 ! Find the scores of the first and last winning bingo boards

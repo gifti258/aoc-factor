@@ -1,12 +1,12 @@
-using: accessors classes.tuple deques dlists kernel math
+USING: accessors classes.tuple deques dlists kernel math
 math.functions math.parser math.matrices math.statistics
 multiline peg.ebnf sequences slots.syntax ;
-in: 2022.11
+IN: 2022.11
 
 ! Monkey in the Middle
 ! Product of two highest item handling numbers
 
-ebnf: (parse) [=[
+EBNF: (parse) [=[
     n = [0-9]+ => [[ dec> ]]
     monkey = "Monkey "~ n~ ":"~
     starting-items = "  Starting items: "~ (n (", "?)~)+
@@ -19,7 +19,7 @@ ebnf: (parse) [=[
     line = monkey|starting-items|operation|test|throw
 ]=]
 
-tuple: monkey items operation test true false n ;
+TUPLE: monkey items operation test true false n ;
 
 : parse ( seq -- seq )
     [ (parse) ] matrix-map [
@@ -27,7 +27,7 @@ tuple: monkey items operation test true false n ;
         [ <dlist> [ push-all-front ] keep ] change-items
     ] map ;
 
-macro: (part) ( n quot -- n )
+MACRO: (part) ( n quot -- n )
     '[ _ over [ test>> ] [ lcm ] map-reduce _ '[
         dup [
             dup items>> [

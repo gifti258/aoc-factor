@@ -1,11 +1,11 @@
-using: grouping kernel math multiline peg.ebnf ranges sequences
+USING: grouping kernel math multiline peg.ebnf ranges sequences
 sequences.extras sets strings ;
-in: 2016.07
+IN: 2016.07
 
 ! Internet Protocol Version 7
 ! Count how many ip addresses support TLS/SSL
 
-ebnf: parse [=[
+EBNF: parse [=[
     str = [a-z]+ => [[ >string ]]
     ip = (str ("["~ str "]"~)?)+
 ]=]

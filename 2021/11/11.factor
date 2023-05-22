@@ -1,5 +1,5 @@
-using: aoc.matrices kernel math math.matrices ;
-in: 2021.11
+USING: aoc.matrices kernel math math.matrices ;
+IN: 2021.11
 
 ! Dumbo Octopus
 ! part 1: count total flashes after 100 steps

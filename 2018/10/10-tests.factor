@@ -1,4 +1,4 @@
-using: 2018.10 aoc.input literals multiline sequences tools.test
+USING: 2018.10 aoc.input literals multiline sequences tools.test
 ;
 
 ${ [[

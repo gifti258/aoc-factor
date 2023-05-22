@@ -1,3 +1,3 @@
-using: 2018.11 tools.test ;
+USING: 2018.11 tools.test ;
 
 { "33,54" } [ part-1 ] unit-test

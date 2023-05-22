@@ -1,7 +1,7 @@
-using: arrays deques dlists kernel math math.combinatorics
+USING: arrays deques dlists kernel math math.combinatorics
 math.order math.parser math.statistics math.vectors sequences
 sequences.generalizations sets splitting ;
-in: 2022.18
+IN: 2022.18
 
 ! Boiling Boulders
 ! Lava droplet (exterior) surface area
@@ -15,7 +15,7 @@ in: 2022.18
         ] reduce-combinations 2 *
     ] bi - ;
 
-constant: neighbors {
+CONSTANT: neighbors {
     { 0 0 +1 } { 0 +1 0 } { +1 0 0 }
     { 0 0 -1 } { 0 -1 0 } { -1 0 0 }
 }
@@ -23,8 +23,8 @@ constant: neighbors {
 :: part-2 ( seq -- n )
     seq flip [ minmax 2array ] map
     flip first2 1 [ v-n ] [ v+n ] bi-curry bi* :> ( b1 b2 )
-    hs{ } clone :> visited
-    v{ } clone :> cubes
+    HS{ } clone :> visited
+    V{ } clone :> cubes
     b1 1dlist :> queue
     queue [ :> pos
         pos visited in? [

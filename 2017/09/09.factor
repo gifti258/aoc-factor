@@ -1,5 +1,5 @@
-using: combinators kernel math sequences ;
-in: 2017.09
+USING: combinators kernel math sequences ;
+IN: 2017.09
 
 ! Stream Processing
 ! part 1: total group score
@@ -7,13 +7,13 @@ in: 2017.09
 
 : process ( str -- score #characters )
     [ 0 0 0 t t ] dip [ pick [ {
-        { char: { [ [ 1 + [ + ] keep ] 3dip ] }
-        { char: } [ [ 1 - ] 3dip ] }
-        { char: , [ ] }
-        { char: < [ [ not ] dip ] }
+        { CHAR: { [ [ 1 + [ + ] keep ] 3dip ] }
+        { CHAR: } [ [ 1 - ] 3dip ] }
+        { CHAR: , [ ] }
+        { CHAR: < [ [ not ] dip ] }
     } case ] [ over [ {
-        { char: > [ [ not ] dip ] }
-        { char: ! [ not ] }
+        { CHAR: > [ [ not ] dip ] }
+        { CHAR: ! [ not ] }
         [ drop [ 1 + ] 2dip ]
     } case ] [ drop not ] if ] if ] each 2drop nip ;
 

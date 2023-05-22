@@ -1,6 +1,6 @@
-using: 2019.intcode accessors deques dlists grouping
+USING: 2019.intcode accessors deques dlists grouping
 kernel literals sequences slots.syntax ;
-in: 2019.23
+IN: 2019.23
 
 ! Category Six
 ! part 1: get first y send to address 255
@@ -28,7 +28,7 @@ in: 2019.23
                     [ opcode>> 99 = ] bi or not
                 ] loop
             ] unless
-        ] map v{ } clone over [
+        ] map V{ } clone over [
             outputs>> [ over push ] slurp-deque
         ] each 3 group [
             unclip dup 255 =

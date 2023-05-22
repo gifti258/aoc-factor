@@ -1,6 +1,6 @@
-using: 2019.intcode aoc.matrices accessors arrays deques dlists
+USING: 2019.intcode aoc.matrices accessors arrays deques dlists
 kernel literals math.matrices math.vectors sequences ;
-in: 2019.19
+IN: 2019.19
 
 ! Tractor Beam
 ! part 1: number of points affected by beam in 50x50 area

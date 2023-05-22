@@ -1,12 +1,12 @@
-using: aoc.input arrays assocs combinators kernel literals math
+USING: aoc.input arrays assocs combinators kernel literals math
 math.parser multiline peg.ebnf sequences sequences.extras sets
 splitting ;
-in: 2017.16
+IN: 2017.16
 
 ! Permutation Promenade
 ! Dancing programs
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     spin = "s" n
     exchange = "x" n "/"~ n
@@ -14,11 +14,11 @@ ebnf: parse [=[
     move = spin|exchange|partner
 ]=]
 
-constant: start "abcdefghijklmnop"
+CONSTANT: start "abcdefghijklmnop"
 
 : input ( -- seq ) $[ input-line ] "," split [ parse ] map ;
 
-memo: permute ( str -- str )
+MEMO: permute ( str -- str )
     clone input [
         unclip {
             { "s" [ first neg rotate ] }

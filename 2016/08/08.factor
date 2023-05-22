@@ -1,14 +1,14 @@
-using: aoc.matrices arrays combinators kernel math
+USING: aoc.matrices arrays combinators kernel math
 math.matrices math.parser multiline peg.ebnf sequences
 sequences.extras splitting ;
-in: 2016.08
+IN: 2016.08
 
 ! Two-Factor Authentication
 ! Find the code that the display would have shown
 ! part 1: count the lit pixels
 ! part 2: which letters are shown?
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     rect = "rect" " "~ n "x"~ n
     rotate = "rotate "~ ("row"|"column") " "~ ("x"|"y")~ "="~ n
@@ -35,5 +35,5 @@ ebnf: parse [=[
 
 : part-2 ( seq -- str )
     display [
-        [ zero? 32 char: * ? ] "" map-as
+        [ zero? 32 CHAR: * ? ] "" map-as
     ] map join-lines ;

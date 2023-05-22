@@ -1,13 +1,13 @@
-using: ascii assocs combinators kernel math math.parser
+USING: ascii assocs combinators kernel math math.parser
 multiline peg.ebnf sequences strings ;
-in: 2015.07
+IN: 2015.07
 
 ! Some Assembly Required
 ! Assemble wires, get output of wire a
 ! part 2: feed wire b to wire a, reset the other instructions,
 ! run again
 
-ebnf: parse [=[
+EBNF: parse [=[
     name = [a-z]+ => [[ >string ]]
     number = [0-9]+ => [[ dec> ]]
     signal = name|number

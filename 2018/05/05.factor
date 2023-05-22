@@ -1,6 +1,6 @@
-using: ascii grouping kernel math ranges sequences
+USING: ascii grouping kernel math ranges sequences
 sequences.extras splitting ;
-in: 2018.05
+IN: 2018.05
 
 ! Alchemical Reduction
 ! part 1: length of fully reacted polymer
@@ -14,6 +14,6 @@ in: 2018.05
 : part-1 ( str -- n ) react length ;
 
 : part-2 ( str -- n )
-    char: a char: z [a..b] [
+    CHAR: a CHAR: z [a..b] [
         '[ ch>lower _ = ] reject part-1
     ] with map-infimum ;

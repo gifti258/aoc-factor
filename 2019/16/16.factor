@@ -1,6 +1,6 @@
-using: arrays kernel math math.parser math.vectors ranges
+USING: arrays kernel math math.parser math.vectors ranges
 sequences sequences.extras sequences.repeating ;
-in: 2019.16
+IN: 2019.16
 
 ! Flawed Frequency Transmission
 !

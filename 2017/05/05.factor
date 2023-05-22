@@ -1,5 +1,5 @@
-using: kernel math sequences ;
-in: 2017.05
+USING: kernel math sequences ;
+IN: 2017.05
 
 ! A Maze of Twisty Trampolines, All Alike
 ! Number of jumps inside the list

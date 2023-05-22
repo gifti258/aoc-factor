@@ -1,12 +1,12 @@
-using: aoc.assign assocs assocs.extras kernel multiline peg.ebnf
+USING: aoc.assign assocs assocs.extras kernel multiline peg.ebnf
 sequences sets sorting strings ;
-in: 2020.21
+IN: 2020.21
 
 ! Allergen Assessment
 ! part 1: count non-unique non-allergenic ingredients
 ! part 2: alphabetical list of allergenic ingredients
 
-ebnf: parse [=[
+EBNF: parse [=[
     word = [a-z]+ => [[ >string ]]
     ingredients = (word " "~)+
     allergens = "(contains "~ (word (", "?)~)+ ")"~

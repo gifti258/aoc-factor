@@ -1,18 +1,18 @@
-using: kernel math math.matrices multiline peg.ebnf sequences ;
-in: 2022.02
+USING: kernel math math.matrices multiline peg.ebnf sequences ;
+IN: 2022.02
 
 ! Rock Paper Scissors
 ! Sum scores (own move + outcome)
 ! part 1: opponent move/own move → outcome
 ! part 2: opponent move/outcome → own move
 
-ebnf: parse [=[
-    opponent = . => [[ char: A - ]]
-    self = . => [[ char: X - ]]
+EBNF: parse [=[
+    opponent = . => [[ CHAR: A - ]]
+    self = . => [[ CHAR: X - ]]
     round = opponent " "~ self
 ]=]
 
-macro: (part) ( quot m -- quot )
+MACRO: (part) ( quot m -- quot )
     '[ [ [ second @ ] [ _ matrix-nth ] bi + ] map-sum ] ;
 
 : part-1 ( seq -- n )

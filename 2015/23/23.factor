@@ -1,13 +1,13 @@
-using: assocs combinators kernel make math math.parser multiline
+USING: assocs combinators kernel make math math.parser multiline
 peg.ebnf sequences strings ;
-in: 2015.23
+IN: 2015.23
 
 ! Opening the Turing Lock
 ! Assembly interpretation
 ! part 1: determine value in register b
 ! part 2: … with register a starting as 1
 
-ebnf: parse [=[
+EBNF: parse [=[
     instruction = [a-z]+ => [[ >string ]]
     register = "a"|"b"
     offset = ("+"|"-") [0-9]+ => [[ concat dec> ]]

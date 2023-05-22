@@ -1,5 +1,5 @@
-using: grouping kernel math sequences sequences.extras ;
-in: 2017.01
+USING: grouping kernel math sequences sequences.extras ;
+IN: 2017.01
 
 ! Inverse Captcha
 ! Prove you are not human to escape containment
@@ -8,8 +8,8 @@ in: 2017.01
 
 : part-1 ( str -- n )
     2 circular-clump
-    [ first2 = ] [ first char: 0 - ] filter-map sum ;
+    [ first2 = ] [ first CHAR: 0 - ] filter-map sum ;
 
 : part-2 ( str -- n )
     halves [ [ = ] keep and ] { } 2map-as sift
-    [ char: 0 - ] map-sum 2 * ;
+    [ CHAR: 0 - ] map-sum 2 * ;

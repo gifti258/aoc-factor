@@ -1,12 +1,12 @@
-using: aoc.input kernel math math.parser literals multiline
+USING: aoc.input kernel math math.parser literals multiline
 peg.ebnf sequences ;
-in: 2017.13
+IN: 2017.13
 
 ! Packet Scanners
 ! part 1: calculate trip severity
 ! part 2: find shortest delay to pass firewall
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     layer = n ": "~ n
 ]=]

@@ -1,8 +1,8 @@
-using: assocs disjoint-sets kernel math.combinatorics
+USING: assocs disjoint-sets kernel math.combinatorics
 math.statistics sequences sets ;
-in: aoc.groups
+IN: aoc.groups
 
-<private
+<PRIVATE
 
 : union-by ( seq quot: ( x y -- ? ) -- representatives )
     [ <disjoint-set> [ add-atoms ] ] dip '[
@@ -10,7 +10,7 @@ in: aoc.groups
         '[ first2 _ equate ] each
     ] [ '[ _ representative ] map ] 2tri ; inline
 
-private>
+PRIVATE>
 
 : count-groups ( seq quot -- n ) union-by cardinality ; inline
 

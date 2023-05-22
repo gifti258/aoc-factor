@@ -1,13 +1,13 @@
-using: accessors assocs combinators continuations
+USING: accessors assocs combinators continuations
 kernel math math.parser multiline peg.ebnf sequences
 sequences.extras sets ;
-in: 2020.08
+IN: 2020.08
 
 ! Handheld Halting
 ! part 1: accumulator before first instruction executed twice
 ! part 2: accumulator at the end of repaired program
 
-ebnf: parse [=[
+EBNF: parse [=[
     operation = "acc"|"jmp"|"nop"
     argument = [-+0-9]+ => [[ dec> ]]
     instruction = operation " "~ argument

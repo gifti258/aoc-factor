@@ -1,6 +1,6 @@
-using: 2019.intcode accessors arrays assocs assocs.extras
+USING: 2019.intcode accessors arrays assocs assocs.extras
 continuations deques dlists kernel math sequences ;
-in: 2019.13
+IN: 2019.13
 
 ! Care Package
 ! part 1: count block tiles
@@ -17,7 +17,7 @@ in: 2019.13
     intcode-state new
         swap >>memory
         <dlist> >>outputs
-    h{ } clone swap [
+    H{ } clone swap [
         run-until-output*
         dup opcode>> 99 =
     ] [

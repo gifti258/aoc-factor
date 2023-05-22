@@ -1,13 +1,13 @@
-using: kernel math.combinatorics math.matrices
+USING: kernel math.combinatorics math.matrices
 math.order math.parser math.vectors multiline peg.ebnf ranges
 sequences ;
-in: 2015.15
+IN: 2015.15
 
 ! Science for Hungry People
 ! Find the highest-scoring cookie
 ! part 2: … with exactly 500 calories
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [-0-9]+ => [[ dec> ]]
     ingredient = ([A-Za-z]+)~ ": capacity "~ n ", durability "~
         n ", flavor "~ n ", texture "~ n ", calories "~ n

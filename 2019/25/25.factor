@@ -1,7 +1,7 @@
-using: 2019.intcode accessors deques dlists io kernel literals
+USING: 2019.intcode accessors deques dlists io kernel literals
 math math.combinatorics multiline regexp sequences slots.syntax
 ;
-in: 2019.25
+IN: 2019.25
 
 ! Cryostasis
 ! Get password for the main airlock
@@ -15,7 +15,7 @@ in: 2019.25
 ! pressure-sensitive floor and get the password for the main
 ! airlock.
 
-constant: find-item-combinations-input [[ east
+CONSTANT: find-item-combinations-input [[ east
 east
 take semiconductor
 north
@@ -48,13 +48,13 @@ south
 south
 east]]
 
-constant: items {
+CONSTANT: items {
     "semiconductor" "planetoid" "antenna" "food ration"
     "space law space brochure" "monolith" "jam"
     "weather machine"
 }
 
-constant: part-1-input [[ east
+CONSTANT: part-1-input [[ east
 east
 take semiconductor
 north

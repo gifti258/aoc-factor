@@ -1,11 +1,11 @@
-using: kernel math math.combinatorics math.parser multiline
+USING: kernel math math.combinatorics math.parser multiline
 peg.ebnf sequences ;
-in: 2016.22
+IN: 2016.22
 
 ! Grid Computing
 ! Count viable pairs
 
-ebnf: (parse) [=[
+EBNF: (parse) [=[
     n = [0-9]+ => [[ dec> ]]
     node = "/dev/grid/node-x"~ n "-y"~ n (" "+)~
     size = n ("T" " "+)~

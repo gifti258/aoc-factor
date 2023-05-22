@@ -1,14 +1,14 @@
-using: arrays assocs combinators kernel math math.parser
+USING: arrays assocs combinators kernel math math.parser
 multiline peg.ebnf ranges sequences sorting ;
-in: 2018.04
+IN: 2018.04
 
 ! Repose Record
 ! part 1: find guard that is asleep the most
 ! part 2: find guard that is most asleep on the same minute
 
-symbols: +guard+ +asleep+ +awake+ ;
+SYMBOLS: +guard+ +asleep+ +awake+ ;
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     ts = "["~ n~ "-"~ n~ "-"~ n~ " "~ n~ ":"~ n "] "~
     begin = ts~ "Guard #"~ n:n " begins shift"~
@@ -20,13 +20,13 @@ ebnf: parse [=[
 ]=]
 
 : tally ( seq -- assoc )
-    [ h{ } clone f f ] dip natural-sort [ parse ] map [
+    [ H{ } clone f f ] dip natural-sort [ parse ] map [
         first2 swap {
             { +guard+ [ spin drop ] }
             { +asleep+ [ nip ] }
             { +awake+ [ [a..b) [
                 2over -rot
-                [ h{ } clone or tuck inc-at ] with change-at
+                [ H{ } clone or tuck inc-at ] with change-at
             ] each f ] }
         } case
     ] each 2drop ;

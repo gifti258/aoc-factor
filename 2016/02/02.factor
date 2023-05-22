@@ -1,5 +1,5 @@
-using: assocs kernel multiline sequences ;
-in: 2016.02
+USING: assocs kernel multiline sequences ;
+IN: 2016.02
 
 ! Bathroom Security
 ! Find the keypad code for the bathroom
@@ -13,7 +13,7 @@ in: 2016.02
 7 8 9
 */
 
-constant: pad-1 h{
+CONSTANT: pad-1 H{
     { "1" { "1" "2" "1" "4" } }
     { "2" { "1" "3" "2" "5" } }
     { "3" { "2" "3" "3" "6" } }
@@ -33,7 +33,7 @@ constant: pad-1 h{
     D
 */
 
-constant: pad-2 h{
+CONSTANT: pad-2 H{
     { "1" { "1" "1" "1" "3" } }
     { "2" { "2" "3" "2" "6" } }
     { "3" { "2" "4" "1" "7" } }

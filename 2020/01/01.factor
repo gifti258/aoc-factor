@@ -1,5 +1,5 @@
-using: kernel math math.combinatorics sequences ;
-in: 2020.01
+USING: kernel math math.combinatorics sequences ;
+IN: 2020.01
 
 ! Report Repair
 ! Find the product of the two/three numbers that add up to 2020

@@ -1,12 +1,12 @@
-using: kernel math math.matrices math.parser math.vectors
+USING: kernel math math.matrices math.parser math.vectors
 multiline peg.ebnf sequences sequences.extras sets ;
-in: 2017.20
+IN: 2017.20
 
 ! Particle Swarm
 ! part 1: Closest particle to <0,0,0> in the long term
 ! part 2: Number of remaining particles after collisions
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [-0-9]+ => [[ dec> ]]
     triple = "=<"~ n ","~ n ","~ n ">"~
     particle = "p"~ triple ", v"~ triple ", a"~ triple

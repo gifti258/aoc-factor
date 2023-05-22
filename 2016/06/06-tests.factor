@@ -1,8 +1,8 @@
-using: 2016.06 aoc.input multiline sequences splitting
+USING: 2016.06 aoc.input multiline sequences splitting
 tools.test ;
-in: 2016.06.tests
+IN: 2016.06.tests
 
-constant: msg [[ eedadn
+CONSTANT: msg [[ eedadn
 drvtee
 eandsr
 raavrd

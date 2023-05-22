@@ -1,4 +1,4 @@
-using: 2019.07 2019.intcode tools.test ;
+USING: 2019.07 2019.intcode tools.test ;
 
 { 43210 } [
     "3,15,3,16,1002,16,10,16,1,16,15,15,4,15,99,0,0" prepare

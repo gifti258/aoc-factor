@@ -1,13 +1,13 @@
-using: combinators kernel math math.parser multiline peg.ebnf
+USING: combinators kernel math math.parser multiline peg.ebnf
 sequences ;
-in: 2019.22
+IN: 2019.22
 
 ! Slam Shuffle
 ! Position of card 2019
 
-symbols: +cut+ +inc+ +new+ ;
+SYMBOLS: +cut+ +inc+ +new+ ;
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [-0-9]+ => [[ dec> ]]
     cut = "cut "~ n:n => [[ { +cut+ n } ]]
     inc = "deal with increment "~ n:n => [[ { +inc+ n } ]]

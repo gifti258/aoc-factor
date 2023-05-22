@@ -1,11 +1,11 @@
-using: 2019.intcode accessors deques dlists kernel literals
+USING: 2019.intcode accessors deques dlists kernel literals
 multiline ;
-in: 2019.21
+IN: 2019.21
 
 ! Springoid Adventure
 ! Get hull damage report
 
-constant: part-1
+CONSTANT: part-1
 [[ OR A J
 AND B J
 AND C J
@@ -14,7 +14,7 @@ AND D J
 WALK
 ]]
 
-constant: part-2
+CONSTANT: part-2
 [[ OR A J
 AND B J
 AND C J

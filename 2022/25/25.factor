@@ -1,10 +1,10 @@
-using: assocs kernel literals math ranges sequences ;
-in: 2022.25
+USING: assocs kernel literals math ranges sequences ;
+IN: 2022.25
 
 ! Full of Hot Air
 ! Add a list of balanced quinary numbers
 
-constant: digits $[ "=-012" -2 2 [a..b] zip ]
+CONSTANT: digits $[ "=-012" -2 2 [a..b] zip ]
 
 : parse ( str -- n ) 0 [ [ 5 * ] dip digits at + ] reduce ;
 

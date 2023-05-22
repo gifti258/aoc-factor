@@ -1,8 +1,8 @@
-using: arrays combinators combinators.smart kernel math
+USING: arrays combinators combinators.smart kernel math
 math.matrices math.vectors sequences sequences.extras
 sequences.generalizations splitting ;
-use: multiline
-in: aoc.matrices
+USE: multiline
+IN: aoc.matrices
 
 : left-neighbors ( m -- m' )
     dup dimension second dup 1 <simple-eye> mdot ;
@@ -18,10 +18,10 @@ in: aoc.matrices
     [ dimension first dup 1 <simple-eye> ] keep mdot ;
 */
 
-alias: matrix-shl right-neighbors
-alias: matrix-shr left-neighbors
+ALIAS: matrix-shl right-neighbors
+ALIAS: matrix-shr left-neighbors
 ! alias: matrix-shu lower-neighbors
-alias: matrix-shd upper-neighbors
+ALIAS: matrix-shd upper-neighbors
 
 : upper-toroidal-neighbors ( m -- m' ) -1 rotate ;
 : lower-toroidal-neighbors ( m -- m' ) 1 rotate ;
@@ -30,11 +30,11 @@ alias: matrix-shd upper-neighbors
 : right-toroidal-neighbors ( m -- m' ) [ 1 rotate ] map ;
 */
 
-alias: matrix-rou lower-toroidal-neighbors
-alias: matrix-rod upper-toroidal-neighbors
+ALIAS: matrix-rou lower-toroidal-neighbors
+ALIAS: matrix-rod upper-toroidal-neighbors
 /*
-alias: matrix-rol right-toroidal-neighbors
-alias: matrix-ror left-toroidal-neighbors
+ALIAS: matrix-rol right-toroidal-neighbors
+ALIAS: matrix-ror left-toroidal-neighbors
 */
 
 : matrix-sum ( m -- n ) [ sum ] map-sum ;
@@ -116,14 +116,14 @@ alias: matrix-ror left-toroidal-neighbors
     [ diagonal-toroidal-neighbor-sum ] bi m+ ;
 */
 
-constant: ch>direction {
-    { char: ^ { 0 -1 } }
-    { char: v { 0 +1 } }
-    { char: > { +1 0 } }
-    { char: < { -1 0 } }
+CONSTANT: ch>direction {
+    { CHAR: ^ { 0 -1 } }
+    { CHAR: v { 0 +1 } }
+    { CHAR: > { +1 0 } }
+    { CHAR: < { -1 0 } }
 }
 
-constant: turns {
+CONSTANT: turns {
     { "L" { { 0 +1 } { -1 0 } } }
     { "R" { { 0 -1 } { +1 0 } } }
 }
@@ -143,4 +143,4 @@ constant: turns {
 : matrix-format ( pairs -- str )
     1 swap dup flip [ supremum 1 + ] map
     first2 <zero-matrix> [ matrix-set-nths ] keep flip
-    [ [ zero? char: \s char: * ? ] "" map-as ] map join-lines ;
+    [ [ zero? CHAR: \s CHAR: * ? ] "" map-as ] map join-lines ;

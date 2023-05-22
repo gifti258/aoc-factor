@@ -1,12 +1,12 @@
-using: aoc.matrices assocs kernel math math.parser
+USING: aoc.matrices assocs kernel math math.parser
 math.statistics math.vectors multiline peg.ebnf sequences ;
-in: 2018.10
+IN: 2018.10
 
 ! The Stars Align
 ! part 1: read message spelled out by the moving lights
 ! part 2: count steps until message appears
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [ 0-9-]+ => [[ [ 32 = ] trim dec> ]]
     pair = "<"~ n ", "~ n ">"~
     point = "position="~ pair " velocity="~ pair

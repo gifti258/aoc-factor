@@ -1,6 +1,6 @@
-using: arrays kernel math math.order math.parser sequences
+USING: arrays kernel math math.order math.parser sequences
 vectors ;
-in: 2020.22
+IN: 2020.22
 
 ! Crab Combat
 ! Score after card game

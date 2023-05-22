@@ -1,12 +1,12 @@
-using: aoc.matrices kernel math math.matrices math.order ;
-in: 2020.11
+USING: aoc.matrices kernel math math.matrices math.order ;
+IN: 2020.11
 
 ! Seating System
 ! part 1: number of seats occupied after system stabilizes
 
 : parse ( seq -- empty occupied )
-    [ [ char: L = 1 0 ? ] matrix-map ]
-    [ [ char: # = 1 0 ? ] matrix-map ] bi ;
+    [ [ CHAR: L = 1 0 ? ] matrix-map ]
+    [ [ CHAR: # = 1 0 ? ] matrix-map ] bi ;
 
 :: round ( empty occupied -- empty' occupied' )
     occupied neighbor-sum [ 0 = 1 0 ? ] matrix-map

@@ -1,13 +1,13 @@
-using: arrays assocs assocs.extras kernel math
+USING: arrays assocs assocs.extras kernel math
 math.parser math.statistics multiline peg.ebnf ranges sequences
 sequences.generalizations sets ;
-in: 2018.03
+IN: 2018.03
 
 ! No Matter How You Slice It
 ! part 1: count square inches within two or more claims
 ! part 2: claim ID that doesn't overlap
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     claim = "#"~ n " @ "~ n ","~ n ": "~ n "x"~ n
 ]=]

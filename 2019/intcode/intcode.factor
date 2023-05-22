@@ -1,16 +1,16 @@
-using: accessors aoc.input.syntax combinators deques dlists
+USING: accessors aoc.input.syntax combinators deques dlists
 kernel math math.parser math.text.utils sequences slots.syntax
 splitting ;
-in: 2019.intcode
+IN: 2019.intcode
 
-tuple: intcode-state
+TUPLE: intcode-state
     memory { ip initial: 0 }
     opcode modes { base initial: 0 }
     inputs outputs ;
 
-: prepare ( str -- seq ) "," split [ dec> ] v{ } map-as ;
+: prepare ( str -- seq ) "," split [ dec> ] V{ } map-as ;
 
-input: input-prepare ( -- seq ) first prepare ;
+INPUT: input-prepare ( -- seq ) first prepare ;
 
 : mode ( state offset -- mode ) 1 - swap modes>> ?nth 0 or ;
 

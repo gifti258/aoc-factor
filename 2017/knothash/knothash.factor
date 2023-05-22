@@ -1,6 +1,6 @@
-using: grouping kernel math sequences sequences.rotated vectors
+USING: grouping kernel math sequences sequences.rotated vectors
 ;
-in: 2017.knothash
+IN: 2017.knothash
 
 : (hash) ( seq n -- seq )
     [ 0 0 256 <iota> >vector ] 2dip [ [ [

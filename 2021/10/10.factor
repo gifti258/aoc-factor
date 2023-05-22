@@ -1,6 +1,6 @@
-using: arrays assocs assocs.extras grouping kernel math
+USING: arrays assocs assocs.extras grouping kernel math
 math.order math.parser math.statistics sequences sets ;
-in: 2021.10
+IN: 2021.10
 
 ! Syntax Scoring
 ! part 1: corrupted lines total syntax error score
@@ -8,7 +8,7 @@ in: 2021.10
 
 : prepare ( seq -- seq' )
     [
-        [ v{ } clone ] dip [
+        [ V{ } clone ] dip [
             dup "([{<" in? [ over push f ]
             [ over pop - abs 1 2 between? not ] if
         ] find nip 2array

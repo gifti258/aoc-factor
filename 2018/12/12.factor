@@ -1,15 +1,15 @@
-using: arrays assocs assocs.extras grouping kernel math
+USING: arrays assocs assocs.extras grouping kernel math
 multiline peg.ebnf ranges sequences ;
-in: 2018.12
+IN: 2018.12
 
 ! Subterranean Sustainability
 ! Plant pot number sum after 20/50,000,000,000 generations
 
-ebnf: parse-initial-state [=[
+EBNF: parse-initial-state [=[
     line = "initial state: "~ [.#]+ => [[ >array ]]
 ]=]
 
-ebnf: parse-note [=[
+EBNF: parse-note [=[
     line = [.#]+ => [[ >array ]] " => "~ [.#]
 ]=]
 
@@ -19,7 +19,7 @@ ebnf: parse-note [=[
 : part-1 ( str assoc -- n )
     swap 20 [
         "..." [ prepend ] [ append ] bi 5 clump
-        over [ at char: . or ] curry map
+        over [ at CHAR: . or ] curry map
     ] times nip
     -20 over length 20 - [a..b) zip
-    [ char: # = ] filter-keys values sum ;
+    [ CHAR: # = ] filter-keys values sum ;

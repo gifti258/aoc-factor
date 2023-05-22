@@ -1,6 +1,6 @@
-using: 2019.intcode accessors deques dlists grouping
+USING: 2019.intcode accessors deques dlists grouping
 kernel math.combinatorics ranges sequences ;
-in: 2019.07
+IN: 2019.07
 
 ! Amplification Circuit
 ! Put Intcode computers in series to calculate the maximum

@@ -1,13 +1,13 @@
-using: arrays assocs grouping hashtables kernel
+USING: arrays assocs grouping hashtables kernel
 math.combinatorics math.order math.parser multiline peg.ebnf
 sequences strings ;
-in: 2015.13
+IN: 2015.13
 
 ! Knights of the Dinner Table
 ! Find the seating arrangement with the most total happiness
 ! part 2: … including yourself
 
-ebnf: parse [=[
+EBNF: parse [=[
 	person = [a-zA-Z]+ => [[ >string ]]
     gain = "gain" => [[ "+" ]]
     loss = "lose" => [[ "-" ]]
@@ -18,7 +18,7 @@ ebnf: parse [=[
 ]=]
 
 : setup ( seq -- assoc seq )
-    h{ } clone swap [
+    H{ } clone swap [
         first3 [ over ] 2dip [ rot ?set-at ] 2curry change-at
     ] each dup keys ;
 
@@ -31,5 +31,5 @@ ebnf: parse [=[
 
 : part-2 ( seq -- n )
     setup [ [ over [ 0 "myself" pick set-at ] change-at ] each ]
-    [ [ 0 ] h{ } map>assoc "myself" pick set-at ]
+    [ [ 0 ] H{ } map>assoc "myself" pick set-at ]
     [ "myself" suffix ] tri find-maximum ;

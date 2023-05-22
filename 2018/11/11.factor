@@ -1,11 +1,11 @@
-using: aoc.input kernel literals math math.combinatorics
+USING: aoc.input kernel literals math math.combinatorics
 math.parser math.vectors ranges sequences ;
-in: 2018.11
+IN: 2018.11
 
 ! Chronal Charge
 ! Find square with the highest power
 
-memo: power-level ( loc -- n )
+MEMO: power-level ( loc -- n )
     first2 [ 10 + ] dip over * $[ input-n ] + * 1000 mod 100 /i
     5 - ;
 

@@ -1,11 +1,11 @@
-using: arrays assocs combinators kernel math math.matrices
+USING: arrays assocs combinators kernel math math.matrices
 math.parser multiline peg.ebnf sequences sets strings ;
-in: 2015.16
+IN: 2015.16
 
 ! Aunt Sue
 ! Find the aunt that sent you the analysis machine
 
-ebnf: parse [=[
+EBNF: parse [=[
 	property = [a-z]+ => [[ >string ]]
 	n = [0-9]+ => [[ dec> ]]
 	item = property ": "~ n (", "?)~
@@ -14,7 +14,7 @@ ebnf: parse [=[
 
 : parse* ( seq -- seq' ) [ >array ] matrix-map ;
 
-constant: needle {
+CONSTANT: needle {
     { "children" 3 } { "cats" 7 } { "samoyeds" 2 }
     { "pomeranians" 3 } { "akitas" 0 } { "vizslas" 0 }
     { "goldfish" 5 } { "trees" 3 } { "cars" 2 } { "perfumes" 1 }

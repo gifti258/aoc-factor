@@ -1,16 +1,16 @@
-using: aoc.matrices arrays hash-sets kernel math
+USING: aoc.matrices arrays hash-sets kernel math
 math.combinatorics math.statistics math.vectors ranges sequences
 sequences.product sets ;
-in: 2020.17
+IN: 2020.17
 
 ! Conway Cubes
 ! Number of cubes in active state after 6 cycles
 
-memo: neighbors ( dims -- seq )
+MEMO: neighbors ( dims -- seq )
     { -1 0 1 } swap all-selections [ [ 0 = ] all? ] reject ;
 
 :: cycle ( set dims -- set' )
-    hs{ } clone :> set'
+    HS{ } clone :> set'
     set members flip [
         minmax [ 1 - ] [ 1 + ] bi* [a..b]
     ] map [ :> pos

@@ -1,5 +1,5 @@
-using: math.parser sequences ;
-in: aoc.math.parser
+USING: math.parser sequences ;
+IN: aoc.math.parser
 
 : dec>digits ( n -- seq ) [ digit> ] { } map-as ;
 

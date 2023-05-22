@@ -1,5 +1,5 @@
-using: aoc.matrices kernel math sequences ;
-in: 2019.24
+USING: aoc.matrices kernel math sequences ;
+IN: 2019.24
 
 ! Planet of Discord
 ! part 1: biodiversity rating of first layout appearing twice

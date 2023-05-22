@@ -1,5 +1,5 @@
-using: kernel math sequences sequences.extras ;
-in: 2022.20
+USING: kernel math sequences sequences.extras ;
+IN: 2022.20
 
 ! Grove Positioning System
 ! Sum of grove coordinates
@@ -15,7 +15,7 @@ in: 2022.20
     [ 0 over index ] dip tuck index rotate
     { 1000 2000 3000 } swap nths swap nths sum ;
 
-macro: (part) ( n -- quot )
+MACRO: (part) ( n -- quot )
     '[ dup length <iota> _ [ mix ] times coordinate-sum ] ;
 
 : part-1 ( seq -- n ) 1 (part) ;

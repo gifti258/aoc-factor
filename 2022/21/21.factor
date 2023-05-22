@@ -1,13 +1,13 @@
-using: assocs inverse kernel math math.parser multiline peg.ebnf
+USING: assocs inverse kernel math math.parser multiline peg.ebnf
 quotations sequences sequences.deep strings ;
-in: 2022.21
+IN: 2022.21
 
 ! Monkey Math
 ! part 1: number yelled by root
 ! part 2: number to be yelled by humn so that root branches are
 ! equal
 
-ebnf: parse [=[
+EBNF: parse [=[
     str = [a-z]+ => [[ >string ]]
     n = [0-9]+ => [[ dec> ]]
     op = [-+*/] => [[ 1string ]]
@@ -15,7 +15,7 @@ ebnf: parse [=[
     line = str ": "~ (n|expr)
 ]=]
 
-constant: str->op {
+CONSTANT: str->op {
     { "+" [ + ] }
     { "-" [ - ] }
     { "*" [ * ] }
@@ -30,7 +30,7 @@ constant: str->op {
 
 : part-1 ( assoc -- n ) "root" lookup ;
 
-symbol: +humn+
+SYMBOL: +humn+
 
 :: lookup* ( assoc key -- quot )
     assoc key of dup sequence? [

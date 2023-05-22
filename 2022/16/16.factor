@@ -1,16 +1,16 @@
-using: accessors arrays assocs assocs.extras grouping
+USING: accessors arrays assocs assocs.extras grouping
 grouping.extras hashtables kernel math math.combinatorics
 math.order math.parser multiline path-finding peg.ebnf sequences
 sequences.extras sets strings ;
-in: 2022.16
+IN: 2022.16
 
 ! Proboscidea Volcanium
 ! Maximum amount of pressure that can be relieved in 30 minutes
 ! part 2: … in 26 minutes with the help of one elephant
 
-tuple: valve pressure tunnels ;
+TUPLE: valve pressure tunnels ;
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     valve = [A-Z]+ => [[ >string ]]
     line = "Valve "~ valve " has flow rate="~ n
@@ -19,13 +19,13 @@ ebnf: parse [=[
         => [[ first3 valve boa 2array ]]
 ]=]
 
-tuple: tunnels < astar valves ;
-m: tunnels neighbors valves>> at tunnels>> ;
-m: tunnels cost 3drop 1 ;
-m: tunnels heuristic 3drop 1 ;
+TUPLE: tunnels < astar valves ;
+M: tunnels neighbors valves>> at tunnels>> ;
+M: tunnels cost 3drop 1 ;
+M: tunnels heuristic 3drop 1 ;
 : <tunnels> ( assoc -- astar ) [ tunnels new ] dip >>valves ;
 
-macro: (relief) ( n -- quot: ( path paths assoc -- n ) )
+MACRO: (relief) ( n -- quot: ( path paths assoc -- n ) )
     '[ [ 2 clump ] 2dip '[
         [ _ at ] [ second _ at pressure>> suffix ] bi
     ] map-concat "AA" prefix <prefixes> [
@@ -64,7 +64,7 @@ macro: (relief) ( n -- quot: ( path paths assoc -- n ) )
         [ (most-relief*) ] curry 2with cache +
     ] (most-relief) ;
 
-macro: (part) ( quot -- quot: ( assoc -- n ) )
+MACRO: (part) ( quot -- quot: ( assoc -- n ) )
     '[ { "AA" } swap >hashtable [
         dup [ pressure>> 0 > ] filter-values keys "AA" prefix
         dup 2

@@ -1,14 +1,14 @@
-using: arrays assocs combinators kernel math
+USING: arrays assocs combinators kernel math
 math.parser multiline peg.ebnf sequences sequences.extras ;
-in: 2016.21
+IN: 2016.21
 
 ! Scrambled Letters and Hash
 ! part 1: get scrambled password
 ! part 2: unscramble password
 
-symbols: +sp+ +sl+ +l+ +r+ +rs+ +rp+ +rt+ +mp+ ;
+SYMBOLS: +sp+ +sl+ +l+ +r+ +rs+ +rp+ +rt+ +mp+ ;
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     a = "swap position "~ n " with position "~ n
         => [[ +sp+ prefix ]]
@@ -19,7 +19,7 @@ ebnf: parse [=[
     c = "rotate "~ (l|r) " "~ n " step"~ ("s"?)~
         => [[ +rs+ prefix ]]
     d = "rotate based on position of letter "~ .:c
-        => [[ v{ +rp+ c } ]]
+        => [[ V{ +rp+ c } ]]
     e = "reverse positions "~ n " through "~ n
         => [[ +rt+ prefix ]]
     f = "move position "~ n " to position "~ n

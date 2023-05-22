@@ -1,6 +1,6 @@
-using: assocs kernel math math.algebra math.parser sequences
+USING: assocs kernel math math.algebra math.parser sequences
 splitting ;
-in: 2020.13
+IN: 2020.13
 
 ! Shuttle Search
 ! part 1: product of earliest bus ID and waiting time

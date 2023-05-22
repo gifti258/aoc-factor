@@ -1,4 +1,4 @@
-using: 2019.11 2019.intcode literals multiline sequences
+USING: 2019.11 2019.intcode literals multiline sequences
 tools.test ;
 
 { 1863 } [ input-prepare part-1 ] unit-test

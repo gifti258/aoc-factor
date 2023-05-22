@@ -1,22 +1,22 @@
-using: accessors generalizations kernel math math.combinatorics
+USING: accessors generalizations kernel math math.combinatorics
 math.parser multiline peg.ebnf ranges sequences sequences.extras
 ;
-in: 2021.18
+IN: 2021.18
 
 ! Snailfish
 ! part 1: magnitude of sum of snailfish numbers
 ! part 2: largest magnitude of any two snailfish numbers
 
-tuple: n n d ;
-c: <n> n
+TUPLE: n n d ;
+C: <n> n
 
-ebnf: (parse) [=[
+EBNF: (parse) [=[
     number = [0-9]+ => [[ dec> ]]
     pair = "["~ (number|pair) ","~ (number|pair) "]"~
 ]=]
 
 : tree>stack ( tree depth -- stack )
-    [ v{ } clone ] 2dip '[
+    [ V{ } clone ] 2dip '[
         _ over number? [
             <n> over push
         ] [
@@ -30,7 +30,7 @@ ebnf: (parse) [=[
     [ drop ] [ [ [ + ] change-n ] change-last ] if-empty ;
 
 : explode ( stack -- stack' )
-    [ v{ } clone ] dip reverse [
+    [ V{ } clone ] dip reverse [
         dup pop dup d>> 4 = [
             n>> pick ?add-to-last
             dup [ pop n>> ] keep ?add-to-last
@@ -51,7 +51,7 @@ ebnf: (parse) [=[
     [ dup explode split tuck = not ] loop ;
 
 : (magnitude) ( stack d -- stack' )
-    [ v{ } clone ] [ reverse ] [ dup ] tri* '[
+    [ V{ } clone ] [ reverse ] [ dup ] tri* '[
         dup pop dup d>> _ = [
             n>> 3 * over pop n>> 2 * + _ 1 - <n>
         ] when pick push

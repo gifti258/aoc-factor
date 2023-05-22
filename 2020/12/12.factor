@@ -1,18 +1,18 @@
-using: combinators combinators.extras kernel math math.matrices
+USING: combinators combinators.extras kernel math math.matrices
 math.matrices.extras math.parser math.vectors multiline peg.ebnf
 sequences strings ;
-in: 2020.12
+IN: 2020.12
 
 ! Rain Risk
 ! Find distance between start and end point
 
-ebnf: parse [=[
+EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]
     action = [NSEWLRF] => [[ 1string ]]
     instruction = action n
 ]=]
 
-macro: (part) ( quot -- quot )
+MACRO: (part) ( quot -- quot )
     [ dup ] thrice '[ [ first2 swap {
         { "N" [ { 0 +1 } n*v @ ] }
         { "S" [ { 0 -1 } n*v @ ] }
