@@ -13,8 +13,7 @@ CONSTANT: shapes {
     { { 0 0 } { 0 1 } { 1 0 } { 1 1 } }
 }
 
-: height ( set -- n )
-    members values ?supremum [ 1 + ] [ 0 ] if* ;
+: height ( set -- n ) members values ?supremum ?1+ ;
 
 MACRO: ?move ( map cond -- quot: ( st fa -- st fa' ? ) )
     '[ dup _ map

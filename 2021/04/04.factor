@@ -7,7 +7,7 @@ IN: 2021.04
 
 : parse ( seq -- boards numbers )
     unclip
-    [ [ split-words harvest [ dec> ] map ] matrix-map ]
+    [ [ tabular-line ] matrix-map ]
     [ first csn-line ] bi* ;
 
 : apply-number ( boards n -- boards' )

@@ -40,8 +40,7 @@ CONSTANT: moves {
 
 : part-1 ( set -- n )
     10 moves clone '[ _ round drop ] times members
-    [ flip [ minmax swap - 1 + ] map product ]
-    [ length ] bi - ;
+    [ flip [ range 1 + ] map-product ] [ length ] bi - ;
 
 : part-2 ( set -- n )
     0 swap moves clone '[ [ 1 + ] [ _ round ] bi* ] loop drop ;

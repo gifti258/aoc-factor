@@ -18,7 +18,7 @@ EBNF: parse [=[
         [
             first2 >bin 36 CHAR: 0 pad-head
             reach [ dup CHAR: X = [ drop ] [ nip ] if ] 2map
-            swap pick set-at
+            set-of
         ]
     } cond ] each nip values [ bin> ] map-sum ;
 

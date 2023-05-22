@@ -1,5 +1,5 @@
-USING: assocs kernel math math.algebra math.parser sequences
-splitting ;
+USING: aoc.input assocs kernel math math.algebra math.parser
+sequences splitting ;
 IN: 2020.13
 
 ! Shuttle Search
@@ -8,7 +8,7 @@ IN: 2020.13
 ! matching offsets
 
 : parse ( seq -- n seq )
-    first2 [ dec> ] [ "," split [ dec> ] map ] bi* ;
+    first2 [ dec> ] [ csn-line ] bi* ;
 
 : part-1 ( n seq -- n )
     [ neg ] dip sift [ [ rem ] keep ] with map>alist

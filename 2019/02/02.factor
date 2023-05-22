@@ -7,7 +7,7 @@ IN: 2019.02
 : noun/verb ( seq noun/verb -- first )
     100 /mod 1 2 [ pick set-nth ] bi-curry@ bi*
     intcode-state new swap >>memory
-    run memory>> 0 swap nth ;
+    run memory>> first ;
 
 : part-1 ( seq -- n ) 1202 noun/verb ;
 

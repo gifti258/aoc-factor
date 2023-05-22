@@ -6,8 +6,6 @@ IN: 2022.18
 ! Boiling Boulders
 ! Lava droplet (exterior) surface area
 
-: parse ( line -- seq ) "," split [ dec> ] map ;
-
 : part-1 ( seq -- n )
     [ length 6 * ] [
         2 0 [

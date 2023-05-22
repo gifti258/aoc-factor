@@ -11,7 +11,7 @@ IN: 2020.15
         [ length ] bi
     ] dip '[ dup _ = ] [
         2over of [ dupd - 1 - ] [ 0 ] if*
-        [ [ 1 - swap pick set-at ] dip ] keepd 1 +
+        [ [ 1 - set-of ] dip ] keepd 1 +
     ] until drop nip ;
 
 : part-1 ( seq -- n ) 2020 nth-number ;
