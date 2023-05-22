@@ -28,7 +28,7 @@ IN: aoc.lint
 
 : load-all* ( -- ) prefixes [ load ] each ;
 
-: lint-all ( -- ) prefixes [ lint-vocabs drop ] each ;
+: lint-all* ( -- ) prefixes [ lint-vocabs drop ] each ;
 
 : unused-all ( -- )
     prefixes* [
