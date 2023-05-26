@@ -39,7 +39,7 @@ INPUT: input-prepare ( -- seq ) first prepare ;
         { 7 [ 1 value 2 value [ < 1 0 ? ] dip 3 put 4 args ] }
         { 8 [ 1 value 2 value [ = 1 0 ? ] dip 3 put 4 args ] }
         { 9 [ 1 value [ + ] with change-base 2 args ] }
-        { 99 [ 1 args ] }
+        { 99 [ ] }
     } case ;
 
 : run ( state -- state )
