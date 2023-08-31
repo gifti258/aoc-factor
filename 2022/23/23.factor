@@ -1,5 +1,6 @@
 USING: aoc.matrices assocs assocs.extras hash-sets kernel math
-math.statistics math.vectors sequences sequences.extras sets ;
+math.statistics math.vectors sequences sequences.extras sets
+sets.extras ;
 IN: 2022.23
 
 ! Unstable Diffusion
@@ -29,7 +30,7 @@ CONSTANT: moves {
         pos coordinate-neighbors set intersects? [
             moves [
                 [ pos v+ ] map
-                [ set intersects? not ] [ first ] bi and
+                [ set disjoint? ] [ first ] bi and
             ] map-find drop [ pos swap assoc push-at ] when*
         ] when
     ] each moves 1 rotate! assoc [

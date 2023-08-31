@@ -1,6 +1,6 @@
 USING: accessors aoc.matrices arrays assocs kernel math
-math.matrices math.order path-finding sequences sequences.extras
-;
+math.matrices math.order math.vectors path-finding sequences
+sequences.extras ;
 IN: 2022.12
 
 ! Hill Climbing Algorithm
@@ -8,18 +8,14 @@ IN: 2022.12
 ! part 2: find shortest path length from any a to E
 
 TUPLE: signal < astar map ;
+M: signal cost 3drop 1 ;
+M: signal heuristic drop v- l1-norm ;
 M: signal neighbors
     map>> [
-        [
-            cardinal-coordinate-neighbors
-        ] dip [ '[
+        [ cardinal-coordinate-neighbors ] dip [ '[
             _ dimension [ 1 - 0 swap between? ] 2all?
         ] filter ] keep
-    ] [
-        matrix-nth '[ _ matrix-nth _ 1 + <= ] filter
-    ] 2bi ;
-M: signal cost 3drop 1 ;
-M: signal heuristic 3drop 1 ;
+    ] [ matrix-nth '[ _ matrix-nth _ 1 + <= ] filter ] 2bi ;
 : <signal> ( m -- astar )
     signal new swap [ { "Sa" "Ez" } substitute ] map >>map ;
 

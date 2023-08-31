@@ -6,10 +6,10 @@ IN: 2015.16
 ! Find the aunt that sent you the analysis machine
 
 EBNF: parse [=[
-	property = [a-z]+ => [[ >string ]]
-	n = [0-9]+ => [[ dec> ]]
-	item = property ": "~ n (", "?)~
-	rule = ("Sue " n ": ")~ item+
+    property = [a-z]+ => [[ >string ]]
+    n = [0-9]+ => [[ dec> ]]
+    item = property ": "~ n (", "?)~
+    rule = ("Sue " n ": ")~ item+
 ]=]
 
 : parse* ( seq -- seq' ) [ >array ] matrix-map ;

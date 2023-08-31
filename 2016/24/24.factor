@@ -1,20 +1,20 @@
 USING: accessors aoc.input aoc.matrices arrays ascii assocs
 assocs.extras combinators.short-circuit grouping kernel literals
-math math.combinatorics math.matrices math.order path-finding
-sequences ;
+math math.combinatorics math.matrices math.order math.vectors
+path-finding sequences ;
 IN: 2016.24
 
 ! Air Duct Spelunking
 ! Shortest way to collect all numbers
 
 TUPLE: numbers < astar m ;
+M: numbers cost ( from to astar -- n ) 3drop 1 ;
+M: numbers heuristic ( from to astar -- n ) drop v- l1-norm ;
 M: numbers neighbors ( node astar -- seq )
     [ cardinal-coordinate-neighbors ] dip m>> '[ _ {
         [ dimension [ 1 - 0 swap between? ] 2all? ]
         [ matrix-nth [ CHAR: . = ] [ digit? ] bi or ]
     } 2&& ] filter ;
-M: numbers cost ( from to astar -- n ) 3drop 1 ;
-M: numbers heuristic ( from to astar -- n ) 3drop 1 ;
 
 : input ( -- m ) $[ input-lines [ >array ] map ] ;
 

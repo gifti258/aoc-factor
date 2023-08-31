@@ -8,9 +8,9 @@ IN: 2015.14
 ! part 2: calculate the winning reindeer's points
 
 EBNF: parse [=[
-	reindeer = [a-zA-Z]+ => [[ >string ]]
-	number = [0-9]+ => [[ dec> ]]
-	rule = reindeer " can fly "~ number " km/s for "~ number
+    reindeer = [a-zA-Z]+ => [[ >string ]]
+    number = [0-9]+ => [[ dec> ]]
+    rule = reindeer " can fly "~ number " km/s for "~ number
         " seconds, but then must rest for "~ number " seconds."~
 ]=]
 

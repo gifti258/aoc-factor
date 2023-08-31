@@ -24,6 +24,9 @@ MEMO:: blizzard-positions ( m n -- set )
     4array concat >hash-set ;
 
 TUPLE: valley < astar goal m ;
+M: valley cost ( from to astar -- n ) 3drop 1 ;
+M: valley heuristic ( from to astar -- n )
+    drop [ first ] bi@ v- l1-norm ;
 M:: valley neighbors ( pos astar -- seq )
     pos first2 1 + :> ( pos n )
     astar get[ m goal ] :> ( m g )
@@ -34,8 +37,6 @@ M:: valley neighbors ( pos astar -- seq )
     ] filter [
         [ m matrix-nth CHAR: # = ] [ blizzards in? ] bi or
     ] reject [ dup g = f n ? 2array ] map ;
-M: valley cost ( from to astar -- n ) 3drop 1 ;
-M: valley heuristic ( from to astar -- n ) 3drop 1 ;
 : <valley> ( goal m -- astar )
     [ valley new ] 2dip [ >array ] map set[ goal m ] ;
 

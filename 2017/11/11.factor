@@ -16,7 +16,7 @@ IN: 2017.11
         [ abs ] map [ infimum ] [ first2 - abs ] bi +
     ] [ sum abs ] if ;
 
-: part-1 ( seq -- n ) [ ] [ v+ ] map-reduce distance ;
+: part-1 ( seq -- n ) [ v+ ] 1reduce distance ;
 
 : part-2 ( seq -- n )
     { 0 0 } [ v+ ] accumulate* [ distance ] map-supremum ;

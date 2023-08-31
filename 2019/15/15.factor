@@ -20,12 +20,12 @@ SYMBOL: +goal+
     ] 2map [ first 0 = not ] filter ;
 
 TUPLE: oxygen < astar final ;
+M: oxygen cost ( from to astar -- n ) 3drop 1 ;
+M: oxygen heuristic ( from to astar -- n ) 3drop 1 ;
 M: oxygen neighbors ( node astar -- seq )
     [ (neighbors) ] dip '[
         unclip 2 = [ _ final<< +goal+ ] when
     ] map ;
-M: oxygen heuristic ( from to astar -- n ) 3drop 1 ;
-M: oxygen cost ( from to astar -- n ) 3drop 1 ;
 
 MEMO: length/astar ( seq -- length astar )
     intcode-state new swap >>memory { 0 0 } swap 2array

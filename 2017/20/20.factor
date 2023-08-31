@@ -3,8 +3,8 @@ multiline peg.ebnf sequences sequences.extras sets ;
 IN: 2017.20
 
 ! Particle Swarm
-! part 1: Closest particle to <0,0,0> in the long term
-! part 2: Number of remaining particles after collisions
+! part 1: closest particle to <0,0,0> in the long term
+! part 2: number of remaining particles after collisions
 
 EBNF: parse [=[
     n = [-0-9]+ => [[ dec> ]]

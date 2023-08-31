@@ -1,5 +1,5 @@
 USING: aoc.input kernel literals math math.parser sequences
-sequences.extras sets splitting syntax.terse ;
+sets splitting syntax.terse ;
 IN: 2018.21
 
 ! Chronal Conversion

@@ -17,11 +17,8 @@ EBNF: (parse) [=[
 
 : tree>stack ( tree depth -- stack )
     [ V{ } clone ] 2dip '[
-        _ over number? [
-            <n> over push
-        ] [
-            1 + tree>stack over push-all
-        ] if
+        _ over number?
+        [ <n> over push ] [ 1 + tree>stack over push-all ] if
     ] each ;
 
 : parse ( seq -- seq ) (parse) 0 tree>stack ;
@@ -39,7 +36,7 @@ EBNF: (parse) [=[
     ] until-empty ;
 
 : split ( stack -- stack' )
-    clone dup [ n>> 10 >= ] find swap [
+    clone dup [ n>> 10 >= ] find* [
         [
             [ n>> [ 1 + ] keep [ 2/ ] bi@ ]
             [ d>> 1 + tuck ] bi [ <n> ] 2bi@
@@ -63,7 +60,7 @@ EBNF: (parse) [=[
 : add ( a b -- c )
     append [ clone [ 1 + ] change-d ] map reduce* ;
 
-: part-1 ( seq -- n ) [ ] [ add ] map-reduce magnitude ;
+: part-1 ( seq -- n ) [ add ] 1reduce magnitude ;
 
 : part-2 ( seq -- n )
     2 <k-permutations> [ first2 add magnitude ] map-supremum ;

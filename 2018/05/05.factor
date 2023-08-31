@@ -8,7 +8,7 @@ IN: 2018.05
 ! type
 
 : react ( str -- str )
-    [ dup 2 clump [ first2 - abs 32 = ] find swap ]
+    [ dup 2 clump [ first2 - abs 32 = ] find* ]
     [ "" replace ] while drop ;
 
 : part-1 ( str -- n ) react length ;

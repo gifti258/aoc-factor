@@ -14,7 +14,7 @@ SYMBOLS: V U D L R ;
     [ {
         { U { 0 -1 } } { D { 0 1 } }
         { L { -1 0 } } { R { 1 0 } }
-    } at ] map [ ] [ v+ ] map-reduce ;
+    } at ] map [ v+ ] 1reduce ;
 
 : paths ( path -- seq )
     dup path>string $[ input-line ] prepend checksum

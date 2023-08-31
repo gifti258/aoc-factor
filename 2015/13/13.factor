@@ -8,12 +8,12 @@ IN: 2015.13
 ! part 2: … including yourself
 
 EBNF: parse [=[
-	person = [a-zA-Z]+ => [[ >string ]]
+    person = [a-zA-Z]+ => [[ >string ]]
     gain = "gain" => [[ "+" ]]
     loss = "lose" => [[ "-" ]]
-	sign = gain|loss
-	units = sign " "~ [0-9]+ => [[ concat dec> ]]
-	rule = person " would "~ units
+    sign = gain|loss
+    units = sign " "~ [0-9]+ => [[ concat dec> ]]
+    rule = person " would "~ units
         " happiness units by sitting next to "~ person "."~
 ]=]
 

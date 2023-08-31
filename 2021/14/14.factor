@@ -21,7 +21,7 @@ EBNF: (parse) [=[
             [ suffix ] [ prefix ] bi-curry bi* 2array
         ] dip ] collect-assoc-by-multi [ sum ] map-values ] keep
     ] times drop [ ] collect-assoc-by-multi
-    [ sum 1 + 2/ ] map-values values minmax - neg ;
+    [ sum 1 + 2/ ] map-values values range ;
 
 : part-1 ( str rules -- n ) 10 pair-insertion ;
 

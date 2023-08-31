@@ -14,7 +14,7 @@ EBNF: parse [=[
 
 : next-constellation ( seq -- seq' ) [ [ v+ ] keep ] assoc-map ;
 
-: dimensions ( seq -- dim ) keys flip [ minmax - abs ] map ;
+: dimensions ( seq -- dim ) keys flip [ range ] map ;
 
 : find-message ( seq -- n seq' )
     0 swap [

@@ -15,8 +15,8 @@ IN: 2019.04
     [ possible? ]
     [ histogram values 2 swap in? ] bi and ;
 
-:: count-passwords ( seq quot -- n )
-    seq first2 [a..b] [ >dec ] quot compose count ; inline
+: count-passwords ( seq quot -- n )
+    [ first2 [a..b] ] dip '[ >dec @ ] count ; inline
 
 : part-1 ( seq -- n ) [ possible? ] count-passwords ;
 

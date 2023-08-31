@@ -16,7 +16,7 @@ IN: 2016.13
 
 TUPLE: cubicles < astar ;
 M: cubicles cost ( from to astar -- n ) 3drop 1 ;
-M: cubicles heuristic ( from to astar -- n ) 3drop 1 ;
+M: cubicles heuristic ( from to astar -- n ) drop v- l1-norm ;
 M: cubicles neighbors ( node astar -- seq ) drop neighbors* ;
 
 : part-1 ( -- n )

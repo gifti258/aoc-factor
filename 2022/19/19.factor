@@ -1,6 +1,7 @@
-USING: accessors assocs assocs.extras combinators kernel math
-math.functions math.matrices math.order math.parser math.vectors
-multiline peg.ebnf sequences sequences.extras ;
+USING: accessors assocs assocs.extras combinators
+combinators.extras kernel math math.functions math.matrices
+math.order math.parser math.vectors multiline peg.ebnf sequences
+sequences.extras ;
 IN: 2022.19
 
 ! Not Enough Minerals
@@ -49,14 +50,12 @@ MEMO: max-cost ( state -- v )
     flip [ supremum ] map ; inline
 
 : can-be-used? ( recipe state -- ? )
-    swap [ {
+    swap [
         [ max-cost ]
         [ robots>> ]
         [ minutes>> '[ _ v*n ] bi@ ]
-        [ resources>> ]
-    } cleave ] [
-        second '[ _ vdot ] tri@ + >
-    ] bi* ; inline
+        [ resources>> ] quad
+    ] [ second '[ _ vdot ] tri@ + > ] bi* ; inline
 
 :: can-be-built? ( recipe state -- m ? )
     recipe first2 :> ( blueprint-mask robot-mask )

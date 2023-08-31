@@ -1,5 +1,5 @@
 USING: aoc.input kernel math math.matrices math.parser sequences
-splitting ;
+;
 IN: 2021.04
 
 ! Giant Squid

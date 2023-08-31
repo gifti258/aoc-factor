@@ -20,9 +20,9 @@ EBNF: parse [=[
 ]=]
 
 TUPLE: tunnels < astar valves ;
-M: tunnels neighbors valves>> at tunnels>> ;
 M: tunnels cost 3drop 1 ;
 M: tunnels heuristic 3drop 1 ;
+M: tunnels neighbors valves>> at tunnels>> ;
 : <tunnels> ( assoc -- astar ) [ tunnels new ] dip >>valves ;
 
 MACRO: (relief) ( n -- quot: ( path paths assoc -- n ) )

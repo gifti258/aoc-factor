@@ -4,8 +4,8 @@ math.order math.parser multiline peg.ebnf sequences sets strings
 IN: 2020.16
 
 ! Ticket Translation
-! part 1: Sum of ticket fields that aren't valid for any field
-! part 2: Product of ticket fields whose names begin with
+! part 1: sum of ticket fields that aren't valid for any field
+! part 2: product of ticket fields whose names begin with
 ! “departure”
 
 EBNF: field [=[

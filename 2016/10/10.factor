@@ -3,7 +3,9 @@ multiline peg.ebnf sequences sorting vectors ;
 IN: 2016.10
 
 ! Balance Bots
-! Find the bot that handles the value-17 and value-61 microchips
+! part 1: find the bot that handles the value-17 and value-61
+! microchips
+! part 2: product of chip values in output 0, 1 and 2
 
 EBNF: parse [=[
     n = [0-9]+ => [[ dec> ]]

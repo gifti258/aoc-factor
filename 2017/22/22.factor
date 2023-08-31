@@ -1,4 +1,4 @@
-USING: aoc.matrices assocs generalizations grouping hash-sets
+USING: aoc.matrices assocs combinators.extras grouping hash-sets
 kernel literals math math.matrices math.vectors multiline
 sequences sets ;
 IN: 2017.22
@@ -15,7 +15,7 @@ IN: 2017.22
             vdotm dup
         ] [ drop [ v+ ] keep ]
         [ [ [ delete ] [ adjoin ] if ] keepd ]
-        4 cleave-curry 4 spread*
+        quad-curry quad*
     ] times 3drop ;
 
 SYMBOLS: +c+ +w+ +i+ +f+ ;
@@ -39,5 +39,5 @@ CONSTANT: state-transitions $[
         [ turns at vdotm dup ]
         [ drop [ v+ ] keep ]
         [ state-transitions at -rot [ set-at ] keep ]
-        4 cleave-curry 4 spread*
+        quad-curry quad*
     ] times 3drop ;

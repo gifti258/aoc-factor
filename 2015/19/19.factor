@@ -7,8 +7,8 @@ IN: 2015.19
 ! part 2: fewest number of steps to create target molecule
 
 EBNF: (parse) [=[
-	str = [A-Za-z]+ => [[ >string ]]
-	rule = str " => "~ str
+    str = [A-Za-z]+ => [[ >string ]]
+    rule = str " => "~ str
 ]=]
 
 : parse ( replacements molecule -- assoc str )

@@ -7,7 +7,7 @@ IN: 2021.15
 
 TUPLE: path < astar m ;
 M: path cost ( from to astar -- n ) m>> matrix-nth nip ;
-M: path heuristic ( from to astar -- n ) cost ;
+M: path heuristic ( from to astar -- n ) drop v- l1-norm ;
 M: path neighbors ( from astar -- seq )
     [ { { 1 0 } { -1 0 } { 0 1 } { 0 -1 } } [ v+ ] with map ]
     dip

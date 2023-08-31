@@ -1,4 +1,4 @@
-USING: assocs hashtables json kernel math sequences
+USING: assocs json kernel linked-assocs math sequences
 sequences.deep ;
 IN: 2015.12
 
@@ -6,7 +6,9 @@ IN: 2015.12
 ! Sum all numbers in a json
 
 : tally ( json quot -- n )
-    [ json> ] dip '[ dup hashtable? [ >alist @ ] when ] deep-map
+    [ json> ] dip '[
+        dup linked-assoc? [ >alist @ ] when
+    ] deep-map
     0 [ dup number? [ + ] [ drop ] if ] deep-reduce ; inline
 
 : part-1 ( json -- n ) [ ] tally ;

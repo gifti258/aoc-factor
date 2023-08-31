@@ -1,5 +1,6 @@
 USING: combinators.extras generalizations kernel math math.order
-math.parser math.vectors multiline peg.ebnf ranges sequences ;
+math.parser math.vectors multiline peg.ebnf ranges sequences
+sequences.extras ;
 IN: 2021.21
 
 ! Dirac Dice
@@ -38,6 +39,6 @@ MEMO: turn ( score pos v die-sum -- v )
 
 MEMO: dirac ( score pos v -- v )
     reverse 3 9 [a..b] [ turn ] 3 nwith map
-    { 1 3 6 7 6 3 1 } [ v*n ] 2map [ ] [ v+ ] map-reduce ;
+    { 1 3 6 7 6 3 1 } [ v*n ] 2map [ v+ ] 1reduce ;
 
 : part-2 ( poss -- n ) { 0 0 } swap { 0 1 } dirac supremum ;
