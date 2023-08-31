@@ -1,5 +1,5 @@
-USING: aoc.input kernel math math.parser literals multiline
-peg.ebnf sequences ;
+USING: assocs assocs.extras kernel math math.parser multiline
+peg.ebnf ;
 IN: 2017.13
 
 ! Packet Scanners
@@ -11,10 +11,13 @@ EBNF: parse [=[
     layer = n ": "~ n
 ]=]
 
-: severity ( n -- n )
-    $[ input-lines ] [
-        parse first2 2dup [ roll + ] [ 2 * 2 - ] bi* mod
-        zero? [ * ] [ 2drop 0 ] if
-    ] with map-sum ;
+: caught? ( depth range -- ? ) 2 * 2 - mod zero? ;
 
-: part-1 ( -- n ) 0 severity ;
+: part-1 ( assoc -- n )
+    0 [ 2dup caught? [ * ] [ 2drop 0 ] if + ] assoc-reduce ;
+
+: pass? ( assoc delay -- ? )
+    '[ [ _ + ] dip caught? ] assoc-find 2nip ;
+
+: part-2 ( assoc -- n )
+    0 swap '[ _ over pass? ] [ 1 + ] while ;
