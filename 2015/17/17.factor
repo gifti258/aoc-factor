@@ -2,9 +2,9 @@ USING: kernel math math.combinatorics ranges sequences ;
 IN: 2015.17
 
 ! No Such Thing as Too Much
-! part 1: Find number of container combinations fitting 150
+! part 1: find number of container combinations fitting 150
 ! liters
-! part 2: Find container combination with the fewest number of
+! part 2: find container combination with the fewest number of
 ! containers
 
 : transform ( seq quot -- range quot )
