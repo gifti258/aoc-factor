@@ -9,7 +9,7 @@ IN: 2018.02
 
 : part-1 ( seq -- n )
     2 3 [ '[
-        histogram [ _ = ] assoc-any-value?
+        histogram [ _ = ] any-value?
     ] count ] bi-curry@ bi * ;
 
 : part-2 ( seq -- str )

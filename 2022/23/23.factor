@@ -37,7 +37,7 @@ CONSTANT: moves {
         dup length 1 = [
             first set delete set adjoin
         ] [ 2drop ] if
-    ] assoc-each set assoc [ length 1 = ] assoc-any-value? ;
+    ] assoc-each set assoc [ length 1 = ] any-value? ;
 
 : part-1 ( set -- n )
     10 moves clone '[ _ round drop ] times members

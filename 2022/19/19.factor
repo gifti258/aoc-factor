@@ -64,7 +64,7 @@ MEMO: max-cost ( state -- v )
     [ resources>> blueprint-mask resources vdotm v* v- ]
     [ robots>> ] tri
     zip [ 0 = ] reject-keys
-    dup [ 0 = ] assoc-any-value?
+    dup [ 0 = ] any-value?
     robot-mask [ 0 = ] all? not and ; inline
 
 :: minutes-needed ( m recipe state -- minutes/f )
