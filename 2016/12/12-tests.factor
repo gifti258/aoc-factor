@@ -11,4 +11,4 @@ dec a]] string-lines [ split-words ] map ]
 
 { 42 } [ test-word-lines part-1 ] unit-test
 { 318003 } [ input-word-lines part-1 ] unit-test
-{ 9227657 } [ input-word-lines part-2 ] unit-test
+{ 9227657 } [ input-word-lines part-2 ] long-unit-test

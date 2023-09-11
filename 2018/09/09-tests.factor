@@ -7,4 +7,4 @@ USING: 2018.09 aoc.input tools.test ;
 { 54718 } [ { 21 6111 } part-1 ] unit-test
 { 37305 } [ { 30 5807 } part-1 ] unit-test
 { 412959 } [ input-line parse part-1 ] unit-test
-{ 3333662986 } [ input-line parse part-2 ] unit-test
+{ 3333662986 } [ input-line parse part-2 ] long-unit-test

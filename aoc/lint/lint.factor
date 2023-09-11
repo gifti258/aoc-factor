@@ -1,5 +1,5 @@
 USING: continuations io kernel lexer lint lint.vocabs
-lint.vocabs.private math.parser ranges sequences
+lint.vocabs.private math.parser namespaces ranges sequences
 sequences.product tools.test tools.time vocabs vocabs.files
 vocabs.hierarchy vocabs.metadata vocabs.refresh.monitor ;
 
@@ -15,6 +15,9 @@ IN: tools.test
 
 SYNTAX: TEST:
     scan-token loaded-child-vocab-names test-vocabs ;
+
+: skip-long-tests ( quot -- )
+    f long-unit-tests-enabled? rot with-variable ; inline
 
 IN: aoc.lint
 
