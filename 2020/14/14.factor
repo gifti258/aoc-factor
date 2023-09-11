@@ -1,5 +1,6 @@
-USING: assocs combinators kernel math.combinatorics math.parser
-multiline peg.ebnf sequences splitting strings ;
+USING: assocs assocs.extras combinators kernel
+math.combinatorics math.parser multiline peg.ebnf sequences
+splitting strings ;
 IN: 2020.14
 
 ! Docking Data
@@ -34,4 +35,4 @@ EBNF: parse [=[
             ] bi [ "" [ 3append ] 2reduce ] with map
             [ pick set-at ] with each
         ]
-    } cond ] each nip values sum ;
+    } cond ] each nip sum-values ;

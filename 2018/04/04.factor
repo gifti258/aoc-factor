@@ -1,5 +1,5 @@
-USING: arrays assocs combinators kernel math math.parser
-multiline peg.ebnf ranges sequences sorting ;
+USING: arrays assocs assocs.extras combinators kernel math
+math.parser multiline peg.ebnf ranges sequences sorting ;
 IN: 2018.04
 
 ! Repose Record
@@ -32,7 +32,7 @@ EBNF: parse [=[
     ] each 2drop ;
 
 : part-1 ( seq -- n )
-    tally dup [ values sum ] assoc-map
+    tally dup [ sum-values ] assoc-map
     [ values supremum ] keep value-at
     [ of [ values supremum ] keep value-at ] keep * ;
 

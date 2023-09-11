@@ -22,4 +22,4 @@ EBNF: parse-note [=[
         over [ at CHAR: . or ] curry map
     ] times nip
     -20 over length 20 - [a..b) zip
-    [ CHAR: # = ] filter-keys values sum ;
+    [ CHAR: # = ] filter-keys sum-values ;

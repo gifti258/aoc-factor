@@ -1,4 +1,4 @@
-USING: aoc.matrices arrays assocs kernel math
+USING: aoc.matrices arrays assocs assocs.extras kernel math
 sequences sequences.extras splitting ;
 IN: 2019.06
 
@@ -12,7 +12,7 @@ IN: 2019.06
 : orbits ( seq str -- sum n )
     over
     [ first = ] with [ second orbits 2array ] with filter-map
-    [ matrix-sum ] [ values sum ] bi 1 + ;
+    [ matrix-sum ] [ sum-values ] bi 1 + ;
 
 : part-1 ( seq -- n ) "COM" orbits drop ;
 

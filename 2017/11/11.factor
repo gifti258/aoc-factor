@@ -12,7 +12,7 @@ IN: 2017.11
     } at ] map ;
 
 : distance ( v -- n )
-    dup [ neg? ] count 1 = [
+    dup [ neg? ] one? [
         [ abs ] map [ infimum ] [ first2 - abs ] bi +
     ] [ sum abs ] if ;
 

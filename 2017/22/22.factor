@@ -10,12 +10,10 @@ IN: 2017.22
     [ 0 { -1 0 } ] dip [ dimension [ 1 - 2 / ] map ] keep
     [ 1 = ] matrix>pairs >hash-set 10,000 [
         2dup in?
-        [ [ 1 + ] unless ] [
-            { { 0 -1 } { 1 0 } } { { 0 1 } { -1 0 } } ?
-            vdotm dup
-        ] [ drop [ v+ ] keep ]
-        [ [ [ delete ] [ adjoin ] if ] keepd ]
-        quad-curry quad*
+        [ [ 1 + ] unless ]
+        [ { { 0 -1 } { 1 0 } } { { 0 1 } { -1 0 } } ? vdotm dup ]
+        [ drop [ v+ ] keep ]
+        [ [ [ delete ] [ adjoin ] if ] keepd ] quad-curry quad*
     ] times 3drop ;
 
 SYMBOLS: +c+ +w+ +i+ +f+ ;

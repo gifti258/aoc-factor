@@ -24,7 +24,9 @@ EBNF: (parse) [=[
 : parse ( seq -- seq ) (parse) 0 tree>stack ;
 
 : ?add-to-last ( n stack -- )
-    [ drop ] [ [ [ + ] change-n ] change-last ] if-empty ;
+    [ drop ] [
+        [ [ + ] change-n ] sequences.extras:change-last
+    ] if-empty ;
 
 : explode ( stack -- stack' )
     [ V{ } clone ] dip reverse [
