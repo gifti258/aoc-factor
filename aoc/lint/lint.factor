@@ -11,6 +11,7 @@ IN: tools.test.private
         output assert-sequence= f f
     ] [ t ] recover t ;
 
+
 IN: tools.test
 
 SYNTAX: TEST:
@@ -18,6 +19,17 @@ SYNTAX: TEST:
 
 : skip-long-tests ( quot -- )
     f long-unit-tests-enabled? rot with-variable ; inline
+
+
+IN: lint
+
+SYNTAX: LINT: scan-token lint-vocab ;
+
+
+IN: lint.vocabs
+
+SYNTAX: UNUSED: scan-token find-unused. ;
+
 
 IN: aoc.lint
 
@@ -31,7 +43,7 @@ IN: aoc.lint
 
 : load-all* ( -- ) prefixes [ load ] each ;
 
-: lint-all* ( -- ) prefixes [ lint-vocabs drop ] each ;
+: lint-all* ( -- ) prefixes* [ lint-vocabs drop ] each ;
 
 : unused-all ( -- )
     prefixes* [
